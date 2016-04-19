@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'open-sans';
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+html, body {
+    margin: 0;
+    font-family: 'open-sans';
+    color: #fff;
+    font-size:  20;
+    background: #000;
+    height: 100%;
+    min-height: 100%;
+}
+
+#canvas {
+    width: 100%;
+    min-width: 800px;
+    background: url(../images/bg.png);
+}

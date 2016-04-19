@@ -1,0 +1,111 @@
+Monday, April 18th, 2016 5:41:56pm player monkey true 4
+Monday, April 18th, 2016 5:45:19pm player monkey true 4
+Monday, April 18th, 2016 5:45:20pm click 2 photoshardVC037.jpg -614 -319 18 668.753125 426.40000000000003 0 hard
+Monday, April 18th, 2016 5:45:20pm click 2 photoshardVC037.jpg -614 -319 18 534.229375 349.8666666666667 0 hard
+Monday, April 18th, 2016 5:45:21pm click 2 photoshardVC037.jpg -614 -319 18 602.264375 273.3333333333333 0 hard
+Monday, April 18th, 2016 5:45:21pm click 2 photoshardVC037.jpg -614 -319 18 793.999375 498.83333333333337 0 hard
+Monday, April 18th, 2016 5:45:22pm click 2 photoshardVC037.jpg -614 -319 18 790.906875 563.0666666666667 0 hard
+Monday, April 18th, 2016 5:45:22pm click 2 photoshardVC037.jpg -614 -319 18 337.855625 422.3 0 hard
+Monday, April 18th, 2016 5:45:22pm click 2 photoshardVC037.jpg -614 -319 18 258.996875 255.56666666666666 0 hard
+Monday, April 18th, 2016 5:45:23pm click 2 photoshardVC037.jpg -614 -319 18 565.154375 184.5 0 hard
+Monday, April 18th, 2016 5:45:25pm click 2 photoshardVC037.jpg -614 -319 18 592.986875 408.6333333333333 0 hard
+Monday, April 18th, 2016 5:45:25pm click 2 photoshardVC037.jpg -614 -319 18 732.149375 422.3 0 hard
+Monday, April 18th, 2016 5:48:54pm player monkey true 4
+Monday, April 18th, 2016 5:48:55pm click 3 photoshardRC011.jpg -557 -393 17 664.114375 353.9666666666667 0 hard
+Monday, April 18th, 2016 5:48:55pm click 3 photoshardRC011.jpg -557 -393 17 620.819375 328 0 hard
+Monday, April 18th, 2016 5:49:57pm player monkey true 3
+Monday, April 18th, 2016 5:51:14pm player monkey true 4
+Monday, April 18th, 2016 5:51:18pm click 5 photoshardVC006-2013.jpg -867 -497 3268 583.709375 396.3333333333333 0 hard
+Monday, April 18th, 2016 5:51:18pm click 5 photoshardVC006-2013.jpg -867 -497 3800 848.118125 174.93333333333334 0 hard
+Monday, April 18th, 2016 5:51:19pm click 5 photoshardVC006-2013.jpg -867 -497 4301 866.673125 299.3 0 hard
+Monday, April 18th, 2016 5:51:19pm click 5 photoshardVC006-2013.jpg -867 -497 4900 376.511875 359.43333333333334 0 hard
+Monday, April 18th, 2016 5:51:20pm click 5 photoshardVC006-2013.jpg -867 -497 5534 374.965625 237.8 0 hard
+Monday, April 18th, 2016 5:51:21pm click 5 photoshardVC006-2013.jpg -867 -497 6217 334.763125 246 0 hard
+Monday, April 18th, 2016 5:51:21pm click 5 photoshardVC006-2013.jpg -867 -497 6635 344.040625 213.20000000000002 0 hard
+Monday, April 18th, 2016 5:51:21pm click 5 photoshardVC006-2013.jpg -867 -497 7001 345.586875 191.33333333333334 0 hard
+Monday, April 18th, 2016 5:51:22pm click 5 photoshardVC006-2013.jpg -867 -497 7435 334.763125 166.73333333333335 0 hard
+Monday, April 18th, 2016 5:51:22pm click 5 photoshardVC006-2013.jpg -867 -497 7801 288.375625 180.4 0 hard
+Monday, April 18th, 2016 5:51:23pm click 5 photoshardVC006-2013.jpg -867 -497 8134 279.098125 194.06666666666666 0 hard
+Monday, April 18th, 2016 5:51:23pm click 5 photoshardVC006-2013.jpg -867 -497 8467 327.031875 226.86666666666667 0 hard
+Monday, April 18th, 2016 5:51:23pm click 5 photoshardVC006-2013.jpg -867 -497 8752 364.141875 255.56666666666666 0 hard
+Monday, April 18th, 2016 5:51:24pm click 5 photoshardVC006-2013.jpg -867 -497 9034 390.428125 292.4666666666667 1 hard
+Monday, April 18th, 2016 5:51:26pm click 5 photoshardRC005.jpg -372 -640 1181 1001.196875 571.2666666666667 0 hard
+Monday, April 18th, 2016 5:51:27pm click 5 photoshardRC005.jpg -372 -640 2150 979.549375 537.1 0 hard
+Monday, April 18th, 2016 6:01:14pm player monkey true 4
+Monday, April 18th, 2016 6:01:19pm click 6 photoshardVC005-2013.jpg -721 -460 4201 696.585625 341.6666666666667 0 hard
+Monday, April 18th, 2016 6:01:20pm click 6 photoshardVC005-2013.jpg -721 -460 5250 543.506875 185.86666666666667 0 hard
+Monday, April 18th, 2016 6:01:20pm click 6 photoshardVC005-2013.jpg -721 -460 5534 674.938125 224.13333333333333 0 hard
+Monday, April 18th, 2016 6:01:20pm click 6 photoshardVC005-2013.jpg -721 -460 5800 759.9818750000001 258.3 0 hard
+Monday, April 18th, 2016 6:01:21pm click 6 photoshardVC005-2013.jpg -721 -460 6101 916.153125 303.40000000000003 0 hard
+Monday, April 18th, 2016 6:01:21pm click 6 photoshardVC005-2013.jpg -721 -460 6333 1001.196875 390.8666666666667 0 hard
+Monday, April 18th, 2016 6:01:21pm click 6 photoshardVC005-2013.jpg -721 -460 6586 998.104375 476.9666666666667 0 hard
+Monday, April 18th, 2016 6:01:22pm click 6 photoshardVC005-2013.jpg -721 -460 6984 770.805625 483.8 0 hard
+Monday, April 18th, 2016 6:01:22pm click 6 photoshardVC005-2013.jpg -721 -460 7483 458.463125 550.7666666666667 0 hard
+Monday, April 18th, 2016 6:01:23pm click 6 photoshardVC005-2013.jpg -721 -460 7901 263.635625 634.1333333333333 0 hard
+Monday, April 18th, 2016 6:01:23pm click 6 photoshardVC005-2013.jpg -721 -460 8268 327.031875 683.3333333333334 0 hard
+Monday, April 18th, 2016 6:01:23pm click 6 photoshardVC005-2013.jpg -721 -460 8834 965.633125 545.3000000000001 0 hard
+Monday, April 18th, 2016 6:01:24pm click 6 photoshardVC005-2013.jpg -721 -460 9267 1030.575625 572.6333333333333 0 hard
+Monday, April 18th, 2016 6:01:27pm click 6 photoshardVS001-2013.jpg -470 -214 944 1032.121875 589.0333333333333 0 hard
+Monday, April 18th, 2016 6:01:43pm click 6 photoshardVC012-2013.jpg -337 -267 6198 1061.500625 602.7 0 hard
+Monday, April 18th, 2016 6:01:54pm click 6 photoshardChMa004.jpg -450 -224 1545 1044.491875 576.7333333333333 0 hard
+Monday, April 18th, 2016 6:01:57pm click 6 photoshardRC001.jpg -772 -335 1392 438.361875 378.56666666666666 0 hard
+Monday, April 18th, 2016 6:01:58pm click 6 photoshardRC001.jpg -772 -335 2058 475.471875 435.9666666666667 1 hard
+Monday, April 18th, 2016 6:02:01pm click 6 photoshardVC022.jpg -977 -593 1864 291.468125 267.8666666666667 1 hard
+Monday, April 18th, 2016 6:02:03pm click 6 photoshardRC004.jpg -621 -268 1115 586.801875 497.4666666666667 0 hard
+Monday, April 18th, 2016 6:02:03pm click 6 photoshardRC004.jpg -621 -268 1566 592.986875 528.9 0 hard
+Monday, April 18th, 2016 6:02:04pm click 6 photoshardRC004.jpg -621 -268 1999 594.533125 553.5 1 hard
+Monday, April 18th, 2016 6:02:06pm click 6 photoshardVC009-2013.jpg -599 -378 1849 605.3568750000001 485.1666666666667 1 hard
+Monday, April 18th, 2016 6:02:11pm click 6 photoshardRC004-2013.jpg -982 -190 3495 248.173125 569.9 0 hard
+Monday, April 18th, 2016 6:02:11pm click 6 photoshardRC004-2013.jpg -982 -190 3962 255.904375 615 1 hard
+Monday, April 18th, 2016 6:02:15pm click 6 photoshardRC003.jpg -894 -491 2799 436.815625 291.1 1 hard
+Monday, April 18th, 2016 6:02:24pm click 6 photoshardVC010-2013.jpg -684 -321 1017 1064.593125 604.0666666666667 0 hard
+Monday, April 18th, 2016 6:02:25pm click 6 photoshardVC010-2013.jpg -684 -321 1833 1001.196875 620.4666666666667 0 hard
+Monday, April 18th, 2016 6:02:28pm click 6 photoshardVC013-2013.jpg -604 -571 1076 1050.676875 605.4333333333334 0 hard
+Monday, April 18th, 2016 6:03:19pm player mongoose true 4
+Monday, April 18th, 2016 6:03:21pm click 7 photoseasymongoose-VC004-2013.jpg -673 -373 1868 572.885625 412.73333333333335 0 easy
+Monday, April 18th, 2016 6:03:21pm click 7 photoseasymongoose-VC004-2013.jpg -673 -373 2300 557.423125 453.73333333333335 1 easy
+Monday, April 18th, 2016 6:03:23pm click 7 photoseasymongoose-VS001.jpg -878 -413 878 385.789375 427.76666666666665 1 easy
+Monday, April 18th, 2016 6:03:25pm click 7 photoseasymongoose-VC001-SA2013.jpg -785 -515 1311 425.991875 304.76666666666665 0 easy
+Monday, April 18th, 2016 6:03:25pm click 7 photoseasymongoose-VC001-SA2013.jpg -785 -515 1977 461.555625 338.93333333333334 1 easy
+Monday, April 18th, 2016 6:03:27pm click 7 photoseasymongoose-RC015.jpg -811 -555 1294 517.220625 311.6 0 easy
+Monday, April 18th, 2016 6:03:30pm click 7 photoseasymongoose-RC015.jpg -811 -555 3627 412.075625 207.73333333333335 1 easy
+Monday, April 18th, 2016 6:03:33pm click 7 photoseasymongoose-CuTe003.jpg -469 -606 2426 758.435625 282.90000000000003 1 easy
+Monday, April 18th, 2016 6:03:35pm click 7 photoseasymongoose-VC005.jpg -260 -576 1246 920.791875 233.70000000000002 0 easy
+Monday, April 18th, 2016 6:03:36pm click 7 photoseasymongoose-VC005.jpg -260 -576 1847 947.078125 265.1333333333333 1 easy
+Monday, April 18th, 2016 6:03:39pm click 7 photoseasymongoose-VC002-2013.jpg -652 -271 2198 571.339375 476.9666666666667 0 easy
+Monday, April 18th, 2016 6:03:39pm click 7 photoseasymongoose-VC002-2013.jpg -652 -271 2664 582.163125 498.83333333333337 0 easy
+Monday, April 18th, 2016 6:03:40pm click 7 photoseasymongoose-VC002-2013.jpg -652 -271 3114 569.793125 537.1 1 easy
+Monday, April 18th, 2016 6:03:43pm click 7 photoseasymongoose-CuTe001.jpg -332 -504 1967 851.210625 288.3666666666667 1 easy
+Monday, April 18th, 2016 6:03:45pm click 7 photoseasymongoose-CuTe005.jpg -375 -570 1257 828.016875 259.6666666666667 1 easy
+Monday, April 18th, 2016 6:03:47pm click 7 photoseasymongoose-RC005-2013.jpg -650 -372 1278 538.868125 369 1 easy
+Monday, April 18th, 2016 6:03:50pm click 7 photoseasymongoose-VC001.jpg -300 -407 2799 917.699375 386.76666666666665 1 easy
+Monday, April 18th, 2016 6:03:56pm click 7 photoseasymongoose-VS003.jpg -647 -238 5201 579.070625 530.2666666666667 1 easy
+Monday, April 18th, 2016 6:03:59pm click 7 photoseasymongoose-VC017.jpg -974 -593 1779 240.441875 225.5 1 easy
+Monday, April 18th, 2016 6:04:02pm click 7 photoseasymongoose-CuTe009.jpg -627 -219 1851 523.405625 572.6333333333333 0 easy
+Monday, April 18th, 2016 6:04:03pm click 7 photoseasymongoose-CuTe009.jpg -627 -219 2368 534.229375 634.1333333333333 0 easy
+Monday, April 18th, 2016 6:04:03pm click 7 photoseasymongoose-CuTe009.jpg -627 -219 2834 565.154375 720.2333333333333 0 easy
+Monday, April 18th, 2016 6:04:04pm click 7 photoseasymongoose-CuTe009.jpg -627 -219 3384 554.330625 687.4333333333334 1 easy
+Monday, April 18th, 2016 6:04:08pm click 7 photoseasymongoose-VC031.jpg -402 -496 3195 824.924375 318.43333333333334 0 easy
+Monday, April 18th, 2016 6:04:08pm click 7 photoseasymongoose-VC031.jpg -402 -496 3644 797.091875 363.53333333333336 0 easy
+Monday, April 18th, 2016 6:04:09pm click 7 photoseasymongoose-VC031.jpg -402 -496 4131 824.924375 367.6333333333333 1 easy
+Monday, April 18th, 2016 6:04:14pm click 7 photoseasymongoose-VC008.jpg -719 -249 2031 662.568125 373.1 0 easy
+Monday, April 18th, 2016 6:04:14pm click 7 photoseasymongoose-VC008.jpg -719 -249 2681 828.016875 479.7 0 easy
+Monday, April 18th, 2016 6:04:15pm click 7 photoseasymongoose-VC008.jpg -719 -249 3215 971.818125 523.4333333333334 0 easy
+Monday, April 18th, 2016 6:04:19pm click 7 photoseasymongoose-VC004.jpg -708 -270 1226 565.154375 517.9666666666667 0 easy
+Monday, April 18th, 2016 6:04:19pm click 7 photoseasymongoose-VC004.jpg -708 -270 1777 535.775625 552.1333333333333 1 easy
+Monday, April 18th, 2016 6:04:23pm click 7 photoseasymongoose-VC010.jpg -254 -312 1964 919.245625 464.6666666666667 0 easy
+Monday, April 18th, 2016 6:04:23pm click 7 photoseasymongoose-VC010.jpg -254 -312 2479 951.716875 479.7 1 easy
+Monday, April 18th, 2016 6:04:26pm click 7 photoseasymongoose-VC009.jpg -987 -442 1632 282.190625 322.53333333333336 1 easy
+Monday, April 18th, 2016 6:04:30pm click 7 photoseasymongoose-VC023.jpg -360 -515 2639 872.858125 302.03333333333336 1 easy
+Monday, April 18th, 2016 6:05:04pm player name 7 BCC
+Monday, April 18th, 2016 6:11:14pm player mongoose true 4
+Tuesday, April 19th, 2016 12:06:43pm player monkey false 3
+Tuesday, April 19th, 2016 12:54:09pm player monkey false 3
+Tuesday, April 19th, 2016 1:44:18pm player monkey true 4
+Tuesday, April 19th, 2016 1:54:36pm player monkey true 3
+Tuesday, April 19th, 2016 1:54:49pm player monkey true 3
+Tuesday, April 19th, 2016 1:58:11pm player human true 4
+Tuesday, April 19th, 2016 2:27:26pm player human true 3
+Tuesday, April 19th, 2016 2:49:29pm player human true 4
+Tuesday, April 19th, 2016 2:49:30pm player human true 4
+Tuesday, April 19th, 2016 2:49:30pm player human true 4
