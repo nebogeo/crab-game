@@ -109,3 +109,59 @@ Tuesday, April 19th, 2016 2:27:26pm player human true 3
 Tuesday, April 19th, 2016 2:49:29pm player human true 4
 Tuesday, April 19th, 2016 2:49:30pm player human true 4
 Tuesday, April 19th, 2016 2:49:30pm player human true 4
+Tuesday, April 19th, 2016 2:54:33pm player human true 4
+Tuesday, April 19th, 2016 2:54:35pm player human true 4
+Thursday, April 21st, 2016 9:48:54am player fish true 1
+Thursday, April 21st, 2016 9:53:58am player human true 3
+Thursday, April 21st, 2016 9:54:17am player fish true 2
+Thursday, April 21st, 2016 9:54:34am player human true 3
+Thursday, April 21st, 2016 9:55:26am player human true 3
+Thursday, April 21st, 2016 10:00:58am player human true 3
+Thursday, April 21st, 2016 10:01:06am player human false 2
+Thursday, April 21st, 2016 10:01:47am player human true 2
+Thursday, April 21st, 2016 10:02:30am player human false 2
+Thursday, April 21st, 2016 10:03:15am player human false 3
+Thursday, April 21st, 2016 10:04:19am player human true 2
+Thursday, April 21st, 2016 10:08:25am player human true 3
+Thursday, April 21st, 2016 12:32:04pm player human false 3
+Thursday, April 21st, 2016 1:12:47pm player human false 2
+Thursday, April 21st, 2016 1:13:58pm player human true 2
+Thursday, April 21st, 2016 1:14:48pm player human true 2
+Thursday, April 21st, 2016 1:17:34pm player human true 2
+Thursday, April 21st, 2016 1:17:36pm click 17 photosrockpooltest-3.jpg -901 -157 2381 273.57512953367876 381.34715025906735 0 easy
+Thursday, April 21st, 2016 1:17:37pm click 17 photosrockpooltest-3.jpg -901 -157 2987 721.2435233160622 183.56772760917838 0 easy
+Thursday, April 21st, 2016 1:17:37pm click 17 photosrockpooltest-3.jpg -901 -157 3367 878.7564766839379 281.86528497409324 0 easy
+Thursday, April 21st, 2016 1:17:38pm click 17 photosrockpooltest-3.jpg -901 -157 3706 881.1250925240563 551.8874907475944 0 easy
+Thursday, April 21st, 2016 1:17:38pm click 17 photosrockpooltest-3.jpg -901 -157 4096 486.7505551443375 569.6521095484826 0 easy
+Thursday, April 21st, 2016 1:17:39pm click 17 photosrockpooltest-3.jpg -901 -157 4398 448.85270170244263 416.8763878608438 0 easy
+Thursday, April 21st, 2016 1:17:39pm click 17 photosrockpooltest-3.jpg -901 -157 4709 793.4863064396743 300.81421169504074 0 easy
+Thursday, April 21st, 2016 1:17:39pm click 17 photosrockpooltest-3.jpg -901 -157 4967 981.7912657290896 387.26868985936346 0 easy
+Thursday, April 21st, 2016 1:17:39pm click 17 photosrockpooltest-3.jpg -901 -157 5266 919.0229459659512 512.8053293856402 0 easy
+Thursday, April 21st, 2016 1:17:40pm click 17 photosrockpooltest-3.jpg -901 -157 5768 211.99111769059957 235.67727609178388 0 easy
+Thursday, April 21st, 2016 1:17:40pm click 17 photosrockpooltest-3.jpg -901 -157 6138 152.7757216876388 114.8778682457439 0 easy
+Thursday, April 21st, 2016 1:17:40pm click 17 photosrockpooltest-3.jpg -901 -157 6429 78.16432272390821 62.768319763138415 0 easy
+Thursday, April 21st, 2016 1:17:41pm click 17 photosrockpooltest-3.jpg -901 -157 6855 43.81939304219097 104.21909696521095 0 easy
+Thursday, April 21st, 2016 1:17:41pm click 17 photosrockpooltest-3.jpg -901 -157 7196 137.379718726869 125.53663952627683 0 easy
+Thursday, April 21st, 2016 1:21:23pm player human true 3
+Thursday, April 21st, 2016 1:22:01pm player human true 3
+Thursday, April 21st, 2016 1:22:13pm click 19 photosrockpooltest-2.jpg -228 -218 11617 438.3795309168443 278.0383795309168 0 easy
+Thursday, April 21st, 2016 1:22:13pm click 19 photosrockpooltest-2.jpg -228 -218 12054 501.4925373134328 291.68443496801706 0 easy
+Thursday, April 21st, 2016 1:22:13pm click 19 photosrockpooltest-2.jpg -228 -218 12319 799.9999999999999 371.8550106609808 0 easy
+Thursday, April 21st, 2016 1:22:14pm click 19 photosrockpooltest-2.jpg -228 -218 12567 948.4008528784648 463.96588486140723 0 easy
+Thursday, April 21st, 2016 1:22:14pm click 19 photosrockpooltest-2.jpg -228 -218 12802 1021.7484008528784 557.7825159914712 0 easy
+Thursday, April 21st, 2016 6:27:14pm player human true 3
+Thursday, April 21st, 2016 6:27:16pm click 20 photosrockpooltest-2.jpg -735 -414 1732 603.8379530916844 416.2046908315565 0 easy
+Thursday, April 21st, 2016 6:27:17pm click 20 photosrockpooltest-2.jpg -735 -414 2216 631.1300639658848 240.51172707889123 0 easy
+Thursday, April 21st, 2016 6:27:17pm click 20 photosrockpooltest-2.jpg -735 -414 2549 987.6332622601278 300.21321961620464 0 easy
+Thursday, April 21st, 2016 6:27:17pm click 20 photosrockpooltest-2.jpg -735 -414 2849 1086.5671641791043 465.67164179104475 0 easy
+Thursday, April 21st, 2016 6:27:18pm click 20 photosrockpooltest-2.jpg -735 -414 3282 658.4221748400852 620.8955223880597 0 easy
+Thursday, April 21st, 2016 6:27:18pm click 20 photosrockpooltest-2.jpg -735 -414 3616 373.5607675906183 557.7825159914712 0 easy
+Thursday, April 21st, 2016 6:27:19pm click 20 photosrockpooltest-2.jpg -735 -414 3882 347.9744136460554 428.14498933901916 0 easy
+Thursday, April 21st, 2016 6:27:19pm click 20 photosrockpooltest-2.jpg -735 -414 4173 423.02771855010656 286.56716417910445 0 easy
+Thursday, April 21st, 2016 6:35:38pm player human true 3
+Thursday, April 21st, 2016 6:37:06pm player human true 3
+Thursday, April 21st, 2016 6:37:35pm player human true 3
+Thursday, April 21st, 2016 6:38:52pm player human false 3
+Thursday, April 21st, 2016 6:40:03pm player human true 3
+Thursday, April 21st, 2016 6:40:22pm player human true 3
+Thursday, April 21st, 2016 6:42:42pm player human true 3

@@ -745,15 +745,18 @@
 (define (nightjar-heading ctx txt)
   (set! ctx.font "normal 75pt open-sans")
   (set! ctx.fillStyle "#000")
-  (wrap-text ctx txt 0 200 1000 100))
+  (wrap-text ctx txt 0 200 1000 100)
+  (set! ctx.font "normal 30pt open-sans"))
 
 (define (nightjar-text ctx txt)
   (set! ctx.font "normal 25pt open-sans")
-  (wrap-text ctx txt 0 400 1000 50))
+  (wrap-text ctx txt 0 400 1000 50)
+  (set! ctx.font "normal 30pt open-sans"))
 
 (define (nightjar-all-text ctx txt)
   (set! ctx.font "bold 50pt open-sans")
-  (wrap-text ctx txt 0 200 1000 75))
+  (wrap-text ctx txt 0 200 1000 75)
+  (set! ctx.font "normal 30pt open-sans"))
 
 
 ;; ----------------------------------------
