@@ -165,3 +165,80 @@ Thursday, April 21st, 2016 6:38:52pm player human false 3
 Thursday, April 21st, 2016 6:40:03pm player human true 3
 Thursday, April 21st, 2016 6:40:22pm player human true 3
 Thursday, April 21st, 2016 6:42:42pm player human true 3
+Thursday, April 21st, 2016 6:47:27pm player fish false 3
+Thursday, April 21st, 2016 6:47:38pm player human true 3
+Thursday, April 21st, 2016 6:51:01pm player human true 3
+Thursday, April 21st, 2016 6:51:03pm click 30 photosmusselbedtest-1.jpg -17 -236 2030 641.36460554371 436.6737739872068 0 hard
+Thursday, April 21st, 2016 6:51:04pm click 30 photosmusselbedtest-1.jpg -17 -236 2364 740.2985074626865 233.68869936034113 0 hard
+Thursday, April 21st, 2016 6:51:04pm click 30 photosmusselbedtest-1.jpg -17 -236 2647 912.5799573560766 250.7462686567164 0 hard
+Thursday, April 21st, 2016 6:51:04pm click 30 photosmusselbedtest-1.jpg -17 -236 2931 1013.2196162046907 399.1471215351812 0 hard
+Thursday, April 21st, 2016 6:51:24pm click 30 photosmusselbedtest-2.jpg -701 -244 1383 1185.5010660980809 510.0213219616204 0 hard
+Thursday, April 21st, 2016 6:51:25pm click 30 photosmusselbedtest-2.jpg -701 -244 1866 528.7846481876333 516.8443496801706 0 hard
+Thursday, April 21st, 2016 6:51:25pm click 30 photosmusselbedtest-2.jpg -701 -244 2316 559.4882729211087 52.87846481876332 0 hard
+Thursday, April 21st, 2016 6:51:26pm click 30 photosmusselbedtest-2.jpg -701 -244 2750 1014.9253731343283 194.45628997867803 0 hard
+Thursday, April 21st, 2016 6:51:26pm click 30 photosmusselbedtest-2.jpg -701 -244 3100 1095.095948827292 458.8486140724946 0 hard
+Thursday, April 21st, 2016 6:51:26pm click 30 photosmusselbedtest-2.jpg -701 -244 3533 579.957356076759 602.1321961620469 0 hard
+Thursday, April 21st, 2016 6:51:27pm click 30 photosmusselbedtest-2.jpg -701 -244 3966 310.44776119402985 375.2665245202558 0 hard
+Thursday, April 21st, 2016 6:51:27pm click 30 photosmusselbedtest-2.jpg -701 -244 4466 849.4669509594883 460.55437100213214 0 hard
+Thursday, April 21st, 2016 6:51:30pm click 30 photosmusselbedtest-3.jpg 15 -308 1067 1460.1279317697226 620.8955223880597 0 hard
+Thursday, April 21st, 2016 6:51:31pm click 30 photosmusselbedtest-3.jpg 15 -308 1466 1362.8997867803837 499.78678038379525 0 hard
+Thursday, April 21st, 2016 6:51:33pm click 30 photosmusselbedtest-2.jpg -241 -205 600 893.8166311300639 481.02345415778245 0 hard
+Thursday, April 21st, 2016 6:51:33pm click 30 photosmusselbedtest-2.jpg -241 -205 1050 1229.8507462686566 225.1599147121535 0 hard
+Thursday, April 21st, 2016 6:51:35pm click 30 photosmusselbedtest-2.jpg -241 -205 2733 1.7057569296375266 6.823027718550106 0 hard
+Thursday, April 21st, 2016 6:51:36pm click 30 photosmusselbedtest-2.jpg -241 -205 3250 5.117270788912579 10.234541577825158 0 hard
+Thursday, April 21st, 2016 6:51:36pm click 30 photosmusselbedtest-2.jpg -241 -205 3566 6.823027718550106 13.646055437100213 0 hard
+Thursday, April 21st, 2016 6:51:36pm click 30 photosmusselbedtest-2.jpg -241 -205 3966 3.411513859275053 11.940298507462686 0 hard
+Thursday, April 21st, 2016 6:51:37pm click 30 photosmusselbedtest-2.jpg -241 -205 4783 1066.0980810234541 453.7313432835821 0 hard
+Thursday, April 21st, 2016 6:52:25pm player human false 3
+Thursday, April 21st, 2016 6:52:55pm player human true 3
+Thursday, April 21st, 2016 6:54:39pm player human true 4
+Thursday, April 21st, 2016 6:54:48pm player human true 3
+Thursday, April 21st, 2016 6:58:03pm player human true 4
+Thursday, April 21st, 2016 10:55:11pm player human true 3
+Thursday, April 21st, 2016 10:55:33pm player human true 3
+Friday, April 22nd, 2016 8:48:51am player human true 3
+Friday, April 22nd, 2016 8:49:20am player human true 3
+Friday, April 22nd, 2016 8:49:44am player human true 4
+Friday, April 22nd, 2016 8:49:44am player human true 4
+Friday, April 22nd, 2016 8:49:45am player human true 4
+Friday, April 22nd, 2016 8:50:22am player human true 3
+Friday, April 22nd, 2016 8:50:52am player human true 4
+Friday, April 22nd, 2016 8:51:13am player human true 3
+Friday, April 22nd, 2016 10:49:13am player human true 3
+Friday, April 22nd, 2016 10:51:01am player  false 0
+Friday, April 22nd, 2016 10:52:04am player  false 0
+Friday, April 22nd, 2016 12:01:01pm player  false 0
+Friday, April 22nd, 2016 12:32:54pm player  false 0
+Friday, April 22nd, 2016 12:33:12pm player human true 3
+Friday, April 22nd, 2016 12:34:15pm player human true 3
+Friday, April 22nd, 2016 12:35:12pm player human true 3
+Friday, April 22nd, 2016 12:36:01pm player human true 2
+Friday, April 22nd, 2016 1:57:52pm player human true 4
+Friday, April 22nd, 2016 1:59:34pm player human true 3
+Friday, April 22nd, 2016 2:02:41pm player human true 4
+Friday, April 22nd, 2016 2:03:08pm player human true 3
+Friday, April 22nd, 2016 2:03:45pm player human true 3
+Friday, April 22nd, 2016 2:04:27pm player fish true 3
+Friday, April 22nd, 2016 2:04:36pm player human true 4
+Friday, April 22nd, 2016 2:05:45pm player human true 3
+Friday, April 22nd, 2016 5:50:44pm player human true 3
+Friday, April 22nd, 2016 5:52:53pm player human true 3
+Friday, April 22nd, 2016 6:19:41pm player human true 4
+Friday, April 22nd, 2016 6:21:26pm player human true 4
+Friday, April 22nd, 2016 6:21:54pm player human true 4
+Friday, April 22nd, 2016 6:23:57pm player human true 3
+Friday, April 22nd, 2016 6:24:54pm player human true 3
+Friday, April 22nd, 2016 6:24:55pm click 69 photosmudflattest-3.jpg 0 0 1233 308.93921334922527 284.1477949940405 0 hard
+Friday, April 22nd, 2016 6:24:56pm click 69 photosmudflattest-3.jpg 0 0 1966 392.84862932061975 278.4266984505363 0 hard
+Friday, April 22nd, 2016 6:26:24pm player human true 3
+Friday, April 22nd, 2016 6:26:25pm click 70 photosrockpooltest-2.jpg 0 0 929 387.12753277711556 328.00953516090584 0 easy
+Friday, April 22nd, 2016 6:26:25pm click 70 photosrockpooltest-2.jpg 0 0 1313 301.311084624553 251.72824791418353 0 easy
+Friday, April 22nd, 2016 6:26:26pm click 70 photosrockpooltest-2.jpg 0 0 1613 173.5399284862932 177.3539928486293 1 easy
+Friday, April 22nd, 2016 6:27:33pm player human true 3
+Friday, April 22nd, 2016 6:28:58pm player human true 3
+Friday, April 22nd, 2016 6:30:08pm player human true 3
+Friday, April 22nd, 2016 6:30:15pm click 73 photosmudflattest-2.jpg 0 0 836 259.35637663885575 207.86650774731822 0 hard
+Friday, April 22nd, 2016 6:30:16pm click 73 photosmudflattest-2.jpg 0 0 1686 179.26102502979737 110.60786650774732 1 hard
+Friday, April 22nd, 2016 6:30:23pm click 73 photosmudflattest-2.jpg 0 0 1033 156.37663885578067 270.7985697258641 0 hard
+Friday, April 22nd, 2016 6:30:23pm click 73 photosmudflattest-2.jpg 0 0 1433 223.12276519666267 221.21573301549464 0 hard
+Friday, April 22nd, 2016 6:30:23pm click 73 photosmudflattest-2.jpg 0 0 1766 249.82121573301546 204.0524433849821 0 hard

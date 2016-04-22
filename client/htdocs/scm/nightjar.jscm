@@ -66,6 +66,25 @@
              (fn c))))
     (set! image.src (+ "images/" filename))))
 
+(define (load-images-mutate fn filenames)
+  (let ((image (js "new Image()")))
+    (set! image.onerror
+          (lambda ()
+            (msg (+ "error loading (images):" (car filenames)))))
+    (set! image.onload
+          (lambda ()
+            (set! image-lib (cons (list (car filenames) image) image-lib))
+            (msg (+ "loaded " (car filenames)))
+            (if (> (length filenames) 1)
+                (begin
+                  (msg (+ "now loading " (length (cdr filenames))))
+                  (load-images-mutate fn (cdr filenames)))
+                (begin
+                  (msg "start mutate")
+                  (set! game (fn game))))))
+    (set! image.src (+ "images/" (car filenames)))))
+
+
 (define (load-image! fn finished images)
   (let ((image (js "new Image()")))
     (set! image.onerror

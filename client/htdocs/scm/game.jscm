@@ -24,10 +24,40 @@
     "test-1.jpg"
     "test-2.jpg"
     "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
     ))
 
 (define mudflat-filenames
    (list
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
     "test-1.jpg"
     "test-2.jpg"
     "test-3.jpg"
@@ -38,10 +68,43 @@
     "test-1.jpg"
     "test-2.jpg"
     "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
+    "test-1.jpg"
+    "test-2.jpg"
+    "test-3.jpg"
    ))
 
 (define crab-filenames
   (list
+   "crab-1.png"
+   "crab-2.png"
+   "crab-3.png"
+   "crab-1.png"
+   "crab-2.png"
+   "crab-3.png"
+   "crab-1.png"
+   "crab-2.png"
+   "crab-3.png"
+   "crab-1.png"
+   "crab-2.png"
+   "crab-3.png"
+   "crab-1.png"
+   "crab-2.png"
+   "crab-3.png"
    "crab-1.png"
    "crab-2.png"
    "crab-3.png"
@@ -62,7 +125,8 @@
          ((eq? a "VS") "african wattled plover")
          ((eq? a "VA") "blacksmith plover")
          ((eq? a "VC") "crowned plover")
-         (else (msg fn) (msg "unknown:" fn a) "unknown beach")))))
+         (else
+          "unknown beach")))))
 
 (define filenames
   (list
@@ -72,9 +136,12 @@
    (map (lambda (f) (list (string-append "mudflat/dic-" f) (filename-to-type f))) mudflat-filenames)
    (map (lambda (f) (list (string-append "musselbed/" f) (filename-to-type f))) mudflat-filenames)
    (map (lambda (f) (list (string-append "musselbed/dic-" f) (filename-to-type f))) mudflat-filenames)
-   (map (lambda (f) (list (string-append "crab/" f) (filename-to-type f))) crab-filenames)
-   (map (lambda (f) (list (string-append "crab/dic-" f) (filename-to-type f))) crab-filenames)
+   (map (lambda (f) (list (string-append "crabs/" f) (filename-to-type f))) crab-filenames)
+   (map (lambda (f) (list (string-append "crabs/dic-" f) (filename-to-type f))) crab-filenames)
    ))
+
+(define (photo-filename l) (list-ref l 0))
+(define (photo-desc l) (list-ref l 1))
 
 (define photos
   (map
@@ -92,6 +159,8 @@
 (define (mudflat-dic-photos l) (list-ref l 3))
 (define (musselbed-photos l) (list-ref l 4))
 (define (musselbed-dic-photos l) (list-ref l 5))
+(define (crab-photos l) (list-ref l 6))
+(define (crab-dic-photos l) (list-ref l 7))
 
 (define (button-image)
   (find-image (choose (list "button-1.png"))))
@@ -99,43 +168,12 @@
 (define (small-button-image)
   (find-image (choose (list "button-s1.png"))))
 
-(define (nightjar-example file pos width height desc)
-  (list file pos width height desc))
-
-(define (nightjar-example-file n) (list-ref n 0))
-(define (nightjar-example-pos n) (list-ref n 1))
-(define (nightjar-example-width n) (list-ref n 2))
-(define (nightjar-example-height n) (list-ref n 3))
-(define (nightjar-example-desc n) (list-ref n 4))
 
 ;; get from image structure
 (define image-width 2474)
 (define image-height 1640)
 (define image-centre-x (/ image-width 2))
 (define image-centre-y (/ image-height 2))
-
-(define (build-examples n photos level)
-  (cond
-   ((zero? n) ())
-   (else
-    (let ((pos (list 0 0 0 0)))
-      (cons
-       (nightjar-example
-        (car (list-ref photos n))
-        (list (list-ref pos 0) (list-ref pos 1))
-        (list-ref pos 2)
-        (list-ref pos 3)
-        (cadr (list-ref photos n)))
-       (build-examples (- n 1) photos level))))))
-
-(define nightjar-examples
-  (list
-   (build-examples (- (length (rockpool-photos photos)) 1) (rockpool-photos photos) 0)
-   (build-examples (- (length (rockpool-dic-photos photos)) 1) (rockpool-dic-photos photos) 0)
-   (build-examples (- (length (mudflat-photos photos)) 1) (mudflat-photos photos) 1)
-   (build-examples (- (length (mudflat-dic-photos photos)) 1) (mudflat-dic-photos photos) 1)
-   (build-examples (- (length (musselbed-photos photos)) 1) (musselbed-photos photos) 1)
-   (build-examples (- (length (musselbed-dic-photos photos)) 1) (musselbed-dic-photos photos) 1)))
 
 (define safe-x 0.2)
 (define safe-y 0.2)
@@ -147,10 +185,11 @@
 (define default-button-x (- (/ screen-width 2) 0))
 (define default-button-y (+ (/ screen-height 2) 120))
 (define button-gap 250)
-(define game-time-allowed 30)
+(define game-time-allowed 2)
+(define num-examples 5)
 
 (define (empty-nightjar-data)
-  (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???"))
+  (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" ()))
 
 (define (nightjar-start-time g) (list-ref g 0))
 (define (nightjar-modify-start-time v g) (list-replace g 0 v))
@@ -176,6 +215,8 @@
 (define (nightjar-modify-level v g) (list-replace g 10 v))
 (define (nightjar-username g) (list-ref g 11))
 (define (nightjar-modify-username v g) (list-replace g 11 v))
+(define (nightjar-crabs g) (list-ref g 12))
+(define (nightjar-modify-crabs v g) (list-replace g 12 v))
 
 (define (time-left c)
   (* (- (game-time c)
@@ -198,66 +239,82 @@
      c))))
 
 (define (nightjar-new-game-reset-timer n c)
-  (load-image-mutate
+  (load-images-mutate
    (lambda (c)
      (nightjar-new-game
       (game-modify-data
        (lambda (d)
          (nightjar-modify-images
           (cdr (nightjar-images d))
-          (nightjar-modify-photo-time
-           (game-time c) d)))
+          (nightjar-modify-crabs
+           (cdr (nightjar-crabs d))
+           (nightjar-modify-photo-time
+            (game-time c) d))))
        c)))
-   (nightjar-example-file (list-ref (nightjar-images (game-data c)) n)))
+   (list
+    (photo-filename (list-ref (nightjar-images (game-data c)) n))
+    (photo-filename (list-ref (nightjar-crabs (game-data c)) n))))
   (game-modify-buttons
    ()
    (game-modify-render
     (lambda (ctx)
       (let ((example (car (nightjar-images (game-data c)))))
         (ctx.drawImage
-         (find-image (nightjar-example-file example) image-lib)
-         (car (nightjar-image-pos (game-data c)))
-         (cadr (nightjar-image-pos (game-data c))))
+         (find-image (photo-filename example))
+         0 0)
         (nightjar-all-text ctx "Loading your next crab...")))
     c)))
 
 (define (nightjar-new-game-images c)
-  (let ((examples (cond
-                   ((eq? (nightjar-player-type (game-data c)) "human")
-                    (cond
-                     ((eq? (nightjar-level (game-data c)) 0)
-                      (rockpool-photos nightjar-examples))
-                     ((eq? (nightjar-level (game-data c)) 1)
-                      (mudflat-photos nightjar-examples))
-                     (else
-                      (musselbed-photos nightjar-examples))))
-                   (else
-                    (cond
-                     ((eq? (nightjar-level (game-data c)) 0)
-                      (rockpool-dic-photos nightjar-examples))
-                     ((eq? (nightjar-level (game-data c)) 1)
-                      (mudflat-dic-photos nightjar-examples))
-                     (else
-                      (musselbed-dic-photos nightjar-examples)))))))
+  (let ((backgrounds
+         (cond
+          ((eq? (nightjar-player-type (game-data c)) "human")
+           (cond
+            ((eq? (nightjar-level (game-data c)) 0)
+             (rockpool-photos photos))
+            ((eq? (nightjar-level (game-data c)) 1)
+             (mudflat-photos photos))
+            (else
+             (musselbed-photos photos))))
+          (else
+           (cond
+            ((eq? (nightjar-level (game-data c)) 0)
+             (rockpool-dic-photos photos))
+            ((eq? (nightjar-level (game-data c)) 1)
+             (mudflat-dic-photos photos))
+            (else
+             (musselbed-dic-photos photos))))))
+        (crab-images
+         (cond
+          ((eq? (nightjar-player-type (game-data c)) "human")
+           (msg "human")
+           (crab-photos photos))
+          (else
+           (msg "other")
+           (crab-dic-photos photos)))))
 
-  (play-sound "button.wav")
+    (play-sound "button.wav")
 
-  (let ((images (crop (shuffle examples) 20)))
-    (load-image-mutate
-     (lambda (c)
-       (nightjar-new-game
-        (game-modify-data
-         (lambda (d)
-           (nightjar-modify-photo-time
-            (game-time c)
-            (nightjar-modify-images images d)))
-         c)))
-     (nightjar-example-file (list-ref images 0)))
-    (game-modify-buttons
-     ()
-     (game-modify-render
-      (lambda (ctx)
-        (nightjar-all-text ctx "Loading your first crab..."))
+    (let ((images (crop (shuffle backgrounds) num-examples))
+          (crab-images (crop (shuffle crab-images) num-examples)))
+      (load-images-mutate
+       (lambda (c)
+         (nightjar-new-game
+          (game-modify-data
+           (lambda (d)
+             (nightjar-modify-photo-time
+              (game-time c)
+              (nightjar-modify-images
+               images (nightjar-modify-crabs crab-images d))))
+           c)))
+       (list
+        (photo-filename (list-ref images 0))
+        (photo-filename (list-ref crab-images 0))))
+      (game-modify-buttons
+       ()
+       (game-modify-render
+        (lambda (ctx)
+          (nightjar-all-text ctx "Loading your first crab..."))
         c)))))
 
 (define (nightjar-intro c)
@@ -584,9 +641,9 @@
    "click"
    (list
     (list "player_id" (nightjar-player-id (game-data c)))
-    (list "photo_name" (nightjar-example-file (car (nightjar-images (game-data c)))))
-    (list "photo_offset_x" (car (nightjar-image-pos (game-data c))))
-    (list "photo_offset_y" (cadr (nightjar-image-pos (game-data c))))
+    (list "photo_name" (photo-filename (car (nightjar-images (game-data c)))))
+    (list "photo_offset_x" 0)
+    (list "photo_offset_y" 0)
     (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
     (list "x_position" (game-mx c))
     (list "y_position" (game-my c))
@@ -598,11 +655,13 @@
   ;; todo: choose and delete
 
   (define example (car (nightjar-images (game-data c))))
+  (define crab (car (nightjar-crabs (game-data c))))
 
   (game-modify-render
    (lambda (ctx)
-     (ctx.drawImage
-      (find-image (nightjar-example-file example)) 0 0)
+     (ctx.drawImage (find-image (photo-filename example)) 0 0)
+     (ctx.drawImage (find-image (photo-filename crab)) 100 100)
+
      (sprite-render
       ctx
       (game-time c)
@@ -619,10 +678,10 @@
                 (nightjar-start-time (game-data c)))
              (* game-time-allowed 1000))
           (nightjar-fail
-           (nightjar-example-desc example)
+           (photo-desc example)
            (string-append
             "Ran out of time finding this crab from "
-            (nightjar-example-desc example)
+            (photo-desc example)
             " - you'll go hungry tonight!") c)
           c))
 
@@ -637,29 +696,22 @@
        (find-image "quit.png")
        (lambda (c)
          (nightjar-fail
-          (nightjar-example-desc example)
+          (photo-desc example)
           (string-append
            "You couldn't find this crab from "
-           (nightjar-example-desc example)
+           (photo-desc example)
            " - you'll go hungry tonight!")
           c)))
 
       ;; button over nightjar
       (rect-button
        ""
-       (+ (car (nightjar-example-pos example))
-          (car (nightjar-image-pos (game-data c))))
-
-       (+ (cadr (nightjar-example-pos example))
-          (cadr (nightjar-image-pos (game-data c))))
-
-       (nightjar-example-width example)
-       (nightjar-example-height example)
+       100 100 100 100
        #f
        (lambda (c)
          (play-sound "found.wav")
          (nightjar-win
-          (nightjar-example-desc example)
+          (photo-desc example)
           (game-modify-data
            (lambda (d)
              (record-click c 1)
@@ -694,16 +746,15 @@
      (define example (car (nightjar-images (game-data c))))
 
      (ctx.drawImage
-      (find-image (nightjar-example-file example))
+      (find-image (photo-filename example))
       0 0)
 
      ;; highlight the crab
      (set! ctx.strokeStyle "#ffff00")
      (set! ctx.lineWidth 4)
      (ctx.strokeRect
-      0 0
-      (nightjar-example-width example)
-      (nightjar-example-height example))
+      100 100
+      100 100)
      (set! ctx.lineWidth 1)
 
      (sprite-render
@@ -730,7 +781,7 @@
          (play-sound "button.wav")
          ;; check end of game
          (if (eq? (length (nightjar-images (game-data c))) 1)
-             (nightjar-intro c)
+             (nightjar-get-score c "Well done!")
              (nightjar-new-game-reset-timer 1 c))))
 
       (image-button
@@ -752,7 +803,7 @@
      (define example (car (nightjar-images (game-data c))))
 
      (ctx.drawImage
-      (find-image (nightjar-example-file example) image-lib)
+      (find-image (photo-filename example) image-lib)
       0 0)
 
      (sprite-render
