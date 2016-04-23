@@ -335,7 +335,7 @@
        "Start playing"
        (- default-button-x 200)
        default-button-y
-       #t
+       "slidy"
        (button-image)
        (lambda (c)
          (play-sound "button.wav")
@@ -345,7 +345,7 @@
        "Hi Scores"
        (+ default-button-x 200)
        default-button-y
-       #t
+       "slidy"
        (button-image)
        (lambda (c)
          (server-call-mutate
@@ -391,7 +391,7 @@
     (game-modify-buttons
      (list
       (image-button
-       "Back" 1150 720 #t (button-image)
+       "Back" 1150 720 "slidy" (button-image)
        (lambda (c) (nightjar-intro c))))
      c))))
 
@@ -410,7 +410,7 @@
       "Yes that's fine"
       (+ default-button-x button-gap)
       default-button-y
-      #t
+      "slidy"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -420,7 +420,7 @@
       "Back"
       (- default-button-x button-gap)
       default-button-y
-      #t
+      "slidy"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -439,7 +439,7 @@
               title
               (+ (- default-button-x 750) (* id 250))
               default-button-y
-              #t
+              "slidy"
               (small-button-image)
               (lambda (c)
                 (play-sound "button.wav")
@@ -473,7 +473,7 @@
       "Yes"
       (+ default-button-x button-gap)
       default-button-y
-      #t
+      "slidy"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -487,7 +487,7 @@
       "No"
       (- default-button-x button-gap)
       default-button-y
-      #t
+      "slidy"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -513,7 +513,7 @@
       "Hungry human"
       (+ default-button-x button-gap)
       default-button-y
-      #f
+      "slidy"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -527,7 +527,7 @@
       "Crab eating fish"
       (- default-button-x button-gap)
       default-button-y
-      #f
+      "slidy"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -564,7 +564,7 @@
       "Rock pool"
       (- default-button-x 400)
       (+ default-button-y 150)
-      #t
+      "slidy"
       (button-image)
       (lambda (c)
         (server-call-mutate
@@ -588,7 +588,7 @@
       "Mudflats"
       default-button-x
       (+ default-button-y 150)
-      #t
+      "slidy"
       (button-image)
       (lambda (c)
         (server-call-mutate
@@ -612,7 +612,7 @@
       "Mussel bed"
       (+ default-button-x 400)
       (+ default-button-y 150)
-      #t
+      "slidy"
       (button-image)
       (lambda (c)
         (server-call-mutate
@@ -775,7 +775,7 @@
       (image-button
        "Next crab"
        (- default-button-x button-gap)
-       (+ default-button-y 50) #t
+       (+ default-button-y 50) "slidy"
        (button-image)
        (lambda (c)
          (play-sound "button.wav")
@@ -787,7 +787,7 @@
       (image-button
        "Quit game"
        (+ default-button-x button-gap)
-       (+ default-button-y 50) #t
+       (+ default-button-y 50) "slidy"
        (button-image)
        (lambda (c)
          (play-sound "button.wav")
@@ -826,7 +826,7 @@
       (image-button
        "Next crab"
        default-button-x
-       (+ default-button-y 50) #t
+       (+ default-button-y 50) "slidy"
        (button-image)
        (lambda (c)
          (play-sound "button.wav")
@@ -885,7 +885,7 @@
            "Enter Your Name"
            default-button-x
            (+ default-button-y 200)
-           #t
+           "slidy"
            (button-image)
            (lambda (c)
              (play-sound "button.wav")
@@ -895,7 +895,7 @@
            "Back"
            default-button-x
            (+ default-button-y 200)
-           #t
+           "slidy"
            (button-image)
            (lambda (c)
              (play-sound "button.wav")
@@ -961,7 +961,7 @@
        (image-button "Delete" 850 700 #t (button-image)
                      (lambda (c) (type-delete c)))
 
-       (image-button "Done" 1100 700 #t (button-image)
+       (image-button "Done" 1100 700 "slidy" (button-image)
                      (lambda (c)
                        (server-call
                         "player-name"

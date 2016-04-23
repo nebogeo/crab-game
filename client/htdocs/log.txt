@@ -242,3 +242,12 @@ Friday, April 22nd, 2016 6:30:16pm click 73 photosmudflattest-2.jpg 0 0 1686 179
 Friday, April 22nd, 2016 6:30:23pm click 73 photosmudflattest-2.jpg 0 0 1033 156.37663885578067 270.7985697258641 0 hard
 Friday, April 22nd, 2016 6:30:23pm click 73 photosmudflattest-2.jpg 0 0 1433 223.12276519666267 221.21573301549464 0 hard
 Friday, April 22nd, 2016 6:30:23pm click 73 photosmudflattest-2.jpg 0 0 1766 249.82121573301546 204.0524433849821 0 hard
+Saturday, April 23rd, 2016 10:11:34am player human true 3
+Saturday, April 23rd, 2016 10:11:36am click 74 photosrockpooltest-1.jpg 0 0 1548 298.44559585492226 264.100666173205 0 easy
+Saturday, April 23rd, 2016 10:32:11am player human true 3
+Saturday, April 23rd, 2016 10:32:12am click 75 photosrockpooltest-2.jpg 0 0 1285 246.3360473723168 226.20281273131013 0 easy
+Saturday, April 23rd, 2016 10:32:13am click 75 photosrockpooltest-2.jpg 0 0 1801 203.70096225018506 155.14433752775722 0 easy
+Saturday, April 23rd, 2016 10:32:19am click 75 photosrockpooltest-1.jpg 0 0 1170 137.379718726869 178.83049592894153 1 easy
+Saturday, April 23rd, 2016 10:32:26am click 75 photosrockpooltest-2.jpg 0 0 953 140.93264248704662 149.22279792746113 1 easy
+Saturday, April 23rd, 2016 10:32:28am click 75 photosrockpooltest-3.jpg 0 0 685 163.43449296817172 169.3560325684678 1 easy
+Saturday, April 23rd, 2016 10:32:31am click 75 photosrockpooltest-1.jpg 0 0 820 174.09326424870466 187.12065136935604 1 easy
