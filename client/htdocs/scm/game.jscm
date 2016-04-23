@@ -170,23 +170,32 @@
 
 
 ;; get from image structure
-(define image-width 2474)
-(define image-height 1640)
+(define image-width (* screen-width 1))
+(define image-height (* screen-height 1))
 (define image-centre-x (/ image-width 2))
 (define image-centre-y (/ image-height 2))
 
 (define safe-x 0.2)
 (define safe-y 0.2)
+(define safe-x-px (* safe-x image-width))
+(define safe-y-px (* safe-y image-height))
+
+;; (define (generate-image-pos)
+;;   (list (- (* screen-width (+ safe-x (* (rndf) (- 1 (* safe-x 2))))) image-centre-x)
+;;         (- (* screen-height (+ safe-y (* (rndf) (- 1 (* safe-y 2))))) image-centre-y)))
 
 (define (generate-image-pos)
-  (list (- (* screen-width (+ safe-x (* (rndf) (- 1 (* safe-x 2))))) image-centre-x)
-        (- (* screen-height (+ safe-y (* (rndf) (- 1 (* safe-y 2))))) image-centre-y)))
+  (msg safe-x-px)
+  (list (+ safe-x-px
+           (* (rndf) (- image-width (* safe-x-px 2))))
+        (+ safe-y-px
+           (* (rndf) (- image-height (* safe-y-px 2))))))
 
 (define default-button-x (- (/ screen-width 2) 0))
 (define default-button-y (+ (/ screen-height 2) 120))
 (define button-gap 250)
 (define game-time-allowed 2)
-(define num-examples 5)
+(define num-examples 20)
 
 (define (empty-nightjar-data)
   (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" ()))
@@ -223,27 +232,32 @@
         (nightjar-start-time (game-data c)))
      0.001))
 
+;; setup new game
 (define (nightjar-new-game c)
+  (msg "outer  new-game")
   (nightjar-game
    (game-modify-data
     (lambda (d)
+      (msg "inner  new-game")
       (nightjar-modify-start-time
-       (game-time c) d))
-    (game-modify-data
-     (lambda (d)
+       (game-time c)
        (nightjar-modify-image-pos
-        (generate-image-pos)
+        (dbg (generate-image-pos))
         (nightjar-modify-sprite
          (sprite -999 -999 "right.png" 0)
-         d)))
-     c))))
+         d))))
+    c)))
 
-(define (nightjar-new-game-reset-timer n c)
+;; load images and reset (calling new-game above)
+(define (nightjar-new-game-reset-timer c)
+  ;; start image load
   (load-images-mutate
    (lambda (c)
+     (msg "new-game-reset-timer")
      (nightjar-new-game
       (game-modify-data
        (lambda (d)
+         ;; now loaded - remove previous images and set photo time
          (nightjar-modify-images
           (cdr (nightjar-images d))
           (nightjar-modify-crabs
@@ -252,8 +266,10 @@
             (game-time c) d))))
        c)))
    (list
-    (photo-filename (list-ref (nightjar-images (game-data c)) n))
-    (photo-filename (list-ref (nightjar-crabs (game-data c)) n))))
+    ;; load the *next* images
+    (photo-filename (list-ref (nightjar-images (game-data c)) 1))
+    (photo-filename (list-ref (nightjar-crabs (game-data c)) 1))))
+  ;; set up loading screen before loading
   (game-modify-buttons
    ()
    (game-modify-render
@@ -642,8 +658,11 @@
    (list
     (list "player_id" (nightjar-player-id (game-data c)))
     (list "photo_name" (photo-filename (car (nightjar-images (game-data c)))))
-    (list "photo_offset_x" 0)
-    (list "photo_offset_y" 0)
+    ;; todo add crab name!!!
+;;    (list "crab_name" (photo-filename (car (nightjar-crabs (game-data c)))))
+    ;; crab centre position
+    (list "photo_offset_x" (car (nightjar-image-pos (game-data c))))
+    (list "photo_offset_y" (cadr (nightjar-image-pos (game-data c))))
     (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
     (list "x_position" (game-mx c))
     (list "y_position" (game-my c))
@@ -656,11 +675,18 @@
 
   (define example (car (nightjar-images (game-data c))))
   (define crab (car (nightjar-crabs (game-data c))))
+  (define crab-image (find-image (photo-filename crab)))
+  (define crab-x (- (car (nightjar-image-pos (game-data c)))
+                    (/ crab-image.width 2)))
+  (define crab-y (- (cadr (nightjar-image-pos (game-data c)))
+                    (/ crab-image.height 2)))
 
   (game-modify-render
    (lambda (ctx)
-     (ctx.drawImage (find-image (photo-filename example)) 0 0)
-     (ctx.drawImage (find-image (photo-filename crab)) 100 100)
+     (ctx.drawImage
+      (find-image (photo-filename example)) 0 0)
+
+     (ctx.drawImage crab-image crab-x crab-y)
 
      (sprite-render
       ctx
@@ -705,9 +731,7 @@
 
       ;; button over nightjar
       (rect-button
-       ""
-       100 100 100 100
-       #f
+       "" crab-x crab-y crab-image.width crab-image.height #f
        (lambda (c)
          (play-sound "found.wav")
          (nightjar-win
@@ -741,20 +765,28 @@
       ) c))))
 
 (define (nightjar-fail desc reason c)
+
+  (define example (car (nightjar-images (game-data c))))
+  (define crab (car (nightjar-crabs (game-data c))))
+  (define crab-image (find-image (photo-filename crab)))
+  (define crab-x (- (car (nightjar-image-pos (game-data c)))
+                    (/ crab-image.width 2)))
+  (define crab-y (- (cadr (nightjar-image-pos (game-data c)))
+                    (/ crab-image.height 2)))
+
   (game-modify-render
    (lambda (ctx)
-     (define example (car (nightjar-images (game-data c))))
-
      (ctx.drawImage
       (find-image (photo-filename example))
       0 0)
 
+     (ctx.drawImage crab-image crab-x crab-y)
+
      ;; highlight the crab
-     (set! ctx.strokeStyle "#ffff00")
-     (set! ctx.lineWidth 4)
-     (ctx.strokeRect
-      100 100
-      100 100)
+     (set! ctx.strokeStyle "#ff0000")
+     (ctx.setLineDash (list 40 40))
+     (set! ctx.lineWidth 10)
+     (ctx.strokeRect crab-x crab-y crab-image.width crab-image.height)
      (set! ctx.lineWidth 1)
 
      (sprite-render
@@ -782,7 +814,7 @@
          ;; check end of game
          (if (eq? (length (nightjar-images (game-data c))) 1)
              (nightjar-get-score c "Well done!")
-             (nightjar-new-game-reset-timer 1 c))))
+             (nightjar-new-game-reset-timer c))))
 
       (image-button
        "Quit game"
@@ -798,6 +830,14 @@
       ) c))))
 
 (define (nightjar-win desc c)
+  (define example (car (nightjar-images (game-data c))))
+  (define crab (car (nightjar-crabs (game-data c))))
+  (define crab-image (find-image (photo-filename crab)))
+  (define crab-x (- (car (nightjar-image-pos (game-data c)))
+                    (/ crab-image.width 2)))
+  (define crab-y (- (cadr (nightjar-image-pos (game-data c)))
+                    (/ crab-image.height 2)))
+
   (game-modify-render
    (lambda (ctx)
      (define example (car (nightjar-images (game-data c))))
@@ -805,6 +845,8 @@
      (ctx.drawImage
       (find-image (photo-filename example) image-lib)
       0 0)
+
+     (ctx.drawImage crab-image crab-x crab-y)
 
      (sprite-render
       ctx
@@ -833,7 +875,7 @@
          ;; check end of game
          (if (eq? (length (nightjar-images (game-data c))) 1)
              (nightjar-get-score c "Well done!")
-             (nightjar-new-game-reset-timer 1 c))))
+             (nightjar-new-game-reset-timer c))))
       ) c))))
 
 (define (nightjar-get-score c reason)
@@ -941,16 +983,16 @@
    (game-modify-render
     (lambda (ctx)
       (set! ctx.font "normal 30pt open-sans")
-      (wrap-shadow-text ctx "Enter your name" 0 200 1000 70)
+      (wrap-text ctx "Enter your name" 0 200 1000 70)
       (set! ctx.font "normal 50pt open-sans")
-      (wrap-shadow-text ctx (nightjar-username (game-data c)) 0 280 1000 70)
+      (wrap-text ctx (nightjar-username (game-data c)) 0 280 1000 70)
       (set! ctx.font "normal 30pt open-sans"))
 
     (game-modify-buttons
      (append
       (index-map
        (lambda (i ch)
-         (let ((x (+ 100 (* (modulo i 10) 105)))
+         (let ((x (+ 100 (* (modulo i 10) 180)))
                (y (+ 400 (* (Math.floor (/ i 10)) 130))))
            (image-button ch x y #f (small-button-image)
                          (lambda (c) (type-username ch c)))))
@@ -958,10 +1000,10 @@
              "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"))
 
       (list
-       (image-button "Delete" 850 700 #t (button-image)
+       (image-button "Delete" 1250 700 #t (small-button-image)
                      (lambda (c) (type-delete c)))
 
-       (image-button "Done" 1100 700 "slidy" (button-image)
+       (image-button "Done" 1500 700 "slidy" (small-button-image)
                      (lambda (c)
                        (server-call
                         "player-name"

@@ -251,3 +251,155 @@ Saturday, April 23rd, 2016 10:32:19am click 75 photosrockpooltest-1.jpg 0 0 1170
 Saturday, April 23rd, 2016 10:32:26am click 75 photosrockpooltest-2.jpg 0 0 953 140.93264248704662 149.22279792746113 1 easy
 Saturday, April 23rd, 2016 10:32:28am click 75 photosrockpooltest-3.jpg 0 0 685 163.43449296817172 169.3560325684678 1 easy
 Saturday, April 23rd, 2016 10:32:31am click 75 photosrockpooltest-1.jpg 0 0 820 174.09326424870466 187.12065136935604 1 easy
+Saturday, April 23rd, 2016 4:23:54pm player human true 3
+Saturday, April 23rd, 2016 4:24:23pm player human true 4
+Saturday, April 23rd, 2016 4:24:24pm click 77 photosmudflattest-3.jpg 0 0 1167 230.75089392133492 148.74851013110845 1 hard
+Saturday, April 23rd, 2016 4:24:27pm click 77 photosmudflattest-2.jpg 0 0 933 247.91418355184743 236.47199046483908 1 hard
+Saturday, April 23rd, 2016 4:24:28pm click 77 photosmudflattest-2.jpg 0 0 734 118.23599523241954 70.56019070321811 1 hard
+Saturday, April 23rd, 2016 4:24:30pm click 77 photosmudflattest-1.jpg 0 0 500 778.0691299165672 482.4791418355184 0 hard
+Saturday, April 23rd, 2016 4:24:30pm click 77 photosmudflattest-1.jpg 0 0 1034 724.6722288438617 345.17282479141835 0 hard
+Saturday, April 23rd, 2016 4:24:31pm click 77 photosmudflattest-1.jpg 0 0 1617 310.84624553039333 154.46960667461263 1 hard
+Saturday, April 23rd, 2016 4:24:33pm click 77 photosmudflattest-2.jpg 0 0 1117 181.16805721096543 120.14302741358759 1 hard
+Saturday, April 23rd, 2016 4:26:01pm player human true 4
+Saturday, April 23rd, 2016 4:26:03pm click 78 photosmudflattest-3.jpg 0 0 1615 331.8235995232419 204.0524433849821 1 hard
+Saturday, April 23rd, 2016 4:26:10pm click 78 photosmudflattest-3.jpg 0 0 1097 341.3587604290822 238.37902264600714 1 hard
+Saturday, April 23rd, 2016 4:26:19pm click 78 photosmudflattest-2.jpg 0 0 949 652.2050059594756 560.6674612634088 0 hard
+Saturday, April 23rd, 2016 4:26:20pm click 78 photosmudflattest-2.jpg 0 0 1532 303.2181168057211 108.70083432657925 1 hard
+Saturday, April 23rd, 2016 4:27:13pm player human true 4
+Saturday, April 23rd, 2016 4:27:15pm click 79 photosmudflattest-2.jpg 0 0 1612 244.1001191895113 131.58522050059594 1 hard
+Saturday, April 23rd, 2016 4:27:17pm click 79 photosmudflattest-2.jpg 0 0 1201 295.58998808104883 280.3337306317044 1 hard
+Saturday, April 23rd, 2016 4:28:28pm player human true 3
+Saturday, April 23rd, 2016 4:28:29pm click 80 photosrockpooltest-2.jpg 0 0 1059 125.86412395709176 47.67580452920143 1 easy
+Saturday, April 23rd, 2016 4:28:31pm click 80 photosrockpooltest-3.jpg 0 0 674 223.12276519666267 110.60786650774732 1 easy
+Saturday, April 23rd, 2016 4:29:37pm player human true 4
+Saturday, April 23rd, 2016 4:30:17pm player human true 4
+Saturday, April 23rd, 2016 4:30:18pm click 82 photosmudflattest-3.jpg 0 0 1248 299.40405244338496 83.90941597139451 1 hard
+Saturday, April 23rd, 2016 4:33:27pm click 82 photosmudflattest-1.jpg 0 0 1581 221.21573301549464 154.46960667461263 1 hard
+Saturday, April 23rd, 2016 4:49:18pm click 82 photosmudflattest-1.jpg 0 0 1700 1.907032181168057 118.23599523241954 1 hard
+Saturday, April 23rd, 2016 4:49:30pm player human true 3
+Saturday, April 23rd, 2016 4:51:42pm player fish false 3
+Saturday, April 23rd, 2016 4:51:53pm player fish true 2
+Saturday, April 23rd, 2016 4:51:58pm player human true 4
+Saturday, April 23rd, 2016 4:53:35pm player human true 3
+Saturday, April 23rd, 2016 5:05:04pm player human true 3
+Saturday, April 23rd, 2016 5:06:16pm player human true 3
+Saturday, April 23rd, 2016 5:10:45pm player human true 4
+Saturday, April 23rd, 2016 5:13:37pm player human true 3
+Saturday, April 23rd, 2016 5:15:16pm player human true 3
+Saturday, April 23rd, 2016 5:15:50pm player human true 4
+Saturday, April 23rd, 2016 5:16:13pm player human true 4
+Saturday, April 23rd, 2016 5:17:29pm player human true 4
+Saturday, April 23rd, 2016 5:17:50pm player human true 3
+Saturday, April 23rd, 2016 5:17:52pm click 96 photosmusselbedtest-2.jpg 0 0 865 1123.2419547079855 400.476758045292 1 hard
+Saturday, April 23rd, 2016 5:17:53pm click 96 photosmusselbedtest-1.jpg 0 0 467 858.1644815256257 421.45411203814064 1 hard
+Saturday, April 23rd, 2016 5:17:54pm click 96 photosmusselbedtest-3.jpg 0 0 667 1169.010727056019 764.7199046483909 1 hard
+Saturday, April 23rd, 2016 5:17:55pm click 96 photosmusselbedtest-3.jpg 0 0 627 1220.5005959475566 577.8307508939213 1 hard
+Saturday, April 23rd, 2016 5:17:57pm click 96 photosmusselbedtest-1.jpg 0 0 634 789.5113230035756 696.0667461263408 1 hard
+Saturday, April 23rd, 2016 5:18:03pm player human true 4
+Saturday, April 23rd, 2016 5:18:04pm click 97 photosmudflattest-1.jpg 0 0 1049 812.3957091775923 474.8510131108462 1 hard
+Saturday, April 23rd, 2016 5:18:06pm click 97 photosmudflattest-2.jpg 0 0 716 1123.2419547079855 511.0846245530393 1 hard
+Saturday, April 23rd, 2016 5:18:07pm click 97 photosmudflattest-1.jpg 0 0 634 1001.19189511323 406.19785458879613 1 hard
+Saturday, April 23rd, 2016 5:18:08pm click 97 photosmudflattest-2.jpg 0 0 786 562.5744934445769 654.1120381406436 1 hard
+Saturday, April 23rd, 2016 5:18:10pm click 97 photosmudflattest-3.jpg 0 0 878 991.6567342073897 854.3504171632895 1 hard
+Saturday, April 23rd, 2016 5:23:34pm player human true 4
+Saturday, April 23rd, 2016 5:23:35pm click 98 photosmudflattest-3.jpg 715 631 716 743.7425506555422 648.3909415971394 1 hard
+Saturday, April 23rd, 2016 5:23:36pm click 98 photosmudflattest-3.jpg 719 400 533 757.0917759237186 404.2908224076281 1 hard
+Saturday, April 23rd, 2016 5:23:37pm click 98 photosmudflattest-1.jpg 617 211 730 572.1096543504171 181.16805721096543 0 hard
+Saturday, April 23rd, 2016 5:23:38pm click 98 photosmudflattest-1.jpg 617 211 1430 629.3206197854588 265.07747318235994 1 hard
+Saturday, April 23rd, 2016 5:23:39pm click 98 photosmudflattest-3.jpg 901 253 684 886.7699642431465 247.91418355184743 0 hard
+Saturday, April 23rd, 2016 5:23:40pm click 98 photosmudflattest-3.jpg 901 253 1317 854.3504171632895 226.9368295589988 0 hard
+Saturday, April 23rd, 2016 5:23:40pm click 98 photosmudflattest-3.jpg 901 253 1750 875.3277711561382 175.44696066746124 0 hard
+Saturday, April 23rd, 2016 5:25:18pm player human true 3
+Saturday, April 23rd, 2016 5:25:19pm click 99 photosmudflattest-1.jpg 932 401 677 882.9558998808104 423.3611442193087 1 hard
+Saturday, April 23rd, 2016 5:25:20pm click 99 photosmudflattest-1.jpg 1161 344 566 1012.6340882002384 286.0548271752086 1 hard
+Saturday, April 23rd, 2016 5:25:22pm click 99 photosmudflattest-2.jpg 1006 497 583 1210.9654350417163 354.7079856972586 1 hard
+Saturday, April 23rd, 2016 5:25:23pm click 99 photosmudflattest-1.jpg 495 474 733 1062.2169249106078 265.07747318235994 0 hard
+Saturday, April 23rd, 2016 5:25:24pm click 99 photosmudflattest-1.jpg 495 474 1117 932.5387365911799 289.8688915375447 0 hard
+Saturday, April 23rd, 2016 5:25:24pm click 99 photosmudflattest-1.jpg 495 474 1416 799.0464839094159 394.7556615017878 0 hard
+Saturday, April 23rd, 2016 5:25:25pm click 99 photosmudflattest-1.jpg 495 474 1883 594.9940405244338 474.8510131108462 1 hard
+Saturday, April 23rd, 2016 5:25:26pm click 99 photosmudflattest-2.jpg 830 621 515 837.187127532777 490.10727056019067 1 hard
+Saturday, April 23rd, 2016 5:36:50pm player human true 4
+Saturday, April 23rd, 2016 5:36:51pm click 100 photosmudflattest-2.jpg 897 290 796 911.5613825983313 375.68533969010724 1 hard
+Saturday, April 23rd, 2016 5:37:50pm player human true 4
+Saturday, April 23rd, 2016 5:37:51pm click 101 photosmusselbedtest-1.jpg 795 607 943 848.6293206197854 642.6698450536352 1 hard
+Saturday, April 23rd, 2016 5:38:24pm player human true 4
+Saturday, April 23rd, 2016 5:38:26pm click 102 photosmudflattest-1.jpg 1140 376 1516 1161.3825983313468 423.3611442193087 1 hard
+Saturday, April 23rd, 2016 5:38:27pm click 102 photosmudflattest-3.jpg 1004 353 534 1003.098927294398 337.5446960667461 1 hard
+Saturday, April 23rd, 2016 5:38:28pm click 102 photosmudflattest-1.jpg 672 696 729 650.2979737783074 736.11442193087 1 hard
+Saturday, April 23rd, 2016 5:38:29pm click 102 photosmudflattest-2.jpg 1027 334 598 1006.9129916567341 354.7079856972586 1 hard
+Saturday, April 23rd, 2016 5:38:31pm click 102 photosmudflattest-1.jpg 830 561 733 905.8402860548271 583.5518474374255 1 hard
+Saturday, April 23rd, 2016 5:38:32pm click 102 photosmudflattest-2.jpg 325 229 667 459.5947556615018 270.7985697258641 1 hard
+Saturday, April 23rd, 2016 5:38:34pm click 102 photosmudflattest-3.jpg 1270 624 751 1256.7342073897496 636.948748510131 1 hard
+Saturday, April 23rd, 2016 5:38:35pm click 102 photosmudflattest-2.jpg 353 605 517 776.1620977353992 461.50178784266984 0 hard
+Saturday, April 23rd, 2016 5:38:36pm click 102 photosmudflattest-2.jpg 353 605 1003 703.6948748510131 596.9010727056019 0 hard
+Saturday, April 23rd, 2016 5:38:36pm click 102 photosmudflattest-2.jpg 353 605 1518 326.1025029797378 589.2729439809297 1 hard
+Saturday, April 23rd, 2016 5:38:38pm click 102 photosmudflattest-2.jpg 590 343 869 587.3659117997615 348.9868891537544 1 hard
+Saturday, April 23rd, 2016 5:38:39pm click 102 photosmudflattest-1.jpg 829 386 515 827.6519666269368 411.9189511323003 1 hard
+Saturday, April 23rd, 2016 5:38:40pm click 102 photosmudflattest-1.jpg 513 415 651 612.1573301549463 459.5947556615018 1 hard
+Saturday, April 23rd, 2016 5:38:41pm click 102 photosmudflattest-3.jpg 757 499 566 709.4159713945172 476.7580452920143 1 hard
+Saturday, April 23rd, 2016 5:38:42pm click 102 photosmudflattest-1.jpg 507 265 698 574.0166865315852 369.96424314660305 1 hard
+Saturday, April 23rd, 2016 5:38:44pm click 102 photosmudflattest-3.jpg 1195 616 733 1270.083432657926 631.2276519666269 1 hard
+Saturday, April 23rd, 2016 5:38:45pm click 102 photosmudflattest-2.jpg 570 232 648 568.295589988081 251.72824791418353 1 hard
+Saturday, April 23rd, 2016 5:38:46pm click 102 photosmudflattest-2.jpg 583 711 651 638.8557806912992 694.1597139451728 1 hard
+Saturday, April 23rd, 2016 5:38:48pm click 102 photosmudflattest-3.jpg 403 698 749 505.3635280095351 684.6245530393325 1 hard
+Saturday, April 23rd, 2016 5:38:49pm click 102 photosmudflattest-3.jpg 329 597 666 451.9666269368295 577.8307508939213 1 hard
+Saturday, April 23rd, 2016 5:40:20pm player human true 3
+Saturday, April 23rd, 2016 5:40:21pm click 103 photosmusselbedtest-1.jpg 1146 483 763 1085.1013110846245 524.4338498212157 1 hard
+Saturday, April 23rd, 2016 5:40:22pm click 103 photosmusselbedtest-3.jpg 1084 714 516 1096.5435041716328 648.3909415971394 1 hard
+Saturday, April 23rd, 2016 5:40:23pm click 103 photosmusselbedtest-2.jpg 729 472 566 720.8581644815256 514.8986889153754 1 hard
+Saturday, April 23rd, 2016 5:40:24pm click 103 photosmusselbedtest-3.jpg 992 207 650 1073.6591179976162 188.79618593563765 1 hard
+Saturday, April 23rd, 2016 5:40:25pm click 103 photosmusselbedtest-3.jpg 847 294 483 875.3277711561382 425.2681764004767 1 hard
+Saturday, April 23rd, 2016 5:40:27pm click 103 photosmusselbedtest-1.jpg 1270 336 703 1298.6889153754469 354.7079856972586 1 hard
+Saturday, April 23rd, 2016 5:40:28pm click 103 photosmusselbedtest-2.jpg 736 606 715 791.4183551847437 625.5065554231227 1 hard
+Saturday, April 23rd, 2016 5:40:29pm click 103 photosmusselbedtest-3.jpg 1035 455 617 1109.8927294398093 568.295589988081 1 hard
+Saturday, April 23rd, 2016 5:40:30pm click 103 photosmusselbedtest-1.jpg 534 647 816 610.2502979737783 667.46126340882 1 hard
+Saturday, April 23rd, 2016 5:40:31pm click 103 photosmusselbedtest-2.jpg 1142 274 716 1106.078665077473 337.5446960667461 1 hard
+Saturday, April 23rd, 2016 5:40:33pm click 103 photosmusselbedtest-1.jpg 1211 465 600 1134.684147794994 493.9213349225268 1 hard
+Saturday, April 23rd, 2016 5:40:34pm click 103 photosmusselbedtest-2.jpg 1259 542 586 1224.3146603098926 585.4588796185935 1 hard
+Saturday, April 23rd, 2016 5:40:36pm click 103 photosmusselbedtest-2.jpg 342 314 1381 354.7079856972586 335.63766388557804 1 hard
+Saturday, April 23rd, 2016 5:40:38pm click 103 photosmusselbedtest-1.jpg 1275 240 1167 1157.5685339690106 204.0524433849821 1 hard
+Saturday, April 23rd, 2016 5:40:41pm click 103 photosmusselbedtest-3.jpg 838 670 1029 860.0715137067938 667.46126340882 1 hard
+Saturday, April 23rd, 2016 5:40:42pm click 103 photosmusselbedtest-1.jpg 1125 194 250 898.2121573301549 619.7854588796185 0 hard
+Saturday, April 23rd, 2016 5:40:44pm click 103 photosmusselbedtest-1.jpg 1125 194 1433 1092.7294398092968 244.1001191895113 1 hard
+Saturday, April 23rd, 2016 5:40:46pm click 103 photosmusselbedtest-2.jpg 1264 405 1150 1266.2693682955899 486.29320619785454 1 hard
+Saturday, April 23rd, 2016 5:40:48pm click 103 photosmusselbedtest-3.jpg 1063 329 1366 1088.9153754469605 333.73063170441 1 hard
+Saturday, April 23rd, 2016 5:40:59pm player name 103 FGH
+Saturday, April 23rd, 2016 5:41:17pm player human true 3
+Saturday, April 23rd, 2016 5:41:18pm click 104 photosmudflattest-1.jpg 768 340 1198 791.4183551847437 459.5947556615018 1 hard
+Saturday, April 23rd, 2016 5:41:20pm click 104 photosmudflattest-3.jpg 986 651 534 882.9558998808104 566.3885578069129 1 hard
+Saturday, April 23rd, 2016 5:41:20pm click 104 photosmudflattest-3.jpg 867 571 464 800.953516090584 556.8533969010726 1 hard
+Saturday, April 23rd, 2016 5:41:21pm click 104 photosmudflattest-1.jpg 957 473 467 882.9558998808104 511.0846245530393 1 hard
+Saturday, April 23rd, 2016 5:41:22pm click 104 photosmudflattest-3.jpg 874 560 412 898.2121573301549 535.876042908224 1 hard
+Saturday, April 23rd, 2016 5:41:23pm click 104 photosmudflattest-1.jpg 1258 719 682 1220.5005959475566 717.0441001191895 1 hard
+Saturday, April 23rd, 2016 5:41:25pm click 104 photosmudflattest-1.jpg 344 266 699 261.2634088200238 331.8235995232419 1 hard
+Saturday, April 23rd, 2016 5:41:26pm click 104 photosmudflattest-2.jpg 564 398 514 600.715137067938 442.43146603098927 1 hard
+Saturday, April 23rd, 2016 5:41:27pm click 104 photosmudflattest-2.jpg 973 532 600 823.8379022646006 524.4338498212157 1 hard
+Saturday, April 23rd, 2016 5:41:28pm click 104 photosmudflattest-2.jpg 945 610 467 892.4910607866507 549.2252681764004 1 hard
+Saturday, April 23rd, 2016 5:41:29pm click 104 photosmudflattest-1.jpg 637 539 617 699.880810488677 560.6674612634088 1 hard
+Saturday, April 23rd, 2016 5:41:30pm click 104 photosmudflattest-3.jpg 413 596 646 396.6626936829559 621.6924910607867 1 hard
+Saturday, April 23rd, 2016 5:41:31pm click 104 photosmudflattest-2.jpg 424 230 664 461.50178784266984 341.3587604290822 1 hard
+Saturday, April 23rd, 2016 5:41:32pm click 104 photosmudflattest-1.jpg 600 220 600 640.7628128724672 287.96185935637664 1 hard
+Saturday, April 23rd, 2016 5:41:33pm click 104 photosmudflattest-2.jpg 807 403 484 755.1847437425506 446.24553039332534 1 hard
+Saturday, April 23rd, 2016 5:41:35pm click 104 photosmudflattest-2.jpg 1081 244 583 1115.6138259833133 289.8688915375447 1 hard
+Saturday, April 23rd, 2016 5:41:36pm click 104 photosmudflattest-3.jpg 1062 306 467 1058.4028605482717 305.12514898688914 1 hard
+Saturday, April 23rd, 2016 5:41:37pm click 104 photosmudflattest-3.jpg 525 475 750 421.45411203814064 451.9666269368295 1 hard
+Saturday, April 23rd, 2016 5:41:42pm player name 104 PNN
+Saturday, April 23rd, 2016 5:42:02pm player human true 4
+Saturday, April 23rd, 2016 5:42:03pm click 105 photosmusselbedtest-3.jpg 666 634 914 795.2324195470798 661.7401668653158 1 hard
+Saturday, April 23rd, 2016 5:42:04pm click 105 photosmusselbedtest-1.jpg 322 330 698 383.3134684147795 369.96424314660305 1 hard
+Saturday, April 23rd, 2016 5:42:05pm click 105 photosmusselbedtest-2.jpg 1202 704 600 1067.938021454112 656.0190703218117 1 hard
+Saturday, April 23rd, 2016 5:42:07pm click 105 photosmusselbedtest-2.jpg 1206 688 567 1033.611442193087 669.3682955899881 1 hard
+Saturday, April 23rd, 2016 5:42:08pm click 105 photosmusselbedtest-2.jpg 1024 319 550 1052.6817640047675 341.3587604290822 1 hard
+Saturday, April 23rd, 2016 5:42:09pm click 105 photosmusselbedtest-2.jpg 1269 203 567 1241.477949940405 232.65792610250296 1 hard
+Saturday, April 23rd, 2016 5:42:10pm click 105 photosmusselbedtest-2.jpg 359 585 683 246.00715137067937 596.9010727056019 1 hard
+Saturday, April 23rd, 2016 5:42:11pm click 105 photosmusselbedtest-3.jpg 480 237 667 530.1549463647199 299.40405244338496 1 hard
+Saturday, April 23rd, 2016 5:42:12pm click 105 photosmusselbedtest-1.jpg 822 553 567 766.626936829559 541.5971394517283 1 hard
+Saturday, April 23rd, 2016 5:42:13pm click 105 photosmusselbedtest-1.jpg 749 552 415 825.7449344457688 532.0619785458879 1 hard
+Saturday, April 23rd, 2016 5:42:14pm click 105 photosmusselbedtest-3.jpg 757 535 367 823.8379022646006 535.876042908224 1 hard
+Saturday, April 23rd, 2016 5:42:15pm click 105 photosmusselbedtest-1.jpg 1263 297 634 1306.3170441001191 324.1954707985697 1 hard
+Saturday, April 23rd, 2016 5:42:16pm click 105 photosmusselbedtest-1.jpg 684 235 582 707.5089392133492 268.89153754469606 1 hard
+Saturday, April 23rd, 2016 5:42:17pm click 105 photosmusselbedtest-3.jpg 788 361 466 787.6042908224076 398.56972586412394 1 hard
+Saturday, April 23rd, 2016 5:42:18pm click 105 photosmusselbedtest-3.jpg 325 495 735 314.6603098927294 532.0619785458879 1 hard
+Saturday, April 23rd, 2016 5:42:20pm click 105 photosmusselbedtest-2.jpg 1118 207 717 1128.9630512514898 259.35637663885575 1 hard
+Saturday, April 23rd, 2016 5:42:21pm click 105 photosmusselbedtest-3.jpg 612 430 680 665.5542312276519 389.0345649582836 1 hard
+Saturday, April 23rd, 2016 5:42:22pm click 105 photosmusselbedtest-1.jpg 848 327 686 928.7246722288438 337.5446960667461 1 hard
