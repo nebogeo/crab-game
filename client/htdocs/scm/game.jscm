@@ -19,6 +19,9 @@
 (load "scm/random.jscm")
 (load "scm/nightjar.jscm")
 
+(define game-time-allowed 10)
+(define num-examples 20)
+
 (define rockpool-filenames
   (list
    "gylly/DSC_5837.jpg"
@@ -64,29 +67,25 @@
     ))
 
 (define musselbed-filenames
-  (list
-    "test-1.jpg"
-    "test-2.jpg"
-    "test-3.jpg"
-    "test-1.jpg"
-    "test-2.jpg"
-    "test-3.jpg"
-    "test-1.jpg"
-    "test-2.jpg"
-    "test-3.jpg"
-    "test-1.jpg"
-    "test-2.jpg"
-    "test-3.jpg"
-    "test-1.jpg"
-    "test-2.jpg"
-    "test-3.jpg"
-    "test-1.jpg"
-    "test-2.jpg"
-    "test-3.jpg"
-    "test-1.jpg"
-    "test-2.jpg"
-    "test-3.jpg"
-   ))
+   (list
+   "gylly/DSC_5837.jpg"
+   "gylly/DSC_5844.jpg"
+   "gylly/DSC_5850.jpg"
+   "gylly/DSC_5860.jpg"
+   "gylly/DSC_5864.jpg"
+   "gylly/DSC_5907.jpg"
+   "gylly/SAM_4382.jpg"
+   "gylly/SAM_4700.jpg"
+   "gylly/SAM_4724.jpg"
+   "gylly/SAM_4775.jpg"
+   "gylly/SAM_4787.jpg"
+   "gylly/SAM_4907.jpg"
+   "gylly/SAM_4946.jpg"
+   "gylly/SAM_5100.jpg"
+   "gylly/SAM_5112.jpg"
+   "gylly/SAM_5124.jpg"
+    ))
+
 
 (define crab-filenames
   (build-list
@@ -104,13 +103,13 @@
 (define filenames
   (list
    (map (lambda (f) (list (string-append "rockpool/" f) (filename-to-type f))) rockpool-filenames)
-   (map (lambda (f) (list (string-append "rockpool/dic-" f) (filename-to-type f))) rockpool-filenames)
+   (map (lambda (f) (list (string-append "rockpool/di-" f) (filename-to-type f))) rockpool-filenames)
    (map (lambda (f) (list (string-append "mudflat/" f) (filename-to-type f))) mudflat-filenames)
-   (map (lambda (f) (list (string-append "mudflat/dic-" f) (filename-to-type f))) mudflat-filenames)
-   (map (lambda (f) (list (string-append "musselbed/" f) (filename-to-type f))) mudflat-filenames)
-   (map (lambda (f) (list (string-append "musselbed/dic-" f) (filename-to-type f))) mudflat-filenames)
+   (map (lambda (f) (list (string-append "mudflat/di-" f) (filename-to-type f))) mudflat-filenames)
+   (map (lambda (f) (list (string-append "musselbed/" f) (filename-to-type f))) musselbed-filenames)
+   (map (lambda (f) (list (string-append "musselbed/di-" f) (filename-to-type f))) musselbed-filenames)
    (map (lambda (f) (list (string-append "crabs/" f) (filename-to-type f))) crab-filenames)
-   (map (lambda (f) (list (string-append "crabs/dic-" f) (filename-to-type f))) crab-filenames)
+   (map (lambda (f) (list (string-append "crabs/di-" f) (filename-to-type f))) crab-filenames)
    ))
 
 (define (photo-filename l) (list-ref l 0))
@@ -166,8 +165,6 @@
 (define default-button-x (- (/ screen-width 2) 0))
 (define default-button-y (+ (/ screen-height 2) 120))
 (define button-gap 250)
-(define game-time-allowed 2)
-(define num-examples 20)
 
 (define (empty-nightjar-data)
   (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" () 0))
@@ -332,17 +329,17 @@
          (nightjar-experiment-screen c)))
 
       (image-button
-       "Hi Scores"
+       "High Scores"
        (+ default-button-x 200)
        default-button-y
        "slidy"
        (button-image)
        (lambda (c)
-         (server-call-mutate
-          "hiscores" ()
-          (lambda (game data)
-            (let ((hiscores (JSON.parse data)))
-              (nightjar-hiscores hiscores game))))
+         ;; (server-call-mutate
+         ;;  "hiscores" ()
+         ;;  (lambda (game data)
+         ;;    (let ((hiscores (JSON.parse data)))
+         ;;      (nightjar-hiscores hiscores game))))
          (play-sound "button.wav")
          c))
 
@@ -710,8 +707,8 @@
 
       (image-button
        "I give up"
-       (- screen-width 150)
-       (- screen-height 150)
+       (- screen-width 100)
+       (- screen-height 100)
        #f
        (find-image "quit.png")
        (lambda (c)
@@ -779,8 +776,8 @@
       (nightjar-crab-rotation (game-data c)))
 
      ;; highlight the crab
-     (set! ctx.strokeStyle "#ff0000")
-     (ctx.setLineDash (list 40 40))
+     (set! ctx.strokeStyle "#00ff00")
+     (ctx.setLineDash (list 20 20))
      (set! ctx.lineWidth 10)
      (ctx.beginPath)
      (ctx.arc (car (nightjar-crab-pos (game-data c)))

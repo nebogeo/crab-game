@@ -528,3 +528,97 @@ Sunday, April 24th, 2016 5:52:11pm click 140 photosrockpoolgyllySAM5112.jpg 1240
 Sunday, April 24th, 2016 5:54:19pm player human true 4
 Sunday, April 24th, 2016 5:54:56pm player human true 4
 Sunday, April 24th, 2016 5:55:20pm player human true 4
+Monday, April 25th, 2016 3:43:21pm player human true 4
+Monday, April 25th, 2016 3:43:23pm click 144 photosmudflatpenrynDSC5748.jpg 1266 208 1202 1226.2216924910606 230.75089392133492 1 hard
+Monday, April 25th, 2016 3:43:24pm click 144 photosmudflatpenrynSAM5487.jpg 875 358 800 829.5589988081048 423.3611442193087 1 hard
+Monday, April 25th, 2016 3:43:26pm click 144 photosmudflatpenrynDSC5773.jpg 1273 430 988 1279.6185935637664 392.84862932061975 1 hard
+Monday, April 25th, 2016 3:43:28pm click 144 photosmudflatpenrynSAM5352.jpg 970 194 602 606.4362336114422 486.29320619785454 0 hard
+Monday, April 25th, 2016 3:43:28pm click 144 photosmudflatpenrynSAM5352.jpg 970 194 1265 593.0870083432658 333.73063170441 0 hard
+Monday, April 25th, 2016 3:43:29pm click 144 photosmudflatpenrynSAM5352.jpg 970 194 1750 877.2348033373063 482.4791418355184 0 hard
+Monday, April 25th, 2016 7:04:54pm player human true 4
+Monday, April 25th, 2016 7:05:10pm click 145 photosrockpoolgyllyDSC5850.jpg 751 481 628 677.4241302738712 497.40932642487047 1 easy
+Monday, April 25th, 2016 7:05:12pm click 145 photosrockpoolgyllySAM4946.jpg 427 590 1281 447.6683937823834 568.4678016284234 1 easy
+Monday, April 25th, 2016 7:05:15pm click 145 photosrockpoolgyllySAM4775.jpg 1170 618 1582 504.51517394522574 388.4529977794227 0 easy
+Monday, April 25th, 2016 7:05:15pm click 145 photosrockpoolgyllySAM4775.jpg 1170 618 1924 781.6432272390822 364.76683937823833 0 easy
+Monday, April 25th, 2016 7:05:23pm click 145 photosrockpoolgyllyDSC5864.jpg 414 659 1881 390.8216136195411 640.7105847520355 1 easy
+Monday, April 25th, 2016 7:05:25pm click 145 photosrockpoolgyllySAM5100.jpg 648 638 988 686.8985936343449 614.6558105107327 1 easy
+Monday, April 25th, 2016 7:05:27pm click 145 photosrockpoolgyllySAM4724.jpg 1150 627 1370 1152.3316062176166 639.5262768319764 1 easy
+Monday, April 25th, 2016 7:05:28pm click 145 photosrockpoolgyllyDSC5837.jpg 756 599 699 798.2235381199112 596.8911917098445 1 easy
+Monday, April 25th, 2016 7:05:30pm click 145 photosrockpoolgyllySAM4382.jpg 829 307 948 834.9370836417469 343.44929681717247 1 easy
+Monday, April 25th, 2016 7:05:32pm click 145 photosrockpoolgyllySAM5112.jpg 1012 430 706 1039.8223538119912 453.5899333826795 1 easy
+Monday, April 25th, 2016 7:05:33pm click 145 photosrockpoolgyllyDSC5907.jpg 1222 196 887 1170.0962250185048 294.8926720947446 1 easy
+Monday, April 25th, 2016 7:05:35pm click 145 photosrockpoolgyllySAM5124.jpg 1014 275 806 999.5558845299778 350.55514433752774 1 easy
+Monday, April 25th, 2016 7:05:36pm click 145 photosrockpoolgyllySAM4700.jpg 1162 640 858 1168.9119170984457 617.0244263508513 1 easy
+Monday, April 25th, 2016 7:05:38pm click 145 photosrockpoolgyllyDSC5844.jpg 607 307 824 641.8948926720948 376.6099185788305 1 easy
+Monday, April 25th, 2016 7:05:43pm player name 145 DCM
+Monday, April 25th, 2016 7:10:41pm player human true 3
+Monday, April 25th, 2016 7:10:43pm click 146 photosmudflatpenrynSAM5352.jpg 590 583 1609 614.6558105107327 618.2087342709104 1 hard
+Monday, April 25th, 2016 7:10:45pm click 146 photosmudflatpenrynSAM5412.jpg 885 601 1004 1194.9666913397484 425.16654330125834 0 hard
+Monday, April 25th, 2016 7:10:54pm click 146 photosmudflatpenrynSAM5427.jpg 800 556 985 799.4078460399704 522.279792746114 1 hard
+Monday, April 25th, 2016 7:10:55pm click 146 photosmudflatpenrynDSC5784.jpg 852 693 810 795.8549222797927 579.1265729089563 1 hard
+Monday, April 25th, 2016 7:10:57pm click 146 photosmudflatpenrynDSC5778.jpg 1212 408 848 1202.0725388601036 342.26498889711326 1 hard
+Monday, April 25th, 2016 7:10:58pm click 146 photosmudflatpenrynDSC5769.jpg 581 655 784 594.5225758697261 612.2871946706143 1 hard
+Monday, April 25th, 2016 7:11:00pm click 146 photosmudflatpenrynDSC5805.jpg 914 514 694 884.6780162842339 440.56254626202815 1 hard
+Monday, April 25th, 2016 7:11:01pm click 146 photosmudflatpenrynDSC5773.jpg 529 482 737 502.1465581051073 517.5425610658772 1 hard
+Monday, April 25th, 2016 7:11:03pm click 146 photosmudflatpenrynDSC5748.jpg 580 510 744 563.7305699481865 511.62102146558107 1 hard
+Monday, April 25th, 2016 7:11:04pm click 146 photosmudflatpenrynSAM5463.jpg 805 454 704 772.1687638786085 484.3819393042191 1 hard
+Monday, April 25th, 2016 7:11:10pm click 146 photosmudflatpenrynDSC5739.jpg 1215 261 975 1089.5632864544782 381.34715025906735 1 hard
+Monday, April 25th, 2016 7:11:12pm click 146 photosmudflatpenrynDSC5764.jpg 585 377 1003 605.1813471502591 383.71576609918577 1 hard
+Monday, April 25th, 2016 7:11:14pm click 146 photosmudflatpenrynDSC5788.jpg 1190 191 1011 1057.5869726128794 203.70096225018506 1 hard
+Monday, April 25th, 2016 7:11:16pm click 146 photosmudflatpenrynDSC5759.jpg 920 267 745 888.2309400444116 325.68467801628424 1 hard
+Monday, April 25th, 2016 7:11:17pm click 146 photosmudflatpenrynSAM5439.jpg 585 229 798 697.5573649148779 292.5240562546262 1 hard
+Monday, April 25th, 2016 7:11:19pm click 146 photosmudflatpenrynSAM5388.jpg 534 451 831 532.938564026647 471.35455218356776 1 hard
+Monday, April 25th, 2016 7:11:20pm click 146 photosmudflatpenrynSAM5532.jpg 454 364 839 473.7231680236862 388.4529977794227 1 hard
+Monday, April 25th, 2016 7:11:22pm click 146 photosmudflatpenrynSAM5340.jpg 709 530 821 705.8475203552924 490.3034789045152 1 hard
+Monday, April 25th, 2016 7:11:23pm click 146 photosmudflatpenrynSAM5400.jpg 335 223 961 307.920059215396 229.7557364914878 1 hard
+Monday, April 25th, 2016 7:11:29pm player name 146 DAV
+Tuesday, April 26th, 2016 3:13:25pm player human true 3
+Tuesday, April 26th, 2016 3:13:31pm click 147 photosrockpoolgyllyDSC5850.jpg 326 269 1651 382.53145817912656 300.81421169504074 1 easy
+Tuesday, April 26th, 2016 3:13:34pm click 147 photosrockpoolgyllyDSC5860.jpg 360 328 1405 331.6062176165803 296.07698001480384 1 easy
+Tuesday, April 26th, 2016 3:13:43pm click 147 photosrockpoolgyllySAM4700.jpg 741 622 1506 748.4826054774242 558.9933382679496 1 easy
+Tuesday, April 26th, 2016 3:13:45pm click 147 photosrockpoolgyllyDSC5837.jpg 848 278 1194 851.5173945225758 254.62620281273132 1 easy
+Wednesday, April 27th, 2016 10:22:05am player fish true 3
+Wednesday, April 27th, 2016 10:38:02am player fish true 3
+Wednesday, April 27th, 2016 10:39:12am player human true 3
+Wednesday, April 27th, 2016 10:39:14am click 150 photosrockpoolgyllySAM4907.jpg 894 233 1700 602.622169249106 829.5589988081048 0 easy
+Wednesday, April 27th, 2016 10:43:32am player human true 3
+Wednesday, April 27th, 2016 10:43:35am click 151 photosmudflatpenrynSAM5487.jpg 1229 606 2821 1153.7544696066745 575.9237187127533 1 hard
+Wednesday, April 27th, 2016 10:43:38am click 151 photosmudflatpenrynDSC5748.jpg 956 374 2446 932.5387365911799 381.40643623361143 1 hard
+Wednesday, April 27th, 2016 10:43:40am click 151 photosmudflatpenrynDSC5769.jpg 1050 597 1086 1024.0762812872467 600.715137067938 1 hard
+Wednesday, April 27th, 2016 10:43:46am click 151 photosmudflatpenrynDSC5784.jpg 425 597 4651 91.53754469606675 814.3027413587604 0 hard
+Wednesday, April 27th, 2016 10:43:47am click 151 photosmudflatpenrynDSC5784.jpg 425 597 5801 492.01430274135873 249.82121573301546 0 hard
+Wednesday, April 27th, 2016 10:47:49am player human true 4
+Wednesday, April 27th, 2016 10:49:33am player fish true 3
+Wednesday, April 27th, 2016 10:50:10am player fish true 3
+Wednesday, April 27th, 2016 10:50:30am player human true 4
+Wednesday, April 27th, 2016 10:51:20am player human true 4
+Wednesday, April 27th, 2016 10:51:21am click 156 photosmusselbedgyllyDSC5864.jpg 1180 584 1132 1149.9404052443383 587.3659117997615 1 hard
+Wednesday, April 27th, 2016 10:51:37am click 156 photosmusselbedgyllyDSC5844.jpg 1265 291 1686 1216.6865315852203 322.28843861740165 1 hard
+Wednesday, April 27th, 2016 10:51:40am click 156 photosmusselbedgyllySAM4775.jpg 1027 234 2434 1134.684147794994 255.54231227651965 0 hard
+Wednesday, April 27th, 2016 10:51:42am click 156 photosmusselbedgyllySAM4775.jpg 1027 234 4167 532.0619785458879 305.12514898688914 0 hard
+Wednesday, April 27th, 2016 10:51:42am click 156 photosmusselbedgyllySAM4775.jpg 1027 234 4650 526.3408820023838 499.6424314660309 0 hard
+Wednesday, April 27th, 2016 10:51:43am click 156 photosmusselbedgyllySAM4775.jpg 1027 234 5284 760.9058402860547 572.1096543504171 0 hard
+Wednesday, April 27th, 2016 10:51:44am click 156 photosmusselbedgyllySAM4775.jpg 1027 234 6484 1380.6912991656734 394.7556615017878 0 hard
+Wednesday, April 27th, 2016 10:53:12am click 156 photosmusselbedgyllyDSC5907.jpg 1124 224 1596 1079.3802145411203 225.02979737783073 1 hard
+Wednesday, April 27th, 2016 10:53:46am player human true 4
+Wednesday, April 27th, 2016 10:53:51am click 157 photosmusselbedgyllySAM4946.jpg 942 529 4576 1046.9606674612633 207.86650774731822 0 hard
+Wednesday, April 27th, 2016 10:53:52am click 157 photosmusselbedgyllySAM4946.jpg 942 529 5492 579.7377830750894 188.79618593563765 0 hard
+Wednesday, April 27th, 2016 10:53:53am click 157 photosmusselbedgyllySAM4946.jpg 942 529 6092 533.969010727056 394.7556615017878 0 hard
+Wednesday, April 27th, 2016 10:53:53am click 157 photosmusselbedgyllySAM4946.jpg 942 529 6527 858.1644815256257 347.0798569725864 0 hard
+Wednesday, April 27th, 2016 10:53:53am click 157 photosmusselbedgyllySAM4946.jpg 942 529 6896 1024.0762812872467 369.96424314660305 0 hard
+Wednesday, April 27th, 2016 10:53:54am click 157 photosmusselbedgyllySAM4946.jpg 942 529 7309 997.3778307508938 501.549463647199 1 hard
+Wednesday, April 27th, 2016 10:54:03am click 157 photosmusselbedgyllyDSC5837.jpg 1130 515 1807 1111.7997616209773 511.0846245530393 1 hard
+Wednesday, April 27th, 2016 10:54:05am click 157 photosmusselbedgyllyDSC5907.jpg 904 288 1182 867.6996424314659 282.24076281287245 1 hard
+Wednesday, April 27th, 2016 10:54:07am click 157 photosmusselbedgyllySAM5124.jpg 959 710 1225 940.1668653158522 678.9034564958283 1 hard
+Wednesday, April 27th, 2016 10:54:18am click 157 photosmusselbedgyllySAM5112.jpg 650 303 9790 665.581051073279 308.0527086383602 1 hard
+Wednesday, April 27th, 2016 10:54:21am click 157 photosmusselbedgyllyDSC5850.jpg 931 278 1611 934.418948926721 282.2840409956076 1 hard
+Wednesday, April 27th, 2016 10:54:29am click 157 photosmusselbedgyllySAM4724.jpg 1106 504 7001 1148.778682457439 759.00439238653 0 hard
+Wednesday, April 27th, 2016 10:54:30am click 157 photosmusselbedgyllySAM4724.jpg 1106 504 7722 853.8860103626943 718.00878477306 0 hard
+Wednesday, April 27th, 2016 10:55:16am player human true 4
+Wednesday, April 27th, 2016 10:55:17am click 158 photosmusselbedgyllyDSC5850.jpg 1021 188 1384 1023.2420429311621 204.88527017024427 1 hard
+Wednesday, April 27th, 2016 10:55:42am click 158 photosmusselbedgyllyDSC5837.jpg 559 280 6536 568.4678016284234 299.62990377498147 1 hard
+Wednesday, April 27th, 2016 10:55:46am click 158 photosmusselbedgyllySAM4787.jpg 1062 368 2794 1074.1672834937083 373.05699481865287 1 hard
+Wednesday, April 27th, 2016 10:55:49am click 158 photosmusselbedgyllySAM5124.jpg 1181 334 1644 1162.9903774981494 339.89637305699483 1 hard
+Wednesday, April 27th, 2016 10:55:51am click 158 photosmusselbedgyllySAM4382.jpg 831 367 1448 856.2546262028128 364.76683937823833 1 hard
+Wednesday, April 27th, 2016 10:55:54am click 158 photosmusselbedgyllyDSC5907.jpg 1216 568 1583 1209.178386380459 576.7579570688379 1 hard
+Wednesday, April 27th, 2016 10:55:57am click 158 photosmusselbedgyllySAM5112.jpg 849 586 1755 830.19985196151 600.4441154700222 1 hard
