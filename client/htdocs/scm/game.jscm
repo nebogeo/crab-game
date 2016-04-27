@@ -167,7 +167,7 @@
 (define button-gap 250)
 
 (define (empty-nightjar-data)
-  (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" () 0))
+  (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" () 0 0))
 
 (define (nightjar-start-time g) (list-ref g 0))
 (define (nightjar-modify-start-time v g) (list-replace g 0 v))
@@ -197,6 +197,8 @@
 (define (nightjar-modify-crabs v g) (list-replace g 12 v))
 (define (nightjar-crab-rotation g) (list-ref g 13))
 (define (nightjar-modify-crab-rotation v g) (list-replace g 13 v))
+(define (nightjar-game-id g) (list-ref g 14))
+(define (nightjar-modify-game-id v g) (list-replace g 14 v))
 
 (define (time-left c)
   (* (- (game-time c)
@@ -335,11 +337,11 @@
        "slidy"
        (button-image)
        (lambda (c)
-         ;; (server-call-mutate
-         ;;  "hiscores" ()
-         ;;  (lambda (game data)
-         ;;    (let ((hiscores (JSON.parse data)))
-         ;;      (nightjar-hiscores hiscores game))))
+         (server-call-mutate
+          "hiscores" ()
+          (lambda (game data)
+            (let ((hiscores (JSON.parse data)))
+              (nightjar-hiscores hiscores #t game))))
          (play-sound "button.wav")
          c))
 
@@ -350,7 +352,7 @@
 (define (time-to-seconds t)
   (/ (Math.floor (/ t 10)) 100))
 
-(define (nightjar-hiscores table c)
+(define (nightjar-hiscores table ret-to-intro c)
   (game-modify-update
    (lambda (t c) c)
    (game-modify-render
@@ -359,35 +361,39 @@
       (wrap-text ctx (string-append "Hall of fame") 0 100 1000 70)
       (set! ctx.font "normal 30pt open-sans")
 
-      (index-for-each
-       (lambda (i e)
-         (when (not (eq? (cadr e) 999999))
-               (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
-                 (wrap-text ctx txt -200 (+ 240 (* 40 i))))))
-       (list-ref table 0))
+      (wrap-text ctx "Rockpool" -300 180)
+      (wrap-text ctx "Mudflats" 0 180)
+      (wrap-text ctx "Musselbed" 300 180)
 
-      (index-for-each
-       (lambda (i e)
-         (when (not (eq? (cadr e) 999999))
+      (when (list-ref table 0)
+            (index-for-each
+             (lambda (i e)
                (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
-                 (set! ctx.fillStyle "#fff")
-                 (wrap-text ctx txt 200 (+ 240 (* 40 i))))))
-       (list-ref table 1))
+                 (wrap-text ctx txt -300 (+ 240 (* 40 i)))))
+             (list-ref table 0)))
 
-      (index-for-each
-       (lambda (i e)
-         (when (not (eq? (cadr e) 999999))
+      (when (list-ref table 1)
+            (index-for-each
+             (lambda (i e)
                (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
-                 (set! ctx.fillStyle "#fff")
-                 (wrap-text ctx txt 200 (+ 240 (* 40 i))))))
-       (list-ref table 2))
+                 (wrap-text ctx txt 0 (+ 240 (* 40 i)))))
+             (list-ref table 1)))
 
+      (when (list-ref table 2)
+            (index-for-each
+             (lambda (i e)
+               (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
+                 (wrap-text ctx txt 300 (+ 240 (* 40 i)))))
+             (list-ref table 2)))
       )
     (game-modify-buttons
      (list
       (image-button
        "Back" 1150 720 "slidy" (button-image)
-       (lambda (c) (nightjar-intro c))))
+       (lambda (c)
+         (if ret-to-intro
+             (nightjar-intro c)
+             (nightjar-species-other-screen c)))))
      c))))
 
 
@@ -453,6 +459,21 @@
      )
     c)))
 
+(define (record-player c played-before)
+  (server-call-mutate
+   "player"
+   (list
+    (list "played_before" played-before)
+    (list "age_range" (nightjar-player-age (game-data c))))
+   (lambda (game data)
+     (let ((id (car (JSON.parse data))))
+       (nightjar-species-screen
+        (game-modify-data
+         (lambda (d)
+           (nightjar-modify-player-id
+            id (nightjar-modify-played-before played-before d)))
+         game)))))
+  c)
 
 (define (nightjar-played-before-screen c)
   (game-modify-render
@@ -472,11 +493,7 @@
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
-        (nightjar-species-screen
-         (game-modify-data
-          (lambda (d)
-            (nightjar-modify-played-before #t d))
-          c))))
+        (record-player c #t)))
 
      (image-button
       "No"
@@ -486,12 +503,8 @@
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
-        (nightjar-species-screen
-         (game-modify-data
-          (lambda (d)
-            (nightjar-modify-played-before #f d))
-          c))))
-    ) c)))
+        (record-player #f)))) c)))
+
 
 (define (nightjar-species-screen c)
   (game-modify-render
@@ -533,6 +546,71 @@
           c))))
     ) c)))
 
+(define (nightjar-species-other-screen c)
+  (game-modify-render
+   (lambda (ctx)
+     (nightjar-all-text ctx "Thank you! Choose your species to play again.")
+     (set! ctx.font "normal 30pt open-sans")
+     )
+
+   (game-modify-buttons
+    (list
+
+     (image-button
+      "Hungry human"
+      (+ default-button-x button-gap)
+      (- default-button-y 100)
+      "slidy"
+      (button-image)
+      (lambda (c)
+        (play-sound "button.wav")
+        (nightjar-explain-screen
+         (game-modify-data
+          (lambda (d)
+            (nightjar-modify-player-type "human" d))
+          c))))
+
+     (image-button
+      "Crab eating fish"
+      (- default-button-x button-gap)
+      (- default-button-y 100)
+      "slidy"
+      (button-image)
+      (lambda (c)
+        (play-sound "button.wav")
+        (nightjar-explain-screen
+         (game-modify-data
+          (lambda (d)
+            (nightjar-modify-player-type "fish" d))
+          c))))
+
+     (image-button
+      "Exit"
+      (+ default-button-x button-gap)
+      (+ default-button-y 100)
+      "slidy"
+      (button-image)
+      (lambda (c)
+        (play-sound "button.wav")
+        (nightjar-intro c)))
+
+     (image-button
+      "High Scores"
+      (- default-button-x button-gap)
+      (+ default-button-y 100)
+      "slidy"
+      (button-image)
+      (lambda (c)
+        (play-sound "button.wav")
+        (server-call-mutate
+         "hiscores" ()
+         (lambda (game data)
+           (let ((hiscores (JSON.parse data)))
+             (nightjar-hiscores hiscores #f game))))
+        c))
+
+     ) c)))
+
 
 (define (get-n-items lst num)
   (cond
@@ -544,6 +622,23 @@
   (if (> start 1)
       (slice (cdr lst) (- start 1) count)
       (get-n-items lst count)))
+
+(define (record-game c bg_location)
+  (server-call-mutate
+   "game"
+   (list
+    (list "player_id" (nightjar-player-id (game-data c)))
+    (list "species" (nightjar-player-type (game-data c)))
+    (list "bg_location" bg_location))
+   (lambda (game data)
+     (let ((id (car (JSON.parse data))))
+       (nightjar-new-game-images
+        (game-modify-data
+         (lambda (d)
+           (nightjar-modify-game-id
+            id (nightjar-modify-level bg_location d)))
+         game)))))
+  c)
 
 (define (nightjar-explain-screen c)
   (game-modify-render
@@ -562,22 +657,7 @@
       "slidy"
       (button-image)
       (lambda (c)
-        (server-call-mutate
-         "player"
-         (list
-          (list "species" (nightjar-player-type (game-data c)))
-          (list "played_before" (nightjar-played-before (game-data c)))
-          (list "age_range" (nightjar-player-age (game-data c))))
-         (lambda (game data)
-           (let ((id (car (JSON.parse data))))
-             ;;(alert id)
-             (nightjar-new-game-images
-              (game-modify-data
-               (lambda (d)
-                 (nightjar-modify-player-id
-                  id (nightjar-modify-level 0 d)))
-               game)))))
-         c))
+        (record-game c "rockpool")))
 
      (image-button
       "Mudflats"
@@ -586,22 +666,7 @@
       "slidy"
       (button-image)
       (lambda (c)
-        (server-call-mutate
-         "player"
-         (list
-          (list "species" (nightjar-player-type (game-data c)))
-          (list "played_before" (nightjar-played-before (game-data c)))
-          (list "age_range" (nightjar-player-age (game-data c))))
-         (lambda (game data)
-           (let ((id (car (JSON.parse data))))
-             ;;(alert id)
-             (nightjar-new-game-images
-              (game-modify-data
-               (lambda (d)
-                 (nightjar-modify-player-id
-                  id (nightjar-modify-level 1 d)))
-               game)))))
-         c))
+        (record-game c "mudflat")))
 
      (image-button
       "Mussel bed"
@@ -610,44 +675,40 @@
       "slidy"
       (button-image)
       (lambda (c)
-        (server-call-mutate
-         "player"
-         (list
-          (list "species" (nightjar-player-type (game-data c)))
-          (list "played_before" (nightjar-played-before (game-data c)))
-          (list "age_range" (nightjar-player-age (game-data c))))
-         (lambda (game data)
-           (let ((id (car (JSON.parse data))))
-             ;;(alert id)
-             (nightjar-new-game-images
-              (game-modify-data
-               (lambda (d)
-                 (nightjar-modify-player-id
-                  id (nightjar-modify-level 2 d)))
-               game)))))
-         c))
+        (record-game c "musselbed")))
+     ) c)))
 
-     )
-
-    c)))
+(define (prep-path p)
+  (p.replace (js "new RegExp('/', 'g')") ":"))
 
 (define (record-click c success)
-  (server-call
-   "click"
-   (list
-    (list "player_id" (nightjar-player-id (game-data c)))
-    (list "photo_name" (photo-filename (car (nightjar-images (game-data c)))))
-    ;; todo add crab name!!!
-;;    (list "crab_name" (photo-filename (car (nightjar-crabs (game-data c)))))
-    ;; crab centre position
-    (list "photo_offset_x" (car (nightjar-crab-pos (game-data c))))
-    (list "photo_offset_y" (cadr (nightjar-crab-pos (game-data c))))
-    (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
-    (list "x_position" (game-mx c))
-    (list "y_position" (game-my c))
-    (list "success" success)
-    (list "level" (if (eq? (nightjar-level (game-data c)) 0) "easy" "hard")))))
+  (let ((photoname (photo-filename (car (nightjar-images (game-data c)))))
+        (crabname (photo-filename (car (nightjar-crabs (game-data c))))))
+    (server-call
+     "click"
+     (list
+      (list "game_id" (nightjar-game-id (game-data c)))
+      (list "photo_name" (prep-path photoname))
+      (list "crab_name" (prep-path crabname))
+      (list "crab_x" (car (nightjar-crab-pos (game-data c))))
+      (list "crab_y" (cadr (nightjar-crab-pos (game-data c))))
+      (list "crab_rot" (nightjar-crab-rotation (game-data c)))
+      (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
+      (list "x_position" (game-mx c))
+      (list "y_position" (game-my c))
+      (list "success" success)))))
 
+(define (record-crab-time c success_code)
+  (let ((photoname (photo-filename (car (nightjar-images (game-data c)))))
+        (crabname (photo-filename (car (nightjar-crabs (game-data c))))))
+    (server-call
+     "crab-time"
+     (list
+      (list "game_id" (nightjar-game-id (game-data c)))
+      (list "photo_name" (prep-path photoname))
+      (list "crab_name" (prep-path crabname))
+      (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
+      (list "success_code" success_code)))))
 
 (define (draw-crab ctx crab-image crab-x crab-y crab-rot)
   (ctx.save)
@@ -694,12 +755,14 @@
       (if (> (- (game-time c)
                 (nightjar-start-time (game-data c)))
              (* game-time-allowed 1000))
-          (nightjar-fail
-           (photo-desc example)
-           (string-append
-            "Ran out of time finding this crab on "
-            (photo-desc example)
-            " - you'll go hungry tonight!") c)
+          (begin
+            (record-crab-time c 1)
+            (nightjar-fail
+             (photo-desc example)
+             (string-append
+              "Ran out of time finding this crab on "
+              (photo-desc example)
+              " - you'll go hungry tonight!") c))
           c))
 
     (game-modify-buttons
@@ -712,6 +775,7 @@
        #f
        (find-image "quit.png")
        (lambda (c)
+         (record-crab-time c 2)
          (nightjar-fail
           (photo-desc example)
           (string-append
@@ -725,6 +789,7 @@
        "" crab-x crab-y crab-image.width crab-image.height #f
        (lambda (c)
          (play-sound "found.wav")
+         (record-crab-time c 0)
          (nightjar-win
           (photo-desc example)
           (game-modify-data
@@ -882,8 +947,7 @@
   (server-call-mutate
    "score"
    (list
-    (list "player_id" (nightjar-player-id (game-data c)))
-    (list "level" (if (eq? (nightjar-level (game-data c)) 0) "easy" "hard")))
+    (list "game_id" (nightjar-game-id (game-data c))))
    (lambda (game data)
      (let ((score (JSON.parse data)))
        (nightjar-finish game
@@ -922,7 +986,8 @@
 
     (game-modify-buttons
      (list
-      (if (> count 5)
+      (if (and (eq? (nightjar-username (game-data c)) "???")
+               (> count 5))
           (image-button
            "Enter Your Name"
            default-button-x
@@ -941,7 +1006,7 @@
            (button-image)
            (lambda (c)
              (play-sound "button.wav")
-             (nightjar-intro c)))))
+             (nightjar-species-other-screen c)))))
      c))))
 
 
@@ -1010,7 +1075,7 @@
                         (list
                          (list "player_id" (nightjar-player-id (game-data c)))
                          (list "player_name" (nightjar-username (game-data c)))))
-                       (nightjar-intro c))))
+                       (nightjar-species-other-screen c))))
       )
      c))))
 

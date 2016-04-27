@@ -622,3 +622,199 @@ Wednesday, April 27th, 2016 10:55:49am click 158 photosmusselbedgyllySAM5124.jpg
 Wednesday, April 27th, 2016 10:55:51am click 158 photosmusselbedgyllySAM4382.jpg 831 367 1448 856.2546262028128 364.76683937823833 1 hard
 Wednesday, April 27th, 2016 10:55:54am click 158 photosmusselbedgyllyDSC5907.jpg 1216 568 1583 1209.178386380459 576.7579570688379 1 hard
 Wednesday, April 27th, 2016 10:55:57am click 158 photosmusselbedgyllySAM5112.jpg 849 586 1755 830.19985196151 600.4441154700222 1 hard
+Wednesday, April 27th, 2016 11:43:52am player fish false 4
+Wednesday, April 27th, 2016 11:43:56am click 159 photosmusselbeddi-gyllyDSC5907.jpg 619 647 3687 632.420429311621 627.6831976313841 1 hard
+Wednesday, April 27th, 2016 11:44:19am click 159 photosmusselbeddi-gyllyDSC5864.jpg 510 429 2823 524.6484085862324 450.03700962250184 1 hard
+Wednesday, April 27th, 2016 12:07:49pm player human true 3
+Wednesday, April 27th, 2016 12:08:50pm player human true 3
+Wednesday, April 27th, 2016 12:08:51pm click 161 photosmudflatpenrynSAM5412.jpg photoscrabsautocrab-3.png 476 197 2.0007840712800613 1061 757.9570688378979 678.6084381939304 0 1
+Wednesday, April 27th, 2016 12:08:52pm click 161 photosmudflatpenrynSAM5412.jpg photoscrabsautocrab-3.png 476 197 2.0007840712800613 1953 859.8075499629904 270.0222057735011 0 1
+Wednesday, April 27th, 2016 12:08:53pm click 161 photosmudflatpenrynSAM5412.jpg photoscrabsautocrab-3.png 476 197 2.0007840712800613 2484 431.0880829015544 258.17912657290896 0 1
+Wednesday, April 27th, 2016 12:08:53pm click 161 photosmudflatpenrynSAM5412.jpg photoscrabsautocrab-3.png 476 197 2.0007840712800613 2824 465.43301258327165 195.41080680977055 1 1
+Wednesday, April 27th, 2016 12:10:01pm player human true 3
+Wednesday, April 27th, 2016 12:10:02pm click 162 photosmudflatpenrynDSC5773.jpg photoscrabsautocrab-5.png 421 618 2.2895151509237555 1180 432.2723908216136 596.8911917098445 1 1
+Wednesday, April 27th, 2016 12:12:28pm player human true 4
+Wednesday, April 27th, 2016 12:12:30pm click 1 photosmudflatpenrynSAM5487.jpg photoscrabsautocrab-23.png 634 634 6.241672066838496 1738 354.1080680977054 193.04219096965213 0 1
+Wednesday, April 27th, 2016 12:12:32pm click 1 photosmudflatpenrynSAM5487.jpg photoscrabsautocrab-23.png 634 634 6.241672066838496 4148 581.4951887490747 650.1850481125092 1 1
+Wednesday, April 27th, 2016 12:37:42pm player human true 3
+Wednesday, April 27th, 2016 12:37:43pm crab-time photoscrabsautocrab-4.png 1008 human 1 0
+Wednesday, April 27th, 2016 12:37:43pm click 1 photosmudflatpenrynDSC5778.jpg photoscrabsautocrab-4.png 1061 707 5.129112663826786 1008 1051.6654330125832 688.0829015544042 1 1
+Wednesday, April 27th, 2016 12:37:45pm crab-time photoscrabsautocrab-27.png 1041 human 1 0
+Wednesday, April 27th, 2016 12:37:45pm click 1 photosmudflatpenrynDSC5739.jpg photoscrabsautocrab-27.png 527 256 0.08609993391135175 1041 512.8053293856402 259.36343449296817 1 1
+Wednesday, April 27th, 2016 12:38:20pm crab-time photoscrabsautocrab-2.png 1570 human 1 0
+Wednesday, April 27th, 2016 12:38:20pm click 1 photosmudflatpenrynSAM5400.jpg photoscrabsautocrab-2.png 1160 580 2.1329180887357833 1570 1185.4922279792747 556.6247224278312 1 1
+Wednesday, April 27th, 2016 12:38:27pm click 1 photosmudflatpenrynDSC5748.jpg photoscrabsautocrab-3.png 788 634 6.054740082149529 513 733.0866025166544 519.9111769059956 0 1
+Wednesday, April 27th, 2016 12:38:28pm crab-time photoscrabsautocrab-3.png 1104 human 1 0
+Wednesday, April 27th, 2016 12:38:28pm click 1 photosmudflatpenrynDSC5748.jpg photoscrabsautocrab-3.png 788 634 6.054740082149529 1104 776.9059955588453 603.9970392301999 1 1
+Wednesday, April 27th, 2016 12:38:54pm crab-time photoscrabsautocrab-10.png 10009 human 1 1
+Wednesday, April 27th, 2016 12:39:03pm crab-time photoscrabsautocrab-6.png 1526 human 1 2
+Wednesday, April 27th, 2016 12:39:20pm player fish true 2
+Wednesday, April 27th, 2016 12:39:23pm click 2 photosmudflatdi-penrynDSC5788.jpg photoscrabsdi-autocrab-16.png 489 449 3.47943272485172 2411 504.51517394522574 451.22131754256105 1 1
+Wednesday, April 27th, 2016 12:39:23pm crab-time photoscrabsdi-autocrab-16.png 2411 fish 1 0
+Wednesday, April 27th, 2016 12:43:12pm player human true 3
+Wednesday, April 27th, 2016 12:43:13pm crab-time photos crabsautocrab-9.png 1024 human 1 0
+Wednesday, April 27th, 2016 12:43:13pm click 3 photos mudflatpenrynSAM5532.jpg photos crabsautocrab-9.png 422 396 1.9899755648484212 1024 435.82531458179125 352.9237601776462 1 1
+Wednesday, April 27th, 2016 12:43:35pm player human true 4
+Wednesday, April 27th, 2016 12:43:36pm crab-time photos crabsautocrab-23.png 606 human 2 0
+Wednesday, April 27th, 2016 12:43:36pm click 4 photos musselbedgyllySAM5124.jpg photos crabsautocrab-23.png 798 599 0.2179517026372167 606 883.4937083641747 560.1776461880089 1 2
+Wednesday, April 27th, 2016 12:44:19pm player human true 4
+Wednesday, April 27th, 2016 12:45:22pm click 5 photos mudflatpenrynSAM5412.jpg photos crabsautocrab-8.png 385 676 6.129927210345436 2088 298.44559585492226 544.7816432272391 0 1
+Wednesday, April 27th, 2016 12:45:22pm crab-time photos crabsautocrab-8.png 62672 human 1 1
+Wednesday, April 27th, 2016 12:45:26pm player human true 4
+Wednesday, April 27th, 2016 12:45:48pm click 6 photos musselbedgyllyDSC5860.jpg photos crabsautocrab-16.png 706 500 4.737367507531373 720 714.1376757957069 429.9037749814952 0 2
+Wednesday, April 27th, 2016 12:45:49pm crab-time photos crabsautocrab-16.png 21647 human 2 1
+Wednesday, April 27th, 2016 12:45:52pm player human true 4
+Wednesday, April 27th, 2016 12:45:53pm crab-time photos crabsautocrab-25.png 781 human 2 0
+Wednesday, April 27th, 2016 12:46:39pm click 7 photos musselbedgyllySAM4700.jpg photos crabsautocrab-25.png 701 413 6.067872569095309 781 736.639526276832 399.1117690599556 1 2
+Wednesday, April 27th, 2016 12:46:45pm player human true 4
+Wednesday, April 27th, 2016 12:47:03pm click 8 photos musselbedgyllyDSC5860.jpg photos crabsautocrab-1.png 444 581 4.035696822756408 638 381.34715025906735 238.0458919319023 0 2
+Wednesday, April 27th, 2016 12:47:03pm crab-time photos crabsautocrab-1.png 17886 human 2 1
+Wednesday, April 27th, 2016 12:48:40pm player human true 4
+Wednesday, April 27th, 2016 12:49:53pm click 9 photos musselbedgyllyDSC5837.jpg photos crabsautocrab-20.png 1216 221 4.9488589434577355 21 1037.4537379718727 651.3693560325685 0 2
+Wednesday, April 27th, 2016 12:49:54pm crab-time photos crabsautocrab-20.png 72908 human 2 1
+Wednesday, April 27th, 2016 12:49:58pm player human true 4
+Wednesday, April 27th, 2016 12:49:59pm click 10 photos:musselbed:gylly:SAM5100.jpg photos:crabs:autocrab-17.png 768 226 4.95973823463974 533 785.1961509992598 470.1702442635085 0 2
+Wednesday, April 27th, 2016 12:49:59pm click 10 photos:musselbed:gylly:SAM5100.jpg photos:crabs:autocrab-17.png 768 226 4.95973823463974 1026 891.7838638045893 296.07698001480384 0 2
+Wednesday, April 27th, 2016 12:50:00pm click 10 photos:musselbed:gylly:SAM5100.jpg photos:crabs:autocrab-17.png 768 226 4.95973823463974 2077 447.6683937823834 413.3234641006662 0 2
+Wednesday, April 27th, 2016 12:50:01pm click 10 photos:musselbed:gylly:SAM5100.jpg photos:crabs:autocrab-17.png 768 226 4.95973823463974 2539 451.22131754256105 654.9222797927462 0 2
+Wednesday, April 27th, 2016 12:50:02pm click 10 photos:musselbed:gylly:SAM5100.jpg photos:crabs:autocrab-17.png 768 226 4.95973823463974 3186 1024.4263508512213 705.8475203552924 0 2
+Wednesday, April 27th, 2016 12:50:02pm click 10 photos:musselbed:gylly:SAM5100.jpg photos:crabs:autocrab-17.png 768 226 4.95973823463974 3579 1275.499629903775 562.5462620281273 0 2
+Wednesday, April 27th, 2016 12:50:03pm click 10 photos:musselbed:gylly:SAM5100.jpg photos:crabs:autocrab-17.png 768 226 4.95973823463974 4152 1384.4559585492227 253.4418948926721 0 2
+Wednesday, April 27th, 2016 12:50:03pm crab-time photos:crabs:autocrab-17.png 5036 human 2 0
+Wednesday, April 27th, 2016 12:50:04pm click 10 photos:musselbed:gylly:SAM5100.jpg photos:crabs:autocrab-17.png 768 226 4.95973823463974 5036 761.5099925980755 193.04219096965213 1 2
+Wednesday, April 27th, 2016 12:57:47pm player human true 4
+Wednesday, April 27th, 2016 12:57:51pm crab-time photos:musselbed:gylly:SAM4787.jpg photos:crabs:autocrab-22.png 3247 human 2 2
+Wednesday, April 27th, 2016 2:23:01pm player human true 3
+Wednesday, April 27th, 2016 2:23:03pm crab-time photos:mudflat:penryn:DSC5773.jpg photos:crabs:autocrab-4.png 1352 human 1 0
+Wednesday, April 27th, 2016 2:23:03pm click 2 photos:mudflat:penryn:DSC5773.jpg photos:crabs:autocrab-4.png 391 205 1.9404231108841166 1352 356.47668393782385 194.22649888971134 1 1
+Wednesday, April 27th, 2016 2:23:05pm crab-time photos:mudflat:penryn:SAM5532.jpg photos:crabs:autocrab-20.png 1150 human 1 0
+Wednesday, April 27th, 2016 2:23:05pm click 2 photos:mudflat:penryn:SAM5532.jpg photos:crabs:autocrab-20.png 758 547 1.5593257688282052 1150 718.8749074759437 540.0444115470023 1 1
+Wednesday, April 27th, 2016 2:23:06pm crab-time photos:mudflat:penryn:DSC5778.jpg photos:crabs:autocrab-11.png 854 human 1 0
+Wednesday, April 27th, 2016 2:23:07pm click 2 photos:mudflat:penryn:DSC5778.jpg photos:crabs:autocrab-11.png 449 445 1.4055721390968574 854 437.0096225018505 394.37453737971873 1 1
+Wednesday, April 27th, 2016 2:23:08pm crab-time photos:mudflat:penryn:DSC5739.jpg photos:crabs:autocrab-25.png 1081 human 1 0
+Wednesday, April 27th, 2016 2:23:08pm click 2 photos:mudflat:penryn:DSC5739.jpg photos:crabs:autocrab-25.png 369 700 5.1201300957886975 1081 439.37823834196894 650.1850481125092 1 1
+Wednesday, April 27th, 2016 2:23:09pm crab-time photos:mudflat:penryn:DSC5805.jpg photos:crabs:autocrab-19.png 750 human 1 0
+Wednesday, April 27th, 2016 2:23:09pm click 2 photos:mudflat:penryn:DSC5805.jpg photos:crabs:autocrab-19.png 792 461 4.519829205418108 750 799.4078460399704 461.880088823094 1 1
+Wednesday, April 27th, 2016 2:23:11pm crab-time photos:mudflat:penryn:DSC5784.jpg photos:crabs:autocrab-6.png 1117 human 1 0
+Wednesday, April 27th, 2016 2:23:11pm click 2 photos:mudflat:penryn:DSC5784.jpg photos:crabs:autocrab-6.png 1245 697 4.482652882356108 1117 1267.2094744633605 707.0318282753516 1 1
+Wednesday, April 27th, 2016 2:23:14pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 2922 715.3219837157661 227.38712065136937 0 1
+Wednesday, April 27th, 2016 2:23:15pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 3598 1106.1435973353073 170.54034048852702 0 1
+Wednesday, April 27th, 2016 2:23:17pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 5090 563.7305699481865 820.7253886010362 0 1
+Wednesday, April 27th, 2016 2:23:17pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 5702 92.37601776461881 576.7579570688379 0 1
+Wednesday, April 27th, 2016 2:23:18pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 6194 201.33234641006663 318.57883049592897 0 1
+Wednesday, April 27th, 2016 2:23:18pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 6530 427.53515914137677 281.86528497409324 0 1
+Wednesday, April 27th, 2016 2:23:18pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 6801 554.2561065877128 354.1080680977054 0 1
+Wednesday, April 27th, 2016 2:23:19pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 7352 775.7216876387861 262.9163582531458 0 1
+Wednesday, April 27th, 2016 2:23:19pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 7768 800.5921539600296 524.6484085862324 0 1
+Wednesday, April 27th, 2016 2:23:20pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 8256 1113.2494448556624 581.4951887490747 0 1
+Wednesday, April 27th, 2016 2:23:20pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 8632 1221.0214655810512 558.9933382679496 0 1
+Wednesday, April 27th, 2016 2:23:20pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 9030 1356.0325684678016 287.78682457438936 0 1
+Wednesday, April 27th, 2016 2:23:21pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 9472 1500.518134715026 185.93634344929683 0 1
+Wednesday, April 27th, 2016 2:23:21pm click 2 photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 825 246 2.3637254828057204 9938 1550.259067357513 168.1717246484086 0 1
+Wednesday, April 27th, 2016 2:23:22pm crab-time photos:mudflat:penryn:SAM5400.jpg photos:crabs:autocrab-13.png 10003 human 1 1
+Wednesday, April 27th, 2016 2:23:25pm crab-time photos:mudflat:penryn:SAM5439.jpg photos:crabs:autocrab-24.png 1616 human 1 0
+Wednesday, April 27th, 2016 2:23:25pm click 2 photos:mudflat:penryn:SAM5439.jpg photos:crabs:autocrab-24.png 853 475 2.1883922179040196 1616 864.5447816432272 445.299777942265 1 1
+Wednesday, April 27th, 2016 2:23:28pm click 2 photos:mudflat:penryn:SAM5427.jpg photos:crabs:autocrab-21.png 333 615 2.8871476600768102 1928 325.68467801628424 630.0518134715026 1 1
+Wednesday, April 27th, 2016 2:23:28pm crab-time photos:mudflat:penryn:SAM5427.jpg photos:crabs:autocrab-21.png 1928 human 1 0
+Wednesday, April 27th, 2016 2:23:30pm click 2 photos:mudflat:penryn:SAM5487.jpg photos:crabs:autocrab-27.png 1209 471 5.8683156076272365 1332 1142.857142857143 482.01332346410067 0 1
+Wednesday, April 27th, 2016 2:23:30pm click 2 photos:mudflat:penryn:SAM5487.jpg photos:crabs:autocrab-27.png 1209 471 5.8683156076272365 2096 1164.1746854182088 486.7505551443375 1 1
+Wednesday, April 27th, 2016 2:23:30pm crab-time photos:mudflat:penryn:SAM5487.jpg photos:crabs:autocrab-27.png 2096 human 1 0
+Wednesday, April 27th, 2016 2:23:34pm crab-time photos:mudflat:penryn:SAM5340.jpg photos:crabs:autocrab-2.png 1922 human 1 0
+Wednesday, April 27th, 2016 2:23:34pm click 2 photos:mudflat:penryn:SAM5340.jpg photos:crabs:autocrab-2.png 369 368 4.614312806892689 1922 345.8179126572909 377.7942264988897 1 1
+Wednesday, April 27th, 2016 2:23:35pm crab-time photos:mudflat:penryn:SAM5352.jpg photos:crabs:autocrab-14.png 733 human 1 0
+Wednesday, April 27th, 2016 2:23:35pm click 2 photos:mudflat:penryn:SAM5352.jpg photos:crabs:autocrab-14.png 826 382 1.514381792832168 733 831.3841598815692 407.4019245003701 1 1
+Wednesday, April 27th, 2016 2:23:37pm click 2 photos:mudflat:penryn:SAM5463.jpg photos:crabs:autocrab-16.png 791 253 2.24584616364719 1315 993.6343449296818 683.3456698741672 0 1
+Wednesday, April 27th, 2016 2:23:38pm click 2 photos:mudflat:penryn:SAM5463.jpg photos:crabs:autocrab-16.png 791 253 2.24584616364719 1815 924.9444855662473 710.5847520355293 0 1
+Wednesday, April 27th, 2016 2:23:38pm click 2 photos:mudflat:penryn:SAM5463.jpg photos:crabs:autocrab-16.png 791 253 2.24584616364719 2154 934.418948926721 702.2945965951147 0 1
+Wednesday, April 27th, 2016 2:23:38pm click 2 photos:mudflat:penryn:SAM5463.jpg photos:crabs:autocrab-16.png 791 253 2.24584616364719 2528 948.6306439674315 695.1887490747595 0 1
+Wednesday, April 27th, 2016 2:23:40pm click 2 photos:mudflat:penryn:SAM5463.jpg photos:crabs:autocrab-16.png 791 253 2.24584616364719 4370 1032.7165062916358 325.68467801628424 0 1
+Wednesday, April 27th, 2016 2:23:41pm click 2 photos:mudflat:penryn:SAM5463.jpg photos:crabs:autocrab-16.png 791 253 2.24584616364719 5559 211.99111769059957 563.7305699481865 0 1
+Wednesday, April 27th, 2016 2:23:46pm click 2 photos:mudflat:penryn:SAM5463.jpg photos:crabs:autocrab-16.png 791 253 2.24584616364719 9880 705.8475203552924 762.6943005181347 0 1
+Wednesday, April 27th, 2016 2:23:46pm crab-time photos:mudflat:penryn:SAM5463.jpg photos:crabs:autocrab-16.png 10023 human 1 1
+Wednesday, April 27th, 2016 2:23:50pm crab-time photos:mudflat:penryn:SAM5388.jpg photos:crabs:autocrab-3.png 2083 human 1 0
+Wednesday, April 27th, 2016 2:23:50pm click 2 photos:mudflat:penryn:SAM5388.jpg photos:crabs:autocrab-3.png 1166 687 3.399438737505325 2083 1179.5706883789785 691.6358253145818 1 1
+Wednesday, April 27th, 2016 2:23:52pm crab-time photos:mudflat:penryn:DSC5769.jpg photos:crabs:autocrab-15.png 1128 human 1 0
+Wednesday, April 27th, 2016 2:23:52pm click 2 photos:mudflat:penryn:DSC5769.jpg photos:crabs:autocrab-15.png 911 426 1.2399251367507276 1128 909.5484826054775 433.4566987416728 1 1
+Wednesday, April 27th, 2016 2:23:54pm crab-time photos:mudflat:penryn:DSC5748.jpg photos:crabs:autocrab-5.png 1126 human 1 0
+Wednesday, April 27th, 2016 2:23:54pm click 2 photos:mudflat:penryn:DSC5748.jpg photos:crabs:autocrab-5.png 904 320 4.740564805192738 1126 911.9170984455959 333.9748334566988 1 1
+Wednesday, April 27th, 2016 2:23:55pm crab-time photos:mudflat:penryn:DSC5759.jpg photos:crabs:autocrab-22.png 811 human 1 0
+Wednesday, April 27th, 2016 2:23:56pm click 2 photos:mudflat:penryn:DSC5759.jpg photos:crabs:autocrab-22.png 955 287 4.3543148382346155 811 969.9481865284974 298.44559585492226 1 1
+Wednesday, April 27th, 2016 2:23:57pm crab-time photos:mudflat:penryn:DSC5788.jpg photos:crabs:autocrab-7.png 856 human 1 0
+Wednesday, April 27th, 2016 2:23:57pm click 2 photos:mudflat:penryn:DSC5788.jpg photos:crabs:autocrab-7.png 678 307 1.6349368445531565 856 702.2945965951147 375.4256106587713 1 1
+Wednesday, April 27th, 2016 2:23:59pm crab-time photos:mudflat:penryn:DSC5764.jpg photos:crabs:autocrab-23.png 1355 human 1 0
+Wednesday, April 27th, 2016 2:23:59pm click 2 photos:mudflat:penryn:DSC5764.jpg photos:crabs:autocrab-23.png 323 427 5.039783162236313 1355 291.339748334567 442.9311621021466 1 1
+Wednesday, April 27th, 2016 2:24:01pm crab-time photos:mudflat:penryn:SAM5412.jpg photos:crabs:autocrab-18.png 955 human 1 0
+Wednesday, April 27th, 2016 2:24:01pm click 2 photos:mudflat:penryn:SAM5412.jpg photos:crabs:autocrab-18.png 686 710 3.203932388788478 955 703.478904515174 703.478904515174 1 1
+Wednesday, April 27th, 2016 2:24:08pm player name 2 OOO
+Wednesday, April 27th, 2016 2:24:16pm player human true 3
+Wednesday, April 27th, 2016 2:24:19pm crab-time photos:rockpool:gylly:SAM4787.jpg photos:crabs:autocrab-19.png 2789 human 0 0
+Wednesday, April 27th, 2016 2:24:19pm click 3 photos:rockpool:gylly:SAM4787.jpg photos:crabs:autocrab-19.png 796 700 3.5857584906800994 2789 780.4589193190229 683.3456698741672 1 0
+Wednesday, April 27th, 2016 2:24:20pm crab-time photos:rockpool:gylly:DSC5837.jpg photos:crabs:autocrab-14.png 891 human 0 0
+Wednesday, April 27th, 2016 2:24:20pm click 3 photos:rockpool:gylly:DSC5837.jpg photos:crabs:autocrab-14.png 657 632 0.11094211881167503 891 643.0792005921539 660.8438193930422 1 0
+Wednesday, April 27th, 2016 2:24:22pm crab-time photos:rockpool:gylly:SAM4775.jpg photos:crabs:autocrab-18.png 920 human 0 0
+Wednesday, April 27th, 2016 2:24:22pm click 3 photos:rockpool:gylly:SAM4775.jpg photos:crabs:autocrab-18.png 927 509 2.2650018380491246 920 905.9955588452998 496.22501850481126 1 0
+Wednesday, April 27th, 2016 2:24:24pm crab-time photos:rockpool:gylly:SAM5124.jpg photos:crabs:autocrab-17.png 1245 human 0 0
+Wednesday, April 27th, 2016 2:24:24pm click 3 photos:rockpool:gylly:SAM5124.jpg photos:crabs:autocrab-17.png 524 615 0.684627584129992 1245 518.7268689859363 615.840118430792 1 0
+Wednesday, April 27th, 2016 2:24:25pm click 3 photos:rockpool:gylly:DSC5864.jpg photos:crabs:autocrab-0.png 1096 298 0.06023378337900366 1345 1095.4848260547742 320.9474463360474 1 0
+Wednesday, April 27th, 2016 2:24:26pm crab-time photos:rockpool:gylly:DSC5864.jpg photos:crabs:autocrab-0.png 1345 human 0 0
+Wednesday, April 27th, 2016 2:24:27pm crab-time photos:rockpool:gylly:SAM4700.jpg photos:crabs:autocrab-11.png 1268 human 0 0
+Wednesday, April 27th, 2016 2:24:28pm click 3 photos:rockpool:gylly:SAM4700.jpg photos:crabs:autocrab-11.png 525 688 4.0677402310709 1268 484.3819393042191 675.0555144337528 1 0
+Wednesday, April 27th, 2016 2:24:29pm crab-time photos:rockpool:gylly:DSC5850.jpg photos:crabs:autocrab-23.png 770 human 0 0
+Wednesday, April 27th, 2016 2:24:29pm click 3 photos:rockpool:gylly:DSC5850.jpg photos:crabs:autocrab-23.png 713 430 5.01260103524122 770 722.4278312361214 458.3271650629164 1 0
+Wednesday, April 27th, 2016 2:24:30pm crab-time photos:rockpool:gylly:SAM4724.jpg photos:crabs:autocrab-10.png 1127 human 0 0
+Wednesday, April 27th, 2016 2:24:31pm click 3 photos:rockpool:gylly:SAM4724.jpg photos:crabs:autocrab-10.png 669 445 3.009961934097803 1127 711.7690599555884 479.64470762398224 1 0
+Wednesday, April 27th, 2016 2:24:32pm crab-time photos:rockpool:gylly:SAM5100.jpg photos:crabs:autocrab-8.png 1050 human 0 0
+Wednesday, April 27th, 2016 2:24:32pm click 3 photos:rockpool:gylly:SAM5100.jpg photos:crabs:autocrab-8.png 882 360 1.6125387402203737 1050 890.59955588453 348.1865284974093 1 0
+Wednesday, April 27th, 2016 2:24:34pm crab-time photos:rockpool:gylly:SAM4907.jpg photos:crabs:autocrab-4.png 1752 human 0 0
+Wednesday, April 27th, 2016 2:24:35pm click 3 photos:rockpool:gylly:SAM4907.jpg photos:crabs:autocrab-4.png 1177 382 1.735003206152951 1752 1168.9119170984457 369.50407105847523 1 0
+Wednesday, April 27th, 2016 2:24:37pm crab-time photos:rockpool:gylly:SAM4946.jpg photos:crabs:autocrab-15.png 2177 human 0 0
+Wednesday, April 27th, 2016 2:24:37pm click 3 photos:rockpool:gylly:SAM4946.jpg photos:crabs:autocrab-15.png 555 392 1.0715936158711366 2177 588.6010362694301 410.95484826054775 1 0
+Wednesday, April 27th, 2016 2:24:39pm crab-time photos:rockpool:gylly:DSC5860.jpg photos:crabs:autocrab-27.png 1321 human 0 0
+Wednesday, April 27th, 2016 2:24:39pm click 3 photos:rockpool:gylly:DSC5860.jpg photos:crabs:autocrab-27.png 799 711 0.5287704148353677 1321 787.5647668393782 679.7927461139897 1 0
+Wednesday, April 27th, 2016 2:24:41pm crab-time photos:rockpool:gylly:SAM4382.jpg photos:crabs:autocrab-2.png 1732 human 0 0
+Wednesday, April 27th, 2016 2:24:41pm click 3 photos:rockpool:gylly:SAM4382.jpg photos:crabs:autocrab-2.png 986 551 5.419744085817399 1732 1001.9245003700962 513.9896373056995 1 0
+Wednesday, April 27th, 2016 2:24:43pm crab-time photos:rockpool:gylly:SAM5112.jpg photos:crabs:autocrab-12.png 1082 human 0 0
+Wednesday, April 27th, 2016 2:24:43pm click 3 photos:rockpool:gylly:SAM5112.jpg photos:crabs:autocrab-12.png 734 303 3.2293975502430743 1082 714.1376757957069 286.60251665433015 1 0
+Wednesday, April 27th, 2016 2:24:45pm crab-time photos:rockpool:gylly:DSC5844.jpg photos:crabs:autocrab-20.png 1106 human 0 0
+Wednesday, April 27th, 2016 2:24:45pm click 3 photos:rockpool:gylly:DSC5844.jpg photos:crabs:autocrab-20.png 413 379 6.090610400477545 1106 432.2723908216136 386.08438193930425 1 0
+Wednesday, April 27th, 2016 2:24:46pm crab-time photos:rockpool:gylly:DSC5907.jpg photos:crabs:autocrab-26.png 878 human 0 0
+Wednesday, April 27th, 2016 2:24:46pm click 3 photos:rockpool:gylly:DSC5907.jpg photos:crabs:autocrab-26.png 1107 375 4.423144870366406 878 1081.2731310140637 323.3160621761658 1 0
+Wednesday, April 27th, 2016 2:26:37pm player human true 3
+Wednesday, April 27th, 2016 2:26:40pm crab-time photos:rockpool:gylly:SAM4382.jpg photos:crabs:autocrab-10.png 2558 human 0 0
+Wednesday, April 27th, 2016 2:26:40pm click 4 photos:rockpool:gylly:SAM4382.jpg photos:crabs:autocrab-10.png 1219 408 0.16880610287377093 2558 1221.0214655810512 429.9037749814952 1 0
+Wednesday, April 27th, 2016 2:26:44pm click 4 photos:rockpool:gylly:SAM4775.jpg photos:crabs:autocrab-19.png 1163 371 3.849396857338125 2527 1042.1909696521095 491.4877868245744 0 0
+Wednesday, April 27th, 2016 2:26:49pm click 4 photos:rockpool:gylly:SAM4775.jpg photos:crabs:autocrab-19.png 1163 371 3.849396857338125 6945 574.3893412287194 487.9348630643967 0 0
+Wednesday, April 27th, 2016 2:26:50pm click 4 photos:rockpool:gylly:SAM4775.jpg photos:crabs:autocrab-19.png 1163 371 3.849396857338125 8674 510.43671354552185 315.0259067357513 0 0
+Wednesday, April 27th, 2016 2:26:51pm click 4 photos:rockpool:gylly:SAM4775.jpg photos:crabs:autocrab-19.png 1163 371 3.849396857338125 9719 1263.6565507031828 279.4966691339748 0 0
+Wednesday, April 27th, 2016 2:26:52pm crab-time photos:rockpool:gylly:SAM4775.jpg photos:crabs:autocrab-19.png 10008 human 0 1
+Wednesday, April 27th, 2016 2:26:55pm click 4 photos:rockpool:gylly:SAM5124.jpg photos:crabs:autocrab-22.png 1107 210 2.064753449519924 1163 1120.3552923760178 239.23019985196152 1 0
+Wednesday, April 27th, 2016 2:26:55pm crab-time photos:rockpool:gylly:SAM5124.jpg photos:crabs:autocrab-22.png 1163 human 0 0
+Wednesday, April 27th, 2016 2:26:56pm crab-time photos:rockpool:gylly:DSC5844.jpg photos:crabs:autocrab-4.png 700 human 0 0
+Wednesday, April 27th, 2016 2:26:56pm click 4 photos:rockpool:gylly:DSC5844.jpg photos:crabs:autocrab-4.png 925 478 2.8942500742372257 700 898.8897113249445 487.9348630643967 1 0
+Wednesday, April 27th, 2016 2:26:58pm crab-time photos:rockpool:gylly:SAM4700.jpg photos:crabs:autocrab-17.png 1330 human 0 0
+Wednesday, April 27th, 2016 2:26:58pm click 4 photos:rockpool:gylly:SAM4700.jpg photos:crabs:autocrab-17.png 963 617 5.473847346127796 1330 937.9718726868986 598.0754996299038 1 0
+Wednesday, April 27th, 2016 2:26:59pm crab-time photos:rockpool:gylly:DSC5850.jpg photos:crabs:autocrab-3.png 755 human 0 0
+Wednesday, April 27th, 2016 2:27:00pm click 4 photos:rockpool:gylly:DSC5850.jpg photos:crabs:autocrab-3.png 773 515 0.21080829519879443 755 768.6158401184308 493.85640266469284 1 0
+Wednesday, April 27th, 2016 2:27:02pm crab-time photos:rockpool:gylly:SAM5112.jpg photos:crabs:autocrab-26.png 1960 human 0 0
+Wednesday, April 27th, 2016 2:27:02pm click 4 photos:rockpool:gylly:SAM5112.jpg photos:crabs:autocrab-26.png 431 576 5.960586945835842 1960 470.1702442635085 536.4914877868246 1 0
+Wednesday, April 27th, 2016 2:27:10pm click 4 photos:rockpool:gylly:SAM4787.jpg photos:crabs:autocrab-7.png 928 393 3.1375894455368036 7428 1024.4263508512213 196.59511472982976 0 0
+Wednesday, April 27th, 2016 2:27:11pm click 4 photos:rockpool:gylly:SAM4787.jpg photos:crabs:autocrab-7.png 928 393 3.1375894455368036 8310 576.7579570688379 358.8452997779423 0 0
+Wednesday, April 27th, 2016 2:27:12pm click 4 photos:rockpool:gylly:SAM4787.jpg photos:crabs:autocrab-7.png 928 393 3.1375894455368036 9827 196.59511472982976 772.1687638786085 0 0
+Wednesday, April 27th, 2016 2:27:12pm crab-time photos:rockpool:gylly:SAM4787.jpg photos:crabs:autocrab-7.png 10022 human 0 1
+Wednesday, April 27th, 2016 2:27:20pm crab-time photos:rockpool:gylly:SAM4724.jpg photos:crabs:autocrab-18.png 4628 human 0 2
+Wednesday, April 27th, 2016 2:27:28pm click 4 photos:rockpool:gylly:SAM4946.jpg photos:crabs:autocrab-1.png 817 697 4.182890847491293 5602 451.22131754256105 388.4529977794227 0 0
+Wednesday, April 27th, 2016 2:27:29pm click 4 photos:rockpool:gylly:SAM4946.jpg photos:crabs:autocrab-1.png 817 697 4.182890847491293 6583 830.19985196151 311.47298297557364 0 0
+Wednesday, April 27th, 2016 2:27:29pm click 4 photos:rockpool:gylly:SAM4946.jpg photos:crabs:autocrab-1.png 817 697 4.182890847491293 7168 786.380458919319 217.91265729089562 0 0
+Wednesday, April 27th, 2016 2:27:32pm crab-time photos:rockpool:gylly:SAM4946.jpg photos:crabs:autocrab-1.png 10027 human 0 1
+Wednesday, April 27th, 2016 2:27:35pm click 4 photos:rockpool:gylly:DSC5837.jpg photos:crabs:autocrab-12.png 610 513 2.63991780814492 1080 600.4441154700222 522.279792746114 1 0
+Wednesday, April 27th, 2016 2:27:35pm crab-time photos:rockpool:gylly:DSC5837.jpg photos:crabs:autocrab-12.png 1080 human 0 0
+Wednesday, April 27th, 2016 2:27:37pm crab-time photos:rockpool:gylly:SAM4907.jpg photos:crabs:autocrab-11.png 1168 human 0 0
+Wednesday, April 27th, 2016 2:27:37pm click 4 photos:rockpool:gylly:SAM4907.jpg photos:crabs:autocrab-11.png 955 638 3.9553971186114407 1168 889.4152479644707 613.4715025906736 1 0
+Wednesday, April 27th, 2016 2:27:38pm crab-time photos:rockpool:gylly:DSC5864.jpg photos:crabs:autocrab-2.png 916 human 0 0
+Wednesday, April 27th, 2016 2:27:38pm click 4 photos:rockpool:gylly:DSC5864.jpg photos:crabs:autocrab-2.png 1200 632 1.9885426798937176 916 1242.3390081421169 630.0518134715026 1 0
+Wednesday, April 27th, 2016 2:27:40pm crab-time photos:rockpool:gylly:SAM5100.jpg photos:crabs:autocrab-9.png 1350 human 0 0
+Wednesday, April 27th, 2016 2:27:40pm click 4 photos:rockpool:gylly:SAM5100.jpg photos:crabs:autocrab-9.png 1231 693 5.479137343020895 1350 1212.7313101406367 701.1102886750555 1 0
+Wednesday, April 27th, 2016 2:27:42pm click 4 photos:rockpool:gylly:DSC5860.jpg photos:crabs:autocrab-20.png 816 206 5.52427899872737 1505 799.4078460399704 252.25758697261287 1 0
+Wednesday, April 27th, 2016 2:27:42pm crab-time photos:rockpool:gylly:DSC5860.jpg photos:crabs:autocrab-20.png 1505 human 0 0
+Wednesday, April 27th, 2016 2:27:44pm crab-time photos:rockpool:gylly:DSC5907.jpg photos:crabs:autocrab-6.png 974 human 0 0
+Wednesday, April 27th, 2016 2:27:44pm click 4 photos:rockpool:gylly:DSC5907.jpg photos:crabs:autocrab-6.png 626 584 0.110481530045774 974 630.0518134715026 603.9970392301999 1 0

@@ -47,8 +47,6 @@
 
 (open-log "log.txt")
 
-
-
 (define (pluto-response txt)
   (response/full
    200                ; code
@@ -66,52 +64,81 @@
       (pluto-response (scheme->json '("hello")))))
 
    (register
-    (req 'player '(species played_before age_range))
-    (lambda (species played-before age-range)
-      (let* ((id (insert-player db species played-before age-range)))
-        (display id)(newline)
+    (req 'player '(played_before age_range))
+    (lambda (played-before age-range)
+      (let* ((id (insert-player db played-before age-range)))
         (pluto-response (scheme->json (list id))))))
 
    (register
-    (req 'click '(player_id
+    (req 'game '(player_id species bg_location))
+    (lambda (player_id species bg_location)
+      (let* ((id (insert-game db player_id species bg_location)))
+        (pluto-response (scheme->json (list id))))))
+
+   (register
+    (req 'click '(game_id
                   photo_name
-                  photo_offset_x
-                  photo_offset_y
+                  crab_name
+                  crab_x
+                  crab_y
+                  crab_rot
                   time_stamp
                   x_position
                   y_position
-                  success
-                  level))
-    (lambda (player_id
+                  success))
+    (lambda (game_id
              photo_name
-             photo_offset_x
-             photo_offset_y
+             crab_name
+             crab_x
+             crab_y
+             crab_rot
              time_stamp
              x_position
              y_position
-             success
-             level)
+             success)
       (let* ((id (insert-click
                   db
-                  player_id
+                  game_id
                   photo_name
-                  (number->string (inexact->exact (round (string->number photo_offset_x))))
-                  (number->string (inexact->exact (round (string->number photo_offset_y))))
+                  crab_name
+                  (number->string (inexact->exact (round (string->number crab_x))))
+                  (number->string (inexact->exact (round (string->number crab_y))))
+                  crab_rot
                   time_stamp
                   x_position
                   y_position
-                  success
-                  level)))
+                  success)))
         (pluto-response (scheme->json '())))))
 
    (register
-    (req 'score '(player_id level))
-    (lambda (player-id level)
-      (let ((av (get-player-average db (string->number player-id) level))
-            (c (get-player-count db (string->number player-id))))
+    (req 'crab-time '(game_id
+                      photo_name
+                      crab_name
+                      time_stamp
+                      success_code))
+    (lambda (game_id
+             photo_name
+             crab_name
+             time_stamp
+             success_code)
+      (let* ((id (insert-crab-time
+                  db
+                  game_id
+                  photo_name
+                  crab_name
+                  time_stamp
+                  success_code
+                  )))
+        (pluto-response (scheme->json '())))))
+
+   (register
+    (req 'score '(game_id))
+    (lambda (game_id)
+      (let ((av (get-game-average db (string->number game_id)))
+            (c (get-game-count db (string->number game_id))))
         (pluto-response
          (scheme->json (list av
-                             (get-player-rank db av level)
+                             (get-game-rank db game_id av)
                              (if (not c) 0 c)))))))
 
    (register
@@ -119,6 +146,12 @@
     (lambda ()
       (pluto-response
        (scheme->json (get-hiscores db)))))
+
+   (register
+    (req 'stats '())
+    (lambda ()
+      (pluto-response
+       (scheme->json (get-stats db)))))
 
 
    (register
