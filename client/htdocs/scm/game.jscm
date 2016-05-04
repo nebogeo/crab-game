@@ -135,7 +135,7 @@
 (define (crab-dic-photos l) (list-ref l 7))
 
 (define (button-image)
-  (find-image (choose (list "button-1.png"))))
+  (find-image (choose (list "button-1.png" "button-2.png" "button-3.png"))))
 
 (define (small-button-image)
   (find-image (choose (list "button-s1.png"))))
@@ -257,7 +257,7 @@
 (define (nightjar-new-game-images c)
   (let ((backgrounds
          (cond
-          ((eq? (nightjar-player-type (game-data c)) "human")
+          ((eq? (nightjar-player-type (game-data c)) "goby")
            (cond
             ((eq? (nightjar-level (game-data c)) 0)
              (rockpool-photos photos))
@@ -275,8 +275,7 @@
              (musselbed-dic-photos photos))))))
         (crab-images
          (cond
-          ((eq? (nightjar-player-type (game-data c)) "human")
-           (msg "human")
+          ((eq? (nightjar-player-type (game-data c)) "goby")
            (crab-photos photos))
           (else
            (msg "other")
@@ -306,6 +305,48 @@
           (nightjar-all-text ctx "Loading your first crab..."))
         c)))))
 
+(define (random-weed)
+  (choose (list
+           "cutoutweed.png"
+           "cutoutweed2.png"
+           "cutoutweed3.png"
+           "cutoutweed4.png"
+           "cutoutweed5.png"
+           "cutoutweed6.png"
+           "cutoutweed7.png"
+           "cutoutweed8.png"
+           )))
+
+(define pos-list
+  (build-list
+   25 (lambda (i)
+        (list (* (rndf) screen-width)
+              (* (rndf) screen-height)
+              (rndf)
+              (random-weed)))))
+
+
+(define (draw-weed ctx c)
+  (ctx.save)
+  (set! ctx.globalAlpha 0.3)
+  (for-each
+   (lambda (pos)
+     (let ((img (find-image (list-ref pos 3))))
+       (ctx.save)
+       (ctx.translate (car pos) screen-height)
+;;       (ctx.translate (/ img.width 2) img.height)
+       (ctx.scale
+        (+ (list-ref pos 2) 0.5)
+        (+ (list-ref pos 2) 0.5))
+
+       (ctx.rotate (* 0.02 (sin (+ (* (list-ref pos 2) 5)
+                                   (* 0.001 (game-time c))))))
+;;       (ctx.translate (- 0 (/ img.width 2)) (- 0 img.height))
+       (ctx.drawImage img (/ -img.width 2) -img.height)
+       (ctx.restore)))
+   pos-list)
+  (ctx.restore))
+
 (define (nightjar-intro c)
   (let ((icon-x 150)
         (icon-y (+ default-button-y 100)))
@@ -314,6 +355,8 @@
      (empty-nightjar-data))
    (game-modify-render
     (lambda (ctx)
+      (draw-weed ctx c)
+
       (nightjar-heading ctx "Crab game title")
       (nightjar-text ctx "Hunt for crabs and help sensory research")
       (set! ctx.font "normal 30pt open-sans"))
@@ -324,7 +367,7 @@
        "Start playing"
        (- default-button-x 200)
        default-button-y
-       "slidy"
+       "rotate"
        (button-image)
        (lambda (c)
          (play-sound "button.wav")
@@ -334,7 +377,7 @@
        "High Scores"
        (+ default-button-x 200)
        default-button-y
-       "slidy"
+       "rotate"
        (button-image)
        (lambda (c)
          (server-call-mutate
@@ -357,6 +400,7 @@
    (lambda (t c) c)
    (game-modify-render
     (lambda (ctx)
+      (draw-weed ctx c)
       (set! ctx.font "normal 50pt open-sans")
       (wrap-text ctx (string-append "Hall of fame") 0 100 1000 70)
       (set! ctx.font "normal 30pt open-sans")
@@ -389,7 +433,7 @@
     (game-modify-buttons
      (list
       (image-button
-       "Back" 1150 720 "slidy" (button-image)
+       "Back" 1150 720 "rotate" (button-image)
        (lambda (c)
          (if ret-to-intro
              (nightjar-intro c)
@@ -400,6 +444,7 @@
 (define (nightjar-experiment-screen c)
   (game-modify-render
    (lambda (ctx)
+     (draw-weed ctx c)
      (nightjar-all-text ctx "We would like to use results from your game for a scientific publication, is that ok?")
      (set! ctx.font "normal 30pt open-sans")
      (wrap-text ctx "We are using age and timing information" 0 450 1000 75))
@@ -411,7 +456,7 @@
       "Yes that's fine"
       (+ default-button-x button-gap)
       default-button-y
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -421,7 +466,7 @@
       "Back"
       (- default-button-x button-gap)
       default-button-y
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -431,6 +476,7 @@
 (define (nightjar-age-screen c)
   (game-modify-render
    (lambda (ctx)
+     (draw-weed ctx c)
      (nightjar-all-text ctx "What is your age?")
      (set! ctx.font "normal 30pt open-sans"))
    (game-modify-buttons
@@ -440,7 +486,7 @@
               title
               (+ (- default-button-x 750) (* id 250))
               default-button-y
-              "slidy"
+              "rotate"
               (small-button-image)
               (lambda (c)
                 (play-sound "button.wav")
@@ -478,6 +524,7 @@
 (define (nightjar-played-before-screen c)
   (game-modify-render
    (lambda (ctx)
+     (draw-weed ctx c)
      (nightjar-all-text
       ctx
       (+ "Have you played this game before?"))
@@ -489,7 +536,7 @@
       "Yes"
       (+ default-button-x button-gap)
       default-button-y
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -499,7 +546,7 @@
       "No"
       (- default-button-x button-gap)
       default-button-y
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -509,6 +556,7 @@
 (define (nightjar-species-screen c)
   (game-modify-render
    (lambda (ctx)
+     (draw-weed ctx c)
      (nightjar-all-text ctx "What predator species would you like to be?")
      (set! ctx.font "normal 30pt open-sans")
      (wrap-text ctx "They see the world differently..." 0 450 1000 75)
@@ -518,37 +566,38 @@
     (list
 
      (image-button
-      "Hungry human"
-      (+ default-button-x button-gap)
+      "Goby"
+      (- default-button-x button-gap)
       default-button-y
-      "slidy"
-      (button-image)
+      "rotate"
+      (find-image "goby.png")
       (lambda (c)
         (play-sound "button.wav")
         (nightjar-explain-screen
          (game-modify-data
           (lambda (d)
-            (nightjar-modify-player-type "human" d))
+            (nightjar-modify-player-type "goby" d))
           c))))
 
      (image-button
-      "Crab eating fish"
-      (- default-button-x button-gap)
+      "Pollock"
+      (+ default-button-x button-gap)
       default-button-y
-      "slidy"
-      (button-image)
+      "rotate"
+      (find-image "pollock.png")
       (lambda (c)
         (play-sound "button.wav")
         (nightjar-explain-screen
          (game-modify-data
           (lambda (d)
-            (nightjar-modify-player-type "fish" d))
+            (nightjar-modify-player-type "pollock" d))
           c))))
     ) c)))
 
 (define (nightjar-species-other-screen c)
   (game-modify-render
    (lambda (ctx)
+     (draw-weed ctx c)
      (nightjar-all-text ctx "Thank you! Choose your species to play again.")
      (set! ctx.font "normal 30pt open-sans")
      )
@@ -557,38 +606,38 @@
     (list
 
      (image-button
-      "Hungry human"
-      (+ default-button-x button-gap)
+      "Goby"
+      (- default-button-x button-gap)
       (- default-button-y 100)
-      "slidy"
-      (button-image)
+      "rotate"
+      (find-image "goby.png")
       (lambda (c)
         (play-sound "button.wav")
         (nightjar-explain-screen
          (game-modify-data
           (lambda (d)
-            (nightjar-modify-player-type "human" d))
+            (nightjar-modify-player-type "goby" d))
           c))))
 
      (image-button
-      "Crab eating fish"
-      (- default-button-x button-gap)
+      "Pollock"
+      (+ default-button-x button-gap)
       (- default-button-y 100)
-      "slidy"
-      (button-image)
+      "rotate"
+      (find-image "pollock.png")
       (lambda (c)
         (play-sound "button.wav")
         (nightjar-explain-screen
          (game-modify-data
           (lambda (d)
-            (nightjar-modify-player-type "fish" d))
+            (nightjar-modify-player-type "pollock" d))
           c))))
 
      (image-button
       "Exit"
       (+ default-button-x button-gap)
       (+ default-button-y 100)
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -598,7 +647,7 @@
       "High Scores"
       (- default-button-x button-gap)
       (+ default-button-y 100)
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
@@ -643,6 +692,7 @@
 (define (nightjar-explain-screen c)
   (game-modify-render
    (lambda (ctx)
+     (draw-weed ctx c)
      (ctx.drawImage (find-image "example-crab.jpg") 450 200)
      (set! ctx.font "normal 30pt open-sans")
      (wrap-text ctx "There is one crab hidden in every photo, touch it as soon as you see it" 0 100 1000 75)
@@ -654,7 +704,7 @@
       "Rock pool"
       (- default-button-x 400)
       (+ default-button-y 150)
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (record-game c "rockpool")))
@@ -663,7 +713,7 @@
       "Mudflats"
       default-button-x
       (+ default-button-y 150)
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (record-game c "mudflat")))
@@ -672,7 +722,7 @@
       "Mussel bed"
       (+ default-button-x 400)
       (+ default-button-y 150)
-      "slidy"
+      "rotate"
       (button-image)
       (lambda (c)
         (record-game c "musselbed")))
@@ -870,7 +920,7 @@
       (image-button
        "Next"
        (- default-button-x button-gap)
-       (+ default-button-y 50) "slidy"
+       (+ default-button-y 50) "rotate"
        (small-button-image)
        (lambda (c)
          (play-sound "button.wav")
@@ -882,7 +932,7 @@
       (image-button
        "Quit"
        (+ default-button-x button-gap)
-       (+ default-button-y 50) "slidy"
+       (+ default-button-y 50) "rotate"
        (small-button-image)
        (lambda (c)
          (play-sound "button.wav")
@@ -933,7 +983,7 @@
       (image-button
        "Next crab"
        default-button-x
-       (+ default-button-y 50) "slidy"
+       (+ default-button-y 50) "rotate"
        (button-image)
        (lambda (c)
          (play-sound "button.wav")
@@ -975,6 +1025,7 @@
 (define (nightjar-finish c av score count reason)
   (game-modify-render
    (lambda (ctx)
+     (draw-weed ctx c)
 
      (nightjar-all-text
       ctx (+ reason " Your average crab spotting time is " (trunc (/ av 1000)) " seconds."))
@@ -992,7 +1043,7 @@
            "Enter Your Name"
            default-button-x
            (+ default-button-y 200)
-           "slidy"
+           "rotate"
            (button-image)
            (lambda (c)
              (play-sound "button.wav")
@@ -1002,7 +1053,7 @@
            "Back"
            default-button-x
            (+ default-button-y 200)
-           "slidy"
+           "rotate"
            (button-image)
            (lambda (c)
              (play-sound "button.wav")
@@ -1047,6 +1098,7 @@
    (lambda (t c) c)
    (game-modify-render
     (lambda (ctx)
+      (draw-weed ctx c)
       (set! ctx.font "normal 30pt open-sans")
       (wrap-text ctx "Enter your name" 0 200 1000 70)
       (set! ctx.font "normal 50pt open-sans")
@@ -1068,7 +1120,7 @@
        (image-button "Delete" 1250 700 #t (small-button-image)
                      (lambda (c) (type-delete c)))
 
-       (image-button "Done" 1500 700 "slidy" (small-button-image)
+       (image-button "Done" 1500 700 "rotate" (small-button-image)
                      (lambda (c)
                        (server-call
                         "player-name"
@@ -1099,12 +1151,25 @@
 
 (load-images!
  (list "button-1.png"
+       "button-2.png"
+       "button-3.png"
        "button-s1.png"
        "quit.png"
        "right.png"
        "wrong.png"
        "foam.png"
        "sensory-ecology.png"
-       "example-crab.jpg")
+       "example-crab.jpg"
+       "cutoutweed.png"
+       "cutoutweed2.png"
+       "cutoutweed3.png"
+       "cutoutweed4.png"
+       "cutoutweed5.png"
+       "cutoutweed6.png"
+       "cutoutweed7.png"
+       "cutoutweed8.png"
+       "goby.png"
+       "pollock.png"
+       )
  (lambda ()
    (start-game canvas ctx)))

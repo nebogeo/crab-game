@@ -170,18 +170,18 @@
     (ctx.fillText txt (+ x (- (/ screen-width 2) (/ m.width 2))) y)))
 
 (define (shadow-text ctx text x y)
-  (set! ctx.fillStyle "#000")
+  (set! ctx.fillStyle "#fff")
   (ctx.fillText text (+ x 4) (+ y 4))
-  (set! ctx.fillStyle "#000")
+  (set! ctx.fillStyle "#fff")
   (ctx.fillText text x y))
 
 (define (wrap-shadow-text ctx text x y max-width line-height)
-  (set! ctx.fillStyle "#000")
+  (set! ctx.fillStyle "#fff")
   (ctx.save)
   (ctx.translate 4 4)
   (wrap-text ctx text x y max-width line-height)
   (ctx.restore)
-  (set! ctx.fillStyle "#000")
+  (set! ctx.fillStyle "#fff")
   (wrap-text ctx text x y max-width line-height))
 
 (define (wrap-text ctx text x y max-width line-height)
@@ -303,7 +303,8 @@
   (when (eq? (button-jitter b) "rotate")
         (ctx.translate (/ (button-w b) 2)
                        (/ (button-h b) 2))
-        (ctx.rotate (* 0.05 (Math.sin (+ (* (button-offs b) 10) (* t 0.01)))))
+        (ctx.rotate (* 0.05 (Math.sin (+ (* (button-offs b) 10)
+                                         (* t 0.005)))))
         (ctx.translate (- 0 (/ (button-w b) 2))
                        (- 0 (/ (button-h b) 2))))
   (when (eq? (button-jitter b) "slidy")
@@ -312,7 +313,7 @@
 
 (define (button-text-jumpy-render! b t)
   (set! ctx.font "normal 15pt 'Press Start 2P'")
-  (set! ctx.fillStyle "#000")
+  (set! ctx.fillStyle "#fff")
   (let ((m (ctx.measureText (button-name b)))
         (cm (ctx.measureText "w"))
         (pos 0)
@@ -424,7 +425,7 @@
         (ctx.save)
         (ctx.translate (button-x b) (button-y b))
         (button-do-jittering b t)
-        (set! ctx.strokeStyle "#000")
+        (set! ctx.strokeStyle "#fff")
         (ctx.strokeRect
          0 0 (button-w b) (button-h b))
         (ctx.fillText (button-name b) (/ (button-w b) 2) (+ 20 (/ (button-h b) 2)))
@@ -466,7 +467,7 @@
   (ctx.arc (button-x b) (button-y b)
            (button-r b) 0 (* Math.PI 2) true)
   (ctx.closePath)
-  (set! ctx.strokeStyle "#000")
+  (set! ctx.strokeStyle "#fff")
   (ctx.stroke))
 
 (define (button-render! ctx t b)
@@ -515,7 +516,7 @@
 
 (define (nightjar-draw-clock ctx time max-time)
   (set! ctx.lineWidth 4)
-  (set! ctx.strokeStyle "#000")
+  (set! ctx.strokeStyle "#fff")
   (stroke-clock ctx 74 74 time max-time)
   (ctx.stroke)
 
@@ -655,7 +656,7 @@
         (when (eq? clear-screen 1)
               (ctx.clearRect 0 0 screen-width screen-height))
         (let ((t (- (js "new Date()") load-time)))
-          (set! ctx.fillStyle "#000");
+          (set! ctx.fillStyle "#fff");
 ;;          (ctx.fillText (+ "Time is: " t) 10 750)
           (top-update-game t game)
 
@@ -763,7 +764,7 @@
 
 (define (nightjar-heading ctx txt)
   (set! ctx.font "normal 75pt open-sans")
-  (set! ctx.fillStyle "#000")
+  (set! ctx.fillStyle "#fff")
   (wrap-text ctx txt 0 200 1000 100)
   (set! ctx.font "normal 30pt open-sans"))
 
@@ -788,5 +789,5 @@
 
 (define load-time (js "new Date()"))
 
-(set! ctx.fillStyle "#000")
-(set! ctx.strokeStyle "#000")
+(set! ctx.fillStyle "#fff")
+(set! ctx.strokeStyle "#fff")

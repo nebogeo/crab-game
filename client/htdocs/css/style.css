@@ -16,5 +16,5 @@ html, body {
 #canvas {
     width: 100%;
     min-width: 800px;
-    background: url(../images/bg.png);
+    /*background: url(../images/bg.png);*/
 }
