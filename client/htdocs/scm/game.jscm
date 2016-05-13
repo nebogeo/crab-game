@@ -166,8 +166,85 @@
 (define default-button-y (+ (/ screen-height 2) 120))
 (define button-gap 250)
 
+(define (build-bubble id vel fuzz age)
+  (list id vel fuzz age))
+
+(define (bubble-id b) (list-ref b 0))
+(define (bubble-modify-id v b) (list-replace b 0 v))
+(define (bubble-vel b) (list-ref b 1))
+(define (bubble-modify-vel v b) (list-replace b 1 v))
+(define (bubble-fuzz b) (list-ref b 2))
+(define (bubble-age b) (list-ref b 3))
+(define (bubble-modify-age v b) (list-replace b 3 v))
+
+(define bubble-pos (list (list 100 100) (list 200 200)))
+
+(define (update-bubble-pos c)
+  (set! bubble-pos
+        (map
+         (lambda (b)
+           (list (+ 50 (button-x b) (* (/ (button-w b) 2) 0.6))
+                 (+ 20 (button-y b) (* (/ (button-h b) 2) 0.6))))
+         (game-buttons c)))
+  c)
+
+(define (bubbles-hit! id c)
+  (particle-system-user-update!
+   (lambda (bubble)
+     (if (eq? (bubble-id bubble) id)
+         (bubble-modify-vel (v2mul (list (* (crndf) 0.5) (- 0 (rndf))) 5) bubble)
+         (bubble-modify-vel (list 1000 1000) bubble)))
+   (nightjar-bubbles (game-data c))))
+
+
+(define (build-bubbles)
+  (particle-system-modify-update-hook
+   (lambda (pos scale trans bubble)
+      (if (> (bubble-age bubble) 200)
+          (let ((id (random (length bubble-pos))))
+            (list
+             (v2add
+              (list-ref bubble-pos id)
+              (v2mul2 (rndcirc2d) (vec2 140 80)))
+             (list 0 0) 1
+             (bubble-modify-id
+              id (bubble-modify-age
+                  0 (bubble-modify-vel
+                     (vec2 0 (- 0 (* (rndf) 0.5)))
+                     bubble)))))
+          (list
+           (list (+ (vx pos) (vx (bubble-vel bubble)))
+                 (+ (vy pos) (vy (bubble-vel bubble))))
+           (list
+            (min 0.5 (/ (bubble-age bubble) 50))
+            (min 0.5 (/ (bubble-age bubble) 50)))
+           (/ (- 200 (bubble-age bubble)) 200)
+           (bubble-modify-age (+ (bubble-age bubble) 1) bubble))))
+   (particle-system-init
+    (lambda (i)
+      (list
+       (list 9999 9999) ;; pos
+       (list 0 0)
+       1 (build-bubble
+          i (vec2 0 (* (- 0 (rndf)) 0.5)) ;; vel
+          (rndf) ;; fuzz
+          (* 200 (rndf))) ;; age
+       ))
+    (build-particle-system
+     100 (list
+          (find-image "bubble-1.png")
+          (find-image "bubble-2.png")
+          (find-image "bubble-3.png")
+          (find-image "bubble-4.png")
+          (find-image "bubble-5.png")
+          (find-image "bubble-6.png")
+          )))))
+
+(define bubbles ())
+
 (define (empty-nightjar-data)
-  (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" () 0 0))
+  (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" () 0 0
+        bubbles))
 
 (define (nightjar-start-time g) (list-ref g 0))
 (define (nightjar-modify-start-time v g) (list-replace g 0 v))
@@ -199,6 +276,7 @@
 (define (nightjar-modify-crab-rotation v g) (list-replace g 13 v))
 (define (nightjar-game-id g) (list-ref g 14))
 (define (nightjar-modify-game-id v g) (list-replace g 14 v))
+(define (nightjar-bubbles g) (list-ref g 15))
 
 (define (time-left c)
   (* (- (game-time c)
@@ -350,57 +428,62 @@
 (define (nightjar-intro c)
   (let ((icon-x 150)
         (icon-y (+ default-button-y 100)))
-  (game-modify-data
-   (lambda (d)
-     (empty-nightjar-data))
-   (game-modify-render
-    (lambda (ctx)
-      (draw-weed ctx c)
+    (update-bubble-pos
+     (game-modify-data
+      (lambda (d)
+        (empty-nightjar-data))
+      (game-modify-render
+       (lambda (ctx)
+         (draw-weed ctx c)
+         (particle-system-render ctx (nightjar-bubbles (game-data c)))
+         (nightjar-heading ctx "Crab game title")
+         (nightjar-text ctx "Hunt for crabs and help sensory research")
+         (set! ctx.font "normal 30pt open-sans"))
 
-      (nightjar-heading ctx "Crab game title")
-      (nightjar-text ctx "Hunt for crabs and help sensory research")
-      (set! ctx.font "normal 30pt open-sans"))
+       (game-modify-buttons
+        (list
+         (empty-image-button
+          "Start playing"
+          (- default-button-x 200)
+          default-button-y
+          500 300
+          "none"
+          (lambda (c)
+            (bubbles-hit! 0 c)
+            (play-sound "button.wav")
+            (nightjar-experiment-screen c)))
 
-    (game-modify-buttons
-     (list
-      (image-button
-       "Start playing"
-       (- default-button-x 200)
-       default-button-y
-       "rotate"
-       (button-image)
-       (lambda (c)
-         (play-sound "button.wav")
-         (nightjar-experiment-screen c)))
-
-      (image-button
-       "High Scores"
-       (+ default-button-x 200)
-       default-button-y
-       "rotate"
-       (button-image)
-       (lambda (c)
-         (server-call-mutate
-          "hiscores" ()
-          (lambda (game data)
-            (let ((hiscores (JSON.parse data)))
-              (nightjar-hiscores hiscores #t game))))
-         (play-sound "button.wav")
-         c))
+         (empty-image-button
+          "High Scores"
+          (+ default-button-x 200)
+          default-button-y
+          500 300
+          "none"
+          (lambda (c)
+            (bubbles-hit! 1 c)
+            (server-call-mutate
+             "hiscores" ()
+             (lambda (game data)
+               (let ((hiscores (JSON.parse data)))
+                 (nightjar-hiscores hiscores #t game))))
+            (play-sound "button.wav")
+            c))
 
 
-      )
-     c)))))
+         )
+        c))))))
 
 (define (time-to-seconds t)
   (/ (Math.floor (/ t 10)) 100))
 
 (define (nightjar-hiscores table ret-to-intro c)
-  (game-modify-update
+  (update-bubble-pos
+   (game-modify-update
    (lambda (t c) c)
    (game-modify-render
     (lambda (ctx)
       (draw-weed ctx c)
+      (particle-system-render ctx (nightjar-bubbles (game-data c)))
       (set! ctx.font "normal 50pt open-sans")
       (wrap-text ctx (string-append "Hall of fame") 0 100 1000 70)
       (set! ctx.font "normal 30pt open-sans")
@@ -433,18 +516,21 @@
     (game-modify-buttons
      (list
       (image-button
-       "Back" 1150 720 "rotate" (button-image)
+       "Back" 1150 720 "none" (button-image)
        (lambda (c)
+         (bubbles-hit! 0 c)
          (if ret-to-intro
              (nightjar-intro c)
              (nightjar-species-other-screen c)))))
-     c))))
+     c)))))
 
 
 (define (nightjar-experiment-screen c)
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
+     (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (nightjar-all-text ctx "We would like to use results from your game for a scientific publication, is that ok?")
      (set! ctx.font "normal 30pt open-sans")
      (wrap-text ctx "We are using age and timing information" 0 450 1000 75))
@@ -452,31 +538,35 @@
    (game-modify-buttons
     (list
 
-     (image-button
+     (empty-image-button
       "Yes that's fine"
       (+ default-button-x button-gap)
       default-button-y
-      "rotate"
-      (button-image)
+      500 300
+      "none"
       (lambda (c)
+        (bubbles-hit! 0 c)
         (play-sound "button.wav")
         (nightjar-age-screen c)))
 
-     (image-button
+     (empty-image-button
       "Back"
       (- default-button-x button-gap)
       default-button-y
-      "rotate"
-      (button-image)
+      500 300
+      "none"
       (lambda (c)
+        (bubbles-hit! 1 c)
         (play-sound "button.wav")
         (nightjar-intro c))))
-    c)))
+    c))))
 
 (define (nightjar-age-screen c)
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
+     (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (nightjar-all-text ctx "What is your age?")
      (set! ctx.font "normal 30pt open-sans"))
    (game-modify-buttons
@@ -486,10 +576,11 @@
               title
               (+ (- default-button-x 750) (* id 250))
               default-button-y
-              "rotate"
+              "none"
               (small-button-image)
               (lambda (c)
                 (play-sound "button.wav")
+                (bubbles-hit! (- id 1) c)
                 (game-modify-data
                  (lambda (d)
                    (nightjar-modify-player-age
@@ -503,7 +594,7 @@
        (age-but "36 to 50" 4)
        (age-but "Older than 50" 5))
      )
-    c)))
+    c))))
 
 (define (record-player c played-before)
   (server-call-mutate
@@ -522,9 +613,11 @@
   c)
 
 (define (nightjar-played-before-screen c)
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
+     (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (nightjar-all-text
       ctx
       (+ "Have you played this game before?"))
@@ -536,27 +629,31 @@
       "Yes"
       (+ default-button-x button-gap)
       default-button-y
-      "rotate"
+      "none"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
+        (bubbles-hit! 0 c)
         (record-player c #t)))
 
      (image-button
       "No"
       (- default-button-x button-gap)
       default-button-y
-      "rotate"
+      "none"
       (button-image)
       (lambda (c)
         (play-sound "button.wav")
-        (record-player #f)))) c)))
+        (bubbles-hit! 1 c)
+        (record-player #f)))) c))))
 
 
 (define (nightjar-species-screen c)
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
+     (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (nightjar-all-text ctx "What predator species would you like to be?")
      (set! ctx.font "normal 30pt open-sans")
      (wrap-text ctx "They see the world differently..." 0 450 1000 75)
@@ -569,7 +666,7 @@
       "Goby"
       (- default-button-x button-gap)
       default-button-y
-      "rotate"
+      "none"
       (find-image "goby.png")
       (lambda (c)
         (play-sound "button.wav")
@@ -583,7 +680,7 @@
       "Pollock"
       (+ default-button-x button-gap)
       default-button-y
-      "rotate"
+      "none"
       (find-image "pollock.png")
       (lambda (c)
         (play-sound "button.wav")
@@ -592,12 +689,14 @@
           (lambda (d)
             (nightjar-modify-player-type "pollock" d))
           c))))
-    ) c)))
+    ) c))))
 
 (define (nightjar-species-other-screen c)
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
+     (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (nightjar-all-text ctx "Thank you! Choose your species to play again.")
      (set! ctx.font "normal 30pt open-sans")
      )
@@ -609,7 +708,7 @@
       "Goby"
       (- default-button-x button-gap)
       (- default-button-y 100)
-      "rotate"
+      "none"
       (find-image "goby.png")
       (lambda (c)
         (play-sound "button.wav")
@@ -623,7 +722,7 @@
       "Pollock"
       (+ default-button-x button-gap)
       (- default-button-y 100)
-      "rotate"
+      "none"
       (find-image "pollock.png")
       (lambda (c)
         (play-sound "button.wav")
@@ -637,9 +736,10 @@
       "Exit"
       (+ default-button-x button-gap)
       (+ default-button-y 100)
-      "rotate"
+      "none"
       (button-image)
       (lambda (c)
+        (bubbles-hit! 2 c)
         (play-sound "button.wav")
         (nightjar-intro c)))
 
@@ -647,9 +747,10 @@
       "High Scores"
       (- default-button-x button-gap)
       (+ default-button-y 100)
-      "rotate"
+      "none"
       (button-image)
       (lambda (c)
+        (bubbles-hit! 3 c)
         (play-sound "button.wav")
         (server-call-mutate
          "hiscores" ()
@@ -658,7 +759,7 @@
              (nightjar-hiscores hiscores #f game))))
         c))
 
-     ) c)))
+     ) c))))
 
 
 (define (get-n-items lst num)
@@ -690,9 +791,11 @@
   c)
 
 (define (nightjar-explain-screen c)
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
+     (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (ctx.drawImage (find-image "example-crab.jpg") 450 200)
      (set! ctx.font "normal 30pt open-sans")
      (wrap-text ctx "There is one crab hidden in every photo, touch it as soon as you see it" 0 100 1000 75)
@@ -704,29 +807,32 @@
       "Rock pool"
       (- default-button-x 400)
       (+ default-button-y 150)
-      "rotate"
+      "none"
       (button-image)
       (lambda (c)
+        (bubbles-hit! 0 c)
         (record-game c "rockpool")))
 
      (image-button
       "Mudflats"
       default-button-x
       (+ default-button-y 150)
-      "rotate"
+      "none"
       (button-image)
       (lambda (c)
+        (bubbles-hit! 1 c)
         (record-game c "mudflat")))
 
      (image-button
       "Mussel bed"
       (+ default-button-x 400)
       (+ default-button-y 150)
-      "rotate"
+      "none"
       (button-image)
       (lambda (c)
+        (bubbles-hit! 2 c)
         (record-game c "musselbed")))
-     ) c)))
+     ) c))))
 
 (define (prep-path p)
   (p.replace (js "new RegExp('/', 'g')") ":"))
@@ -880,6 +986,7 @@
   (define crab-y (- (cadr (nightjar-crab-pos (game-data c)))
                     (/ crab-image.height 2)))
 
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (ctx.drawImage
@@ -920,9 +1027,10 @@
       (image-button
        "Next"
        (- default-button-x button-gap)
-       (+ default-button-y 50) "rotate"
+       (+ default-button-y 50) "none"
        (small-button-image)
        (lambda (c)
+        (bubbles-hit! 0 c)
          (play-sound "button.wav")
          ;; check end of game
          (if (eq? (length (nightjar-images (game-data c))) 1)
@@ -932,15 +1040,16 @@
       (image-button
        "Quit"
        (+ default-button-x button-gap)
-       (+ default-button-y 50) "rotate"
+       (+ default-button-y 50) "none"
        (small-button-image)
        (lambda (c)
+         (bubbles-hit! 1 c)
          (play-sound "button.wav")
          ;; check end of game
          (nightjar-get-score c "Thank you for playing.")))
 
 
-      ) c))))
+      ) c)))))
 
 (define (nightjar-win desc c)
   (define example (car (nightjar-images (game-data c))))
@@ -951,6 +1060,7 @@
   (define crab-y (- (cadr (nightjar-crab-pos (game-data c)))
                     (/ crab-image.height 2)))
 
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (define example (car (nightjar-images (game-data c))))
@@ -983,15 +1093,16 @@
       (image-button
        "Next crab"
        default-button-x
-       (+ default-button-y 50) "rotate"
+       (+ default-button-y 50) "none"
        (button-image)
        (lambda (c)
          (play-sound "button.wav")
+        (bubbles-hit! 0 c)
          ;; check end of game
          (if (eq? (length (nightjar-images (game-data c))) 1)
              (nightjar-get-score c "Well done!")
              (nightjar-new-game-reset-timer c))))
-      ) c))))
+      ) c)))))
 
 (define (nightjar-get-score c reason)
   (server-call-mutate
@@ -1023,10 +1134,11 @@
   (/ (Math.floor (* a 100)) 100))
 
 (define (nightjar-finish c av score count reason)
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
-
+     (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (nightjar-all-text
       ctx (+ reason " Your average crab spotting time is " (trunc (/ av 1000)) " seconds."))
 
@@ -1043,9 +1155,10 @@
            "Enter Your Name"
            default-button-x
            (+ default-button-y 200)
-           "rotate"
+           "none"
            (button-image)
            (lambda (c)
+             (bubbles-hit! 0 c)
              (play-sound "button.wav")
              (nightjar-enter-name c)))
 
@@ -1053,12 +1166,13 @@
            "Back"
            default-button-x
            (+ default-button-y 200)
-           "rotate"
+           "none"
            (button-image)
            (lambda (c)
+             (bubbles-hit! 1 c)
              (play-sound "button.wav")
              (nightjar-species-other-screen c)))))
-     c))))
+     c)))))
 
 
 (define (type-into str ch)
@@ -1094,11 +1208,13 @@
    c))
 
 (define (nightjar-enter-name c)
+  (update-bubble-pos
   (game-modify-update
    (lambda (t c) c)
    (game-modify-render
     (lambda (ctx)
       (draw-weed ctx c)
+      (particle-system-render ctx (nightjar-bubbles (game-data c)))
       (set! ctx.font "normal 30pt open-sans")
       (wrap-text ctx "Enter your name" 0 200 1000 70)
       (set! ctx.font "normal 50pt open-sans")
@@ -1120,8 +1236,9 @@
        (image-button "Delete" 1250 700 #t (small-button-image)
                      (lambda (c) (type-delete c)))
 
-       (image-button "Done" 1500 700 "rotate" (small-button-image)
+       (image-button "Done" 1500 700 "none" (small-button-image)
                      (lambda (c)
+                       (bubbles-hit! 0 c)
                        (server-call
                         "player-name"
                         (list
@@ -1129,7 +1246,7 @@
                          (list "player_name" (nightjar-username (game-data c)))))
                        (nightjar-species-other-screen c))))
       )
-     c))))
+     c)))))
 
 
 
@@ -1170,6 +1287,13 @@
        "cutoutweed8.png"
        "goby.png"
        "pollock.png"
+       "bubble-1.png"
+       "bubble-2.png"
+       "bubble-3.png"
+       "bubble-4.png"
+       "bubble-5.png"
+       "bubble-6.png"
        )
  (lambda ()
+   (set! bubbles (build-bubbles))
    (start-game canvas ctx)))

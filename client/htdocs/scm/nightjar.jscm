@@ -239,6 +239,17 @@
         (rndf)
         #f))
 
+(define (empty-image-button name x y w h jitter callback)
+  (list "image-button"
+        name
+        (- x (/ w 2))
+        (- y (/ h 2))
+        w
+        h
+        jitter callback #f
+        (rndf)
+        #f))
+
 (define (animated-button name x y dir jitter drawable animate-callback callback)
   (list "animated-button"
         name
@@ -305,6 +316,14 @@
                        (/ (button-h b) 2))
         (ctx.rotate (* 0.05 (Math.sin (+ (* (button-offs b) 10)
                                          (* t 0.005)))))
+        (ctx.translate (- 0 (/ (button-w b) 2))
+                       (- 0 (/ (button-h b) 2))))
+  (when (eq? (button-jitter b) "pulse")
+        (ctx.translate (/ (button-w b) 2)
+                       (/ (button-h b) 2))
+        (let ((sc (+ 1 (* 0.05 (Math.sin (+ (* (button-offs b) 10)
+                                             (* t 0.005)))))))
+          (ctx.scale sc sc))
         (ctx.translate (- 0 (/ (button-w b) 2))
                        (- 0 (/ (button-h b) 2))))
   (when (eq? (button-jitter b) "slidy")
@@ -436,9 +455,10 @@
   (ctx.save)
   (ctx.translate (button-x b) (button-y b))
   (button-do-jittering b t)
-  (ctx.drawImage
-   (button-drawable b)
-   0 0)
+  (when (button-drawable b)
+        (ctx.drawImage
+         (button-drawable b)
+         0 0))
   (button-text-render! b t)
   (ctx.restore))
 
@@ -500,6 +520,98 @@
    (lambda (b)
      (button-render! ctx t b))
    (reverse b)))
+
+;; ----------------------------------------
+;; particle system
+
+(define (build-particle-system size images)
+  (list
+   size
+   images ;; images
+   ;; positions
+   (build-list size (lambda (_) (list 0 0)))
+   ;; scales
+   (build-list size (lambda (_) (list 1 1)))
+   ;; rotation
+   (build-list size (lambda (_) 0))
+   ;; user
+   (build-list size (lambda (i) 0))
+   ;; image index
+   (build-list size (lambda (_) (random (length images))))
+   ;; update
+   (lambda (p s r u) (list p s r u))
+   ))
+
+(define (particle-system-size p) (list-ref p 0))
+(define (particle-system-images p) (list-ref p 1))
+(define (particle-system-modify-images v p) (list-replace p 1 v))
+(define (particle-system-positions p) (list-ref p 2))
+(define (particle-system-scales p) (list-ref p 3))
+(define (particle-system-rotations p) (list-ref p 4))
+(define (particle-system-user p) (list-ref p 5))
+(define (particle-system-image-indices p) (list-ref p 6))
+(define (particle-system-update-hook p) (list-ref p 10))
+(define (particle-system-modify-update-hook v p) (list-replace p 10 v))
+
+(define (particle-system-set! l i v)
+  (js "l[i]=v;"))
+
+(define (particle-system-init fn p)
+  (index-for-each
+   (lambda (i user)
+     (let ((state (fn i)))
+       (particle-system-set! (particle-system-positions p) i (list-ref state 0))
+       (particle-system-set! (particle-system-scales p) i (list-ref state 1))
+       (particle-system-set! (particle-system-rotations p) i (list-ref state 2))
+       (particle-system-set! (particle-system-user p) i (list-ref state 3))))
+   (particle-system-user p))
+  p)
+
+(define (particle-system-user-update! fn p)
+  (index-for-each
+   (lambda (i user)
+     (particle-system-set!
+      (particle-system-user p) i
+      (fn user)))
+   (particle-system-user p))
+  p)
+
+
+(define (particle-system-update! p)
+  (let ((update (particle-system-update-hook p)))
+    (index-for-each
+     (lambda (i user)
+       (let ((state (update
+                     (list-ref (particle-system-positions p) i)
+                     (list-ref (particle-system-scales p) i)
+                     (list-ref (particle-system-rotations p) i)
+                     user)))
+         (particle-system-set! (particle-system-positions p) i (list-ref state 0))
+         (particle-system-set! (particle-system-scales p) i (list-ref state 1))
+         (particle-system-set! (particle-system-rotations p) i (list-ref state 2))
+         (particle-system-set! (particle-system-user p) i (list-ref state 3))))
+     (particle-system-user p))))
+
+(define (particle-system-render ctx p)
+  (particle-system-update! p)
+  (ctx.save)
+  (set! ctx.globalCompositeOperation "lighter")
+  (index-for-each
+   (lambda (i image-index)
+     (ctx.save)
+     (let ((position (list-ref (particle-system-positions p) i))
+           (scale (list-ref (particle-system-scales p) i))
+           (rotate (list-ref (particle-system-rotations p) i))
+           (image (list-ref (particle-system-images p) image-index)))
+       (set! ctx.globalAlpha rotate)
+       (ctx.translate (vx position) (vy position))
+       (ctx.translate (/ image.width 2) (/ image.height 2))
+       (ctx.scale (vx scale) (vy scale))
+       (ctx.translate (/ -image.width 2) (/ -image.height 2))
+       (ctx.drawImage image 0 0))
+     (ctx.restore))
+   (particle-system-image-indices p))
+  (ctx.restore))
 
 ;; ----------------------------------------
 ;; draw a clock

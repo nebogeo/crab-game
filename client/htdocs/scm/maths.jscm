@@ -73,3 +73,15 @@
      (+ (* (vx v) (cos a)) (* (vy v) (- 0 (sin a))))
      (+ (* (vx v) (sin a)) (* (vy v) (cos a)))
      0)))
+
+(define (vec2 x y) (list x y))
+
+(define (v2add a b)
+  (vector (+ (vx a) (vx b))
+          (+ (vy a) (vy b))))
+
+(define (v2mul v a)
+  (vector (* (vx v) a) (* (vy v) a)))
+
+(define (v2mul2 a b)
+  (vector (* (vx a) (vx b)) (* (vy a) (vy b))))

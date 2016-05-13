@@ -29,6 +29,10 @@
         v))
   (loop (crndvec)))
 
+(define (rndcirc2d)
+  (let ((a (* 2 3.141 (rndf))))
+    (list (sin a) (cos a))))
+
 (define (hsrndvec)
   (define (loop v)
     (let ((l (vmag v)))
