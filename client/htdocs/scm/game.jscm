@@ -552,9 +552,10 @@
    (lambda (ctx)
      (draw-weed ctx c)
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
-     (nightjar-all-text ctx "We would like to use results from your game for a scientific publication, is that ok?")
+     (set! ctx.font "bold 50pt open-sans")
+     (wrap-text ctx "We would like to use results from your game for a scientific publication, is that ok?" 0 100 1000 75)
      (set! ctx.font "normal 30pt open-sans")
-     (wrap-text ctx "We are using age and timing information" 0 450 1000 75))
+     (wrap-text ctx "We are using age and timing information" 0 400 1000 75))
 
    (game-modify-buttons
     (list
