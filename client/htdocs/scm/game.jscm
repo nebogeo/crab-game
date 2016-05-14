@@ -321,6 +321,7 @@
 
 ;; load images and reset (calling new-game above)
 (define (nightjar-new-game-reset-timer c)
+  (set! bubble-pos ())
   ;; start image load
   (load-images-mutate
    (lambda (c)
