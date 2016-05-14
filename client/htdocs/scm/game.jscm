@@ -349,6 +349,7 @@
         (ctx.drawImage
          (find-image (photo-filename example))
          0 0)
+        (particle-system-render ctx (nightjar-bubbles (game-data c)))
         (nightjar-all-text ctx "Loading your next crab...")))
     c)))
 
