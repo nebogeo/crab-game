@@ -24,6 +24,9 @@
 (define num-examples (* num-bgs-per-habitat 3))
 (define num-crabs-per-habitat (/ num-bgs-per-habitat 3))
 
+(define empty-button-width 300)
+(define empty-button-height 200)
+
 (define rockpool-filenames
   (list
    "gylly/DSC_5837.jpg"
@@ -196,11 +199,13 @@
          (lambda (b r)
            (if (not (button-drawable b))
                (append
-                r (list (list (+ 50 (button-x b) (* (/ (button-w b) 2) 0.6))
-                              (+ 20 (button-y b) (* (/ (button-h b) 2) 0.6)))))
+                r (list (list (+ 20 (button-x b) (* (/ (button-w b) 2) 0.6))
+                              (+ 10 (button-y b) (* (/ (button-h b) 2) 0.6)))))
                r))
          ()
          (game-buttons c)))
+  ;; num bubbles same for num buttons
+  (update-bubbles-size! (* (length bubble-pos) 40))
   c)
 
 (define (bubbles-hit! id c)
@@ -239,7 +244,7 @@
                (list
                 (v2add
                  (list-ref bubble-pos id)
-                 (v2mul2 (rndcirc2d) (vec2 150 80)))
+                 (v2mul2 (rndcirc2d) (vec2 120 80)))
                 (list 0 0) bubble-max-opacity
                 (bubble-modify-id
                  id (bubble-modify-age
@@ -275,6 +280,10 @@
           )))))
 
 (define bubbles ())
+
+(define (update-bubbles-size! s)
+  (set! bubbles (particle-system-modify-size s bubbles)))
+
 
 (define (empty-nightjar-data)
   (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" () 0 0
@@ -474,7 +483,7 @@
        (lambda (ctx)
          (draw-weed ctx c)
          (particle-system-render ctx (nightjar-bubbles (game-data c)))
-         (nightjar-heading ctx "Crab game title")
+         (nightjar-heading ctx "Can you catch the camouflage crab?")
          (nightjar-text ctx "Hunt for crabs and help sensory research")
          (set! ctx.font "normal 30pt open-sans"))
 
@@ -482,9 +491,9 @@
         (list
          (empty-image-button
           "Start playing"
-          (- default-button-x 200)
+          (- default-button-x 300)
           default-button-y
-          500 300
+          empty-button-width empty-button-height
           "none"
           (lambda (c)
             (bubbles-hit! 0 c)
@@ -492,13 +501,24 @@
             (nightjar-experiment-screen c)))
 
          (empty-image-button
-          "High Scores"
-          (+ default-button-x 200)
+          "About"
+          default-button-x
           default-button-y
-          500 300
+          empty-button-width empty-button-height
           "none"
           (lambda (c)
             (bubbles-hit! 1 c)
+            (play-sound "button.wav")
+            (nightjar-about c)))
+
+         (empty-image-button
+          "High Scores"
+          (+ default-button-x 300)
+          default-button-y
+          empty-button-width empty-button-height
+          "none"
+          (lambda (c)
+            (bubbles-hit! 2 c)
             (server-call-mutate
              "hiscores" ()
              (lambda (game data)
@@ -510,6 +530,37 @@
 
          )
         c)))))))
+
+(define (nightjar-about c)
+  (update-bubble-pos
+   (game-modify-render
+    (lambda (ctx)
+      (draw-weed ctx c)
+      (particle-system-render ctx (nightjar-bubbles (game-data c)))
+      (nightjar-heading ctx "About")
+      (set! ctx.font "normal 25pt open-sans")
+      (wrap-text ctx "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." 0 300 1000 50)
+      (set! ctx.font "normal 30pt open-sans"))
+
+    (game-modify-buttons
+     (list
+      (empty-image-button
+       "Back"
+       1400
+       800
+       empty-button-width empty-button-height
+       "none"
+       (lambda (c)
+         (bubbles-hit! 0 c)
+         (server-call-mutate
+          "hiscores" ()
+          (lambda (game data)
+            (play-sound "button.wav")
+            (nightjar-intro game)))
+         c))
+      )
+     c))))
+
 
 (define (time-to-seconds t)
   (/ (Math.floor (/ t 10)) 100))
@@ -546,7 +597,7 @@
     (game-modify-buttons
      (list
       (empty-image-button
-       "Back" 1300 720 500 300 "none"
+       "Back" 1300 720 empty-button-width empty-button-height "none"
        (lambda (c)
          (bubbles-hit! 0 c)
          (play-sound "button.wav")
@@ -574,7 +625,7 @@
       "Yes that's fine"
       (+ default-button-x button-gap)
       default-button-y
-      500 300
+      empty-button-width empty-button-height
       "none"
       (lambda (c)
         (bubbles-hit! 0 c)
@@ -585,7 +636,7 @@
       "Back"
       (- default-button-x button-gap)
       default-button-y
-      500 300
+      empty-button-width empty-button-height
       "none"
       (lambda (c)
         (bubbles-hit! 1 c)
@@ -606,9 +657,9 @@
            (lambda (title id)
              (empty-image-button
               title
-              (+ (- default-button-x 750) (* id 250))
+              (+ (- default-button-x 850) (* id 280))
               default-button-y
-              500 300
+              empty-button-width empty-button-height
               "none"
               (lambda (c)
                 (play-sound "button.wav")
@@ -620,11 +671,11 @@
                  (nightjar-played-before-screen c)))))))
 
       (list
-       (age-but "Less than 10" 1)
+       (age-but "Under 10" 1)
        (age-but "10 to 15" 2)
        (age-but "16 to 35" 3)
        (age-but "36 to 50" 4)
-       (age-but "Older than 50" 5))
+       (age-but "Over 50" 5))
      )
     c))))
 
@@ -661,7 +712,7 @@
       "Yes"
       (+ default-button-x button-gap)
       default-button-y
-      500 300
+      empty-button-width empty-button-height
       "none"
       (lambda (c)
         (play-sound "button.wav")
@@ -672,7 +723,7 @@
       "No"
       (- default-button-x button-gap)
       default-button-y
-      500 300
+      empty-button-width empty-button-height
       "none"
       (lambda (c)
         (play-sound "button.wav")
@@ -768,7 +819,7 @@
       "Exit"
       (+ default-button-x button-gap)
       (+ default-button-y 200)
-      500 300
+      empty-button-width empty-button-height
       "none"
       (lambda (c)
         (bubbles-hit! 0 c)
@@ -779,7 +830,7 @@
       "High Scores"
       (- default-button-x button-gap)
       (+ default-button-y 200)
-      500 300
+      empty-button-width empty-button-height
       "none"
       (lambda (c)
         (bubbles-hit! 1 c)
@@ -836,7 +887,7 @@
       "Play!"
       default-button-x
       (+ default-button-y 150)
-      500 300
+      empty-button-width empty-button-height
       "none"
       (lambda (c)
         (bubbles-hit! 0 c)
@@ -884,10 +935,6 @@
           (crab-habitat (photo-habitat crab))
           (photoname (photo-filename photo))
           (crabname (photo-filename crab)))
-
-      (msg crab-habitat)
-      (msg photo-habitat)
-
       (server-call
        "click"
        (list
@@ -1080,7 +1127,7 @@
        "Next"
        (- default-button-x button-gap)
        (+ default-button-y 50)
-       500 300
+       empty-button-width empty-button-height
        "none"
        (lambda (c)
         (bubbles-hit! 0 c)
@@ -1094,7 +1141,7 @@
        "Quit"
        (+ default-button-x button-gap)
        (+ default-button-y 50)
-       500 300
+       empty-button-width empty-button-height
        "none"
        (lambda (c)
          (bubbles-hit! 1 c)
@@ -1151,7 +1198,7 @@
        "Next crab"
        default-button-x
        (+ default-button-y 50)
-       500 300
+       empty-button-width empty-button-height
        "none"
        (lambda (c)
          (play-sound "button.wav")
@@ -1214,7 +1261,7 @@
            "Enter Your Name"
            default-button-x
            (+ default-button-y 200)
-           500 300
+           empty-button-width empty-button-height
            "none"
            (lambda (c)
              (bubbles-hit! 0 c)
@@ -1225,7 +1272,7 @@
            "Back"
            default-button-x
            (+ default-button-y 200)
-           500 300
+           empty-button-width empty-button-height
            "none"
            (lambda (c)
              (bubbles-hit! 1 c)

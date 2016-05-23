@@ -543,6 +543,7 @@
    ))
 
 (define (particle-system-size p) (list-ref p 0))
+(define (particle-system-modify-size v p) (list-replace p 0 v))
 (define (particle-system-images p) (list-ref p 1))
 (define (particle-system-modify-images v p) (list-replace p 1 v))
 (define (particle-system-positions p) (list-ref p 2))
@@ -577,6 +578,7 @@
   p)
 
 
+
 (define (particle-system-update! p)
   (let ((update (particle-system-update-hook p)))
     (index-for-each
@@ -598,20 +600,22 @@
   (set! ctx.globalCompositeOperation "lighter")
   (index-for-each
    (lambda (i image-index)
-     (ctx.save)
-     (let ((position (list-ref (particle-system-positions p) i))
-           (scale (list-ref (particle-system-scales p) i))
-           (rotate (list-ref (particle-system-rotations p) i))
-           (image (list-ref (particle-system-images p) image-index)))
-       (set! ctx.globalAlpha rotate)
-       (ctx.translate (vx position) (vy position))
-       (ctx.translate (/ image.width 2) (/ image.height 2))
-       (ctx.scale (vx scale) (vy scale))
-       (ctx.translate (/ -image.width 2) (/ -image.height 2))
-       (ctx.drawImage image 0 0))
-     (ctx.restore))
-   (particle-system-image-indices p))
-  (ctx.restore))
+     ;; use size to restrict rendering
+     (when (< i (particle-system-size p))
+           (ctx.save)
+           (let ((position (list-ref (particle-system-positions p) i))
+                 (scale (list-ref (particle-system-scales p) i))
+                 (rotate (list-ref (particle-system-rotations p) i))
+                 (image (list-ref (particle-system-images p) image-index)))
+             (set! ctx.globalAlpha rotate)
+             (ctx.translate (vx position) (vy position))
+             (ctx.translate (/ image.width 2) (/ image.height 2))
+             (ctx.scale (vx scale) (vy scale))
+             (ctx.translate (/ -image.width 2) (/ -image.height 2))
+             (ctx.drawImage image 0 0))
+           (ctx.restore)))
+     (particle-system-image-indices p))
+   (ctx.restore))
 
 ;; ----------------------------------------
 ;; draw a clock
