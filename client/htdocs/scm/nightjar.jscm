@@ -650,7 +650,8 @@
 (define (make-new-game)
   (list 0 (lambda (ctx) 0) (lambda (t c) c)
         () 0 0 () (list 0 0) (lambda (e c) c)
-        (lambda (c) c) (lambda (ctx) 0) 1 0))
+        (lambda (c) c) (lambda (ctx) 0) 1 0
+        (lambda () 0)))
 
 (define (game-time g) (list-ref g 0))
 (define (game-modify-time v g) (list-replace g 0 v))
@@ -678,6 +679,8 @@
 (define (game-modify-mute g v) (list-replace g 11 v))
 (define (game-delta g) (list-ref g 12))
 (define (game-modify-delta g v) (list-replace g 12 v))
+(define (game-timeout g) (list-ref g 13))
+(define (game-modify-timeout v g) (list-replace g 13 v))
 
 (define (game-flip-mute g) (game-modify-mute g (if (zero? (game-mute g)) 1 0)))
 
@@ -743,8 +746,15 @@
           b))
     (game-buttons game))))
 
+(define timeout-trigger (* 2 60))
+(define timeout-time 0)
+
 (define (top-update-game t game)
   (let ((fn (game-update game)))
+    (set! timeout-time (+ timeout-time (game-delta game)))
+    (when (> timeout-time timeout-trigger)
+          (let ((fn (game-timeout game)))
+            (fn)))
     (set! game
           (game-animate-buttons
            (game-modify-time
@@ -795,6 +805,7 @@
 (define game 0)
 
 (define (mouse-from-event g canvas e)
+  (set! timeout-time 0)
   (let ((rect (canvas.getBoundingClientRect)))
     (let ((sx (/ rect.width screen-width))
           (sy (/ rect.height screen-height)))
@@ -804,6 +815,7 @@
                (cadr (game-world-offset g)))))))
 
 (define (touch-from-event g canvas e)
+  (set! timeout-time 0)
   (let ((e (car e.targetTouches)))
     (mouse-from-event g canvas e)))
 

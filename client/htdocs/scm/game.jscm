@@ -463,6 +463,9 @@
 (define (nightjar-intro c)
   (let ((icon-x 150)
         (icon-y (+ default-button-y 100)))
+    (game-modify-timeout
+     (lambda ()
+       (set! window.location "/"))
     (update-bubble-pos
      (game-modify-data
       (lambda (d)
@@ -506,7 +509,7 @@
 
 
          )
-        c))))))
+        c)))))))
 
 (define (time-to-seconds t)
   (/ (Math.floor (/ t 10)) 100))
@@ -764,7 +767,7 @@
      (empty-image-button
       "Exit"
       (+ default-button-x button-gap)
-      (+ default-button-y 100)
+      (+ default-button-y 200)
       500 300
       "none"
       (lambda (c)
@@ -775,7 +778,7 @@
      (empty-image-button
       "High Scores"
       (- default-button-x button-gap)
-      (+ default-button-y 100)
+      (+ default-button-y 200)
       500 300
       "none"
       (lambda (c)
