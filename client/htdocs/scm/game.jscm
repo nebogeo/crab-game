@@ -22,6 +22,7 @@
 (define game-time-allowed 10)
 (define num-bgs-per-habitat 6)
 (define num-examples (* num-bgs-per-habitat 3))
+(define num-crabs-per-habitat (/ num-bgs-per-habitat 3))
 
 (define rockpool-filenames
   (list
@@ -88,7 +89,17 @@
     ))
 
 
-(define crab-filenames
+(define rockpool-crab-filenames
+  (build-list
+   28 (lambda (i)
+        (string-append "autocrab-" i ".png"))))
+
+(define mudflat-crab-filenames
+  (build-list
+   28 (lambda (i)
+        (string-append "autocrab-" i ".png"))))
+
+(define musselbed-crab-filenames
   (build-list
    28 (lambda (i)
         (string-append "autocrab-" i ".png"))))
@@ -101,42 +112,38 @@
      (else
       "unknown beach"))))
 
-(define filenames
+(define photos
   (list
-   (map (lambda (f) (list (string-append "rockpool/" f) (filename-to-type f) "rockpool")) rockpool-filenames)
-   (map (lambda (f) (list (string-append "rockpool/di-" f) (filename-to-type f) "rockpool")) rockpool-filenames)
-   (map (lambda (f) (list (string-append "mudflat/" f) (filename-to-type f) "mudflat")) mudflat-filenames)
-   (map (lambda (f) (list (string-append "mudflat/di-" f) (filename-to-type f) "mudflat")) mudflat-filenames)
-   (map (lambda (f) (list (string-append "musselbed/" f) (filename-to-type f) "musselbed")) musselbed-filenames)
-   (map (lambda (f) (list (string-append "musselbed/di-" f) (filename-to-type f) "musselbed")) musselbed-filenames)
-   ;; todo, seperate by habitat
-   (map (lambda (f) (list (string-append "crabs/" f) (filename-to-type f) "fixme")) crab-filenames)
-   (map (lambda (f) (list (string-append "crabs/di-" f) (filename-to-type f) "fixme")) crab-filenames)
+   (list
+    (map (lambda (f) (list (string-append "photos/rockpool/" f) (filename-to-type f) "rockpool")) rockpool-filenames)
+    (map (lambda (f) (list (string-append "photos/rockpool/di-" f) (filename-to-type f) "rockpool")) rockpool-filenames))
+   (list
+    (map (lambda (f) (list (string-append "photos/mudflat/" f) (filename-to-type f) "mudflat")) mudflat-filenames)
+    (map (lambda (f) (list (string-append "photos/mudflat/di-" f) (filename-to-type f) "mudflat")) mudflat-filenames))
+   (list
+    (map (lambda (f) (list (string-append "photos/musselbed/" f) (filename-to-type f) "musselbed")) musselbed-filenames)
+    (map (lambda (f) (list (string-append "photos/musselbed/di-" f) (filename-to-type f) "musselbed")) musselbed-filenames))
+   (list
+    (map (lambda (f) (list (string-append "photos/rockpool/crabs/" f) (filename-to-type f) "rockpool")) rockpool-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/rockpool/di-crabs/" f) (filename-to-type f) "rockpool")) rockpool-crab-filenames))
+   (list
+    (map (lambda (f) (list (string-append "photos/mudflat/crabs/" f) (filename-to-type f) "mudflat")) mudflat-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/mudflat/di-crabs/" f) (filename-to-type f) "mudflat")) mudflat-crab-filenames))
+   (list
+    (map (lambda (f) (list (string-append "photos/musselbed/crabs/" f) (filename-to-type f) "musselbed")) musselbed-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/musselbed/di-crabs/" f) (filename-to-type f) "musselbed")) musselbed-crab-filenames))
    ))
 
 (define (photo-filename l) (list-ref l 0))
 (define (photo-desc l) (list-ref l 1))
 (define (photo-habitat l) (list-ref l 2))
 
-(define photos
-  (map
-   (lambda (l)
-     (map
-      (lambda (fn)
-        (list
-         (+ "photos/" (car fn))
-         (list-ref fn 1)
-         (list-ref fn 2))) l))
-   filenames))
-
 (define (rockpool-photos l) (list-ref l 0))
-(define (rockpool-dic-photos l) (list-ref l 1))
-(define (mudflat-photos l) (list-ref l 2))
-(define (mudflat-dic-photos l) (list-ref l 3))
-(define (musselbed-photos l) (list-ref l 4))
-(define (musselbed-dic-photos l) (list-ref l 5))
-(define (crab-photos l) (list-ref l 6))
-(define (crab-dic-photos l) (list-ref l 7))
+(define (mudflat-photos l) (list-ref l 1))
+(define (musselbed-photos l) (list-ref l 2))
+(define (rockpool-crab-photos l) (list-ref l 3))
+(define (mudflat-crab-photos l) (list-ref l 4))
+(define (musselbed-crab-photos l) (list-ref l 5))
 
 (define (button-image)
   (find-image (choose (list "button-1.png" "button-2.png" "button-3.png"))))
@@ -361,26 +368,35 @@
         (nightjar-all-text ctx "Loading your next crab...")))
     c)))
 
-(define (get-background-images)
+
+(define (get-crabs-for-a-habitat tri)
   (shuffle
    (append
-    (crop (shuffle (rockpool-photos photos)) num-bgs-per-habitat)
-    (crop (shuffle (mudflat-photos photos)) num-bgs-per-habitat)
-    (crop (shuffle (musselbed-photos photos)) num-bgs-per-habitat))))
+    (crop (shuffle (list-ref (rockpool-crab-photos photos) tri)) num-crabs-per-habitat)
+    (crop (shuffle (list-ref (mudflat-crab-photos photos) tri)) num-crabs-per-habitat)
+    (crop (shuffle (list-ref (musselbed-crab-photos photos) tri)) num-crabs-per-habitat))))
+
+(define (habitat-photos tri habitat-list)
+  (map2
+   (lambda (a b)
+     (list a b))
+   (crop (shuffle (list-ref habitat-list tri)) num-bgs-per-habitat)
+   (get-crabs-for-a-habitat tri)))
+
+(define (get-image-pairs tri)
+  (shuffle
+   (append
+    (habitat-photos tri (rockpool-photos photos))
+    (habitat-photos tri (mudflat-photos photos))
+    (habitat-photos tri (musselbed-photos photos)))))
+
+(define (unzip l n)
+  (map (lambda (i) (list-ref i n)) l))
 
 (define (nightjar-new-game-images c)
-  (let ((crab-images
-         (cond
-          ((eq? (nightjar-player-type (game-data c)) "human")
-           (crab-photos photos))
-          (else
-           (msg "other")
-           (crab-dic-photos photos)))))
-
+  (let ((tri (if (eq? (nightjar-player-type (game-data c)) "human") 0 1)))
     (play-sound "button.wav")
-
-    (let ((images (get-background-images))
-          (crab-images (crop (shuffle crab-images) num-examples)))
+    (let ((image-pairs (get-image-pairs tri)))
       (load-images-mutate
        (lambda (c)
          (nightjar-new-game
@@ -389,11 +405,12 @@
              (nightjar-modify-photo-time
               (game-time c)
               (nightjar-modify-images
-               images (nightjar-modify-crabs crab-images d))))
+               (unzip image-pairs 0)
+               (nightjar-modify-crabs (unzip image-pairs 1) d))))
            c)))
        (list
-        (photo-filename (list-ref images 0))
-        (photo-filename (list-ref crab-images 0))))
+        (photo-filename (list-ref (car image-pairs) 0))
+        (photo-filename (list-ref (car image-pairs) 1))))
       (game-modify-buttons
        ()
        (game-modify-render
