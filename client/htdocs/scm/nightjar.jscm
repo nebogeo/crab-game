@@ -315,7 +315,7 @@
         (ctx.translate (/ (button-w b) 2)
                        (/ (button-h b) 2))
         (ctx.rotate (* 0.05 (Math.sin (+ (* (button-offs b) 10)
-                                         (* t 0.005)))))
+                                         (* t 0.002)))))
         (ctx.translate (- 0 (/ (button-w b) 2))
                        (- 0 (/ (button-h b) 2))))
   (when (eq? (button-jitter b) "pulse")

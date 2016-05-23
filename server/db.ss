@@ -20,8 +20,8 @@
 
 (define (setup db)
   (exec/ignore db "create table player ( id integer primary key autoincrement, played_before integer, age_range integer)")
-  (exec/ignore db "create table game ( id integer primary key autoincrement, player_id integer, species text, bg_location text, score integer)")
-  (exec/ignore db "create table click ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, crab_x integer, crab_y integer, crab_rot real, time_stamp integer, x_position integer, y_position integer, success integer )")
+  (exec/ignore db "create table game ( id integer primary key autoincrement, player_id integer, species text, score integer)")
+  (exec/ignore db "create table click ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, crab_habitat text, photo_habitat text, crab_x integer, crab_y integer, crab_rot real, time_stamp integer, x_position integer, y_position integer, success integer )")
   (exec/ignore db "create table player_name ( id integer primary key autoincrement, player_id integer, player_name text )")
   (exec/ignore db "create table crab_time ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, time_stamp integer, success_code integer )")
   )
@@ -31,18 +31,20 @@
    db "INSERT INTO player VALUES (NULL, ?, ?)"
    (if (equal? played_before "false") "0" "1") age_range ))
 
-(define (insert-game db player_id species bg_location)
+(define (insert-game db player_id species)
   (insert
-   db "INSERT INTO game VALUES (NULL, ?, ?, ?, 999999)"
-   player_id species bg_location))
+   db "INSERT INTO game VALUES (NULL, ?, ?, 999999)"
+   player_id species))
 
-(define (insert-click db game_id photo_name crab_name crab_x crab_y crab_rot time_stamp x_position y_position success)
+(define (insert-click db game_id photo_name crab_name photo_habitat crab_habitat crab_x crab_y crab_rot time_stamp x_position y_position success)
   (insert
    db
-   "INSERT INTO click VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+   "INSERT INTO click VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
    game_id
    photo_name
    crab_name
+   photo_habitat
+   crab_habitat
    crab_x
    crab_y
    crab_rot
@@ -70,8 +72,8 @@
 
 ;; get scores from games from the same type as this game id
 (define (get-game-averages db game_id)
-  (let* ((bg_location (vector-ref (cadr (select db "select bg_location from game where id=?" game_id)) 0))
-         (s (select db "select score from game where bg_location=? order by score desc"
+  (let* ((bg_location (vector-ref (cadr (select db "select species from game where id=?" game_id)) 0))
+         (s (select db "select score from game where species=? order by score desc"
                     bg_location)))
     (if (null? s)
         '()
@@ -79,12 +81,12 @@
          (lambda (i) (vector-ref i 0))
          (cdr s)))))
 
-(define (hiscores-select db location)
+(define (hiscores-select db species)
   (let ((r (select db "select n.player_name, g.score from game as g
                      join player_name as n on g.player_id=n.player_id
-                     where g.bg_location = ? and g.score != 999999
+                     where g.species = ? and g.score != 999999
                      order by g.score limit 100;"
-                   location)))
+                   species)))
     (if (null? r) '() (cdr r))))
 
 (define (get-hiscores db)
@@ -92,15 +94,11 @@
    (map
     (lambda (i)
       (list (vector-ref i 0) (vector-ref i 1)))
-    (hiscores-select db "rockpool"))
+    (hiscores-select db "human"))
    (map
     (lambda (i)
       (list (vector-ref i 0) (vector-ref i 1)))
-    (hiscores-select db "mudflat"))
-   (map
-    (lambda (i)
-      (list (vector-ref i 0) (vector-ref i 1)))
-    (hiscores-select db "musselbed"))))
+    (hiscores-select db "pollock"))))
 
 (define (get-stats db)
   (list

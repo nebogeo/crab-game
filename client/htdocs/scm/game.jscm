@@ -20,7 +20,8 @@
 (load "scm/nightjar.jscm")
 
 (define game-time-allowed 10)
-(define num-examples 20)
+(define num-bgs-per-habitat 6)
+(define num-examples (* num-bgs-per-habitat 3))
 
 (define rockpool-filenames
   (list
@@ -102,18 +103,20 @@
 
 (define filenames
   (list
-   (map (lambda (f) (list (string-append "rockpool/" f) (filename-to-type f))) rockpool-filenames)
-   (map (lambda (f) (list (string-append "rockpool/di-" f) (filename-to-type f))) rockpool-filenames)
-   (map (lambda (f) (list (string-append "mudflat/" f) (filename-to-type f))) mudflat-filenames)
-   (map (lambda (f) (list (string-append "mudflat/di-" f) (filename-to-type f))) mudflat-filenames)
-   (map (lambda (f) (list (string-append "musselbed/" f) (filename-to-type f))) musselbed-filenames)
-   (map (lambda (f) (list (string-append "musselbed/di-" f) (filename-to-type f))) musselbed-filenames)
-   (map (lambda (f) (list (string-append "crabs/" f) (filename-to-type f))) crab-filenames)
-   (map (lambda (f) (list (string-append "crabs/di-" f) (filename-to-type f))) crab-filenames)
+   (map (lambda (f) (list (string-append "rockpool/" f) (filename-to-type f) "rockpool")) rockpool-filenames)
+   (map (lambda (f) (list (string-append "rockpool/di-" f) (filename-to-type f) "rockpool")) rockpool-filenames)
+   (map (lambda (f) (list (string-append "mudflat/" f) (filename-to-type f) "mudflat")) mudflat-filenames)
+   (map (lambda (f) (list (string-append "mudflat/di-" f) (filename-to-type f) "mudflat")) mudflat-filenames)
+   (map (lambda (f) (list (string-append "musselbed/" f) (filename-to-type f) "musselbed")) musselbed-filenames)
+   (map (lambda (f) (list (string-append "musselbed/di-" f) (filename-to-type f) "musselbed")) musselbed-filenames)
+   ;; todo, seperate by habitat
+   (map (lambda (f) (list (string-append "crabs/" f) (filename-to-type f) "fixme")) crab-filenames)
+   (map (lambda (f) (list (string-append "crabs/di-" f) (filename-to-type f) "fixme")) crab-filenames)
    ))
 
 (define (photo-filename l) (list-ref l 0))
 (define (photo-desc l) (list-ref l 1))
+(define (photo-habitat l) (list-ref l 2))
 
 (define photos
   (map
@@ -122,7 +125,8 @@
       (lambda (fn)
         (list
          (+ "photos/" (car fn))
-         (cadr fn))) l))
+         (list-ref fn 1)
+         (list-ref fn 2))) l))
    filenames))
 
 (define (rockpool-photos l) (list-ref l 0))
@@ -200,13 +204,16 @@
          (bubble-modify-vel (list 1000 1000) bubble)))
    (nightjar-bubbles (game-data c))))
 
+(define bubble-max-opacity 0.5)
+
 (define (bubbles-reset bubbles)
   (particle-system-init
    (lambda (i)
      (list
       (list 9999 9999) ;; pos
       (list 0 0)
-      1 (build-bubble
+      bubble-max-opacity
+      (build-bubble
          i (vec2 0 (* (- 0 (rndf)) 0.5)) ;; vel
          (rndf) ;; fuzz
          (* 200 (rndf))) ;; age
@@ -226,7 +233,7 @@
                 (v2add
                  (list-ref bubble-pos id)
                  (v2mul2 (rndcirc2d) (vec2 150 80)))
-                (list 0 0) 1
+                (list 0 0) bubble-max-opacity
                 (bubble-modify-id
                  id (bubble-modify-age
                      0 (bubble-modify-vel
@@ -238,14 +245,14 @@
           (list
            (min 0.5 (/ (bubble-age bubble) 50))
            (min 0.5 (/ (bubble-age bubble) 50)))
-          (max 0 (/ (- 200 (bubble-age bubble)) 200))
+          (max 0 (* (/ (- 200 (bubble-age bubble)) 200) bubble-max-opacity))
           (bubble-modify-age (+ (bubble-age bubble) 1) bubble))))
    (particle-system-init
     (lambda (i)
       (list
        (list 9999 9999) ;; pos
        (list 0 0)
-       1 (build-bubble
+       bubble-max-opacity (build-bubble
           i (vec2 0 (* (- 0 (rndf)) 0.5)) ;; vel
           (rndf) ;; fuzz
           (* 200 (rndf))) ;; age
@@ -354,28 +361,17 @@
         (nightjar-all-text ctx "Loading your next crab...")))
     c)))
 
+(define (get-background-images)
+  (shuffle
+   (append
+    (crop (shuffle (rockpool-photos photos)) num-bgs-per-habitat)
+    (crop (shuffle (mudflat-photos photos)) num-bgs-per-habitat)
+    (crop (shuffle (musselbed-photos photos)) num-bgs-per-habitat))))
+
 (define (nightjar-new-game-images c)
-  (let ((backgrounds
+  (let ((crab-images
          (cond
-          ((eq? (nightjar-player-type (game-data c)) "goby")
-           (cond
-            ((eq? (nightjar-level (game-data c)) 0)
-             (rockpool-photos photos))
-            ((eq? (nightjar-level (game-data c)) 1)
-             (mudflat-photos photos))
-            (else
-             (musselbed-photos photos))))
-          (else
-           (cond
-            ((eq? (nightjar-level (game-data c)) 0)
-             (rockpool-dic-photos photos))
-            ((eq? (nightjar-level (game-data c)) 1)
-             (mudflat-dic-photos photos))
-            (else
-             (musselbed-dic-photos photos))))))
-        (crab-images
-         (cond
-          ((eq? (nightjar-player-type (game-data c)) "goby")
+          ((eq? (nightjar-player-type (game-data c)) "human")
            (crab-photos photos))
           (else
            (msg "other")
@@ -383,7 +379,7 @@
 
     (play-sound "button.wav")
 
-    (let ((images (crop (shuffle backgrounds) num-examples))
+    (let ((images (get-background-images))
           (crab-images (crop (shuffle crab-images) num-examples)))
       (load-images-mutate
        (lambda (c)
@@ -510,35 +506,27 @@
       (wrap-text ctx (string-append "Hall of fame") 0 100 1000 70)
       (set! ctx.font "normal 30pt open-sans")
 
-      (wrap-text ctx "Rockpool" -300 180)
-      (wrap-text ctx "Mudflats" 0 180)
-      (wrap-text ctx "Musselbed" 300 180)
+      (wrap-text ctx "Human" -200 180)
+      (wrap-text ctx "Pollock" 200 180)
 
       (when (list-ref table 0)
             (index-for-each
              (lambda (i e)
                (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
-                 (wrap-text ctx txt -300 (+ 240 (* 40 i)))))
+                 (wrap-text ctx txt -200 (+ 240 (* 40 i)))))
              (list-ref table 0)))
 
       (when (list-ref table 1)
             (index-for-each
              (lambda (i e)
                (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
-                 (wrap-text ctx txt 0 (+ 240 (* 40 i)))))
+                 (wrap-text ctx txt 200 (+ 240 (* 40 i)))))
              (list-ref table 1)))
-
-      (when (list-ref table 2)
-            (index-for-each
-             (lambda (i e)
-               (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
-                 (wrap-text ctx txt 300 (+ 240 (* 40 i)))))
-             (list-ref table 2)))
       )
     (game-modify-buttons
      (list
       (empty-image-button
-       "Back" 1150 720 500 300 "none"
+       "Back" 1300 720 500 300 "none"
        (lambda (c)
          (bubbles-hit! 0 c)
          (play-sound "button.wav")
@@ -687,24 +675,24 @@
     (list
 
      (image-button
-      "Goby"
-      (- default-button-x button-gap)
-      default-button-y
-      "none"
-      (find-image "goby.png")
+      "Human"
+      (- default-button-x button-gap 100)
+      (+ default-button-y 100)
+      "rotate"
+      (find-image "human.png")
       (lambda (c)
         (play-sound "button.wav")
         (nightjar-explain-screen
          (game-modify-data
           (lambda (d)
-            (nightjar-modify-player-type "goby" d))
+            (nightjar-modify-player-type "human" d))
           c))))
 
      (image-button
       "Pollock"
-      (+ default-button-x button-gap)
-      default-button-y
-      "none"
+      (+ default-button-x button-gap 100)
+      (+ default-button-y 100)
+      "rotate"
       (find-image "pollock.png")
       (lambda (c)
         (play-sound "button.wav")
@@ -729,24 +717,24 @@
     (list
 
      (image-button
-      "Goby"
-      (- default-button-x button-gap)
+      "Human"
+      (- default-button-x button-gap 100)
       (- default-button-y 100)
-      "none"
-      (find-image "goby.png")
+      "rotate"
+      (find-image "human.png")
       (lambda (c)
         (play-sound "button.wav")
         (nightjar-explain-screen
          (game-modify-data
           (lambda (d)
-            (nightjar-modify-player-type "goby" d))
+            (nightjar-modify-player-type "human" d))
           c))))
 
      (image-button
       "Pollock"
-      (+ default-button-x button-gap)
+      (+ default-button-x button-gap 100)
       (- default-button-y 100)
-      "none"
+      "rotate"
       (find-image "pollock.png")
       (lambda (c)
         (play-sound "button.wav")
@@ -797,20 +785,18 @@
       (slice (cdr lst) (- start 1) count)
       (get-n-items lst count)))
 
-(define (record-game c bg_location)
+(define (record-game c)
   (server-call-mutate
    "game"
    (list
     (list "player_id" (nightjar-player-id (game-data c)))
-    (list "species" (nightjar-player-type (game-data c)))
-    (list "bg_location" bg_location))
+    (list "species" (nightjar-player-type (game-data c))))
    (lambda (game data)
      (let ((id (car (JSON.parse data))))
        (nightjar-new-game-images
         (game-modify-data
          (lambda (d)
-           (nightjar-modify-game-id
-            id (nightjar-modify-level bg_location d)))
+           (nightjar-modify-game-id id d))
          game)))))
   c)
 
@@ -822,61 +808,81 @@
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (ctx.drawImage (find-image "example-crab.jpg") 450 200)
      (set! ctx.font "normal 30pt open-sans")
-     (wrap-text ctx "There is one crab hidden in every photo, touch it as soon as you see it" 0 100 1000 75)
-     (wrap-text ctx "Where would you like to hunt?" 0 600 1000 75))
+     (wrap-text ctx "There is one crab hidden in every photo, touch it as soon as you see it" 0 100 1000 75))
    (game-modify-buttons
     (list
 
      (empty-image-button
-      "Rock pool"
-      (- default-button-x 400)
-      (+ default-button-y 150)
-      500 300
-      "none"
-      (lambda (c)
-        (bubbles-hit! 0 c)
-        (record-game c "rockpool")))
-
-     (empty-image-button
-      "Mudflats"
+      "Play!"
       default-button-x
       (+ default-button-y 150)
       500 300
       "none"
       (lambda (c)
-        (bubbles-hit! 1 c)
-        (record-game c "mudflat")))
+        (bubbles-hit! 0 c)
+        (record-game c)))
 
-     (empty-image-button
-      "Mussel bed"
-      (+ default-button-x 400)
-      (+ default-button-y 150)
-      500 300
-      "none"
-      (lambda (c)
-        (bubbles-hit! 2 c)
-        (record-game c "musselbed")))
+
+     ;; (empty-image-button
+     ;;  "Rock pool"
+     ;;  (- default-button-x 400)
+     ;;  (+ default-button-y 150)
+     ;;  500 300
+     ;;  "none"
+     ;;  (lambda (c)
+     ;;    (bubbles-hit! 0 c)
+     ;;    (record-game c "rockpool")))
+
+     ;; (empty-image-button
+     ;;  "Mudflats"
+     ;;  default-button-x
+     ;;  (+ default-button-y 150)
+     ;;  500 300
+     ;;  "none"
+     ;;  (lambda (c)
+     ;;    (bubbles-hit! 1 c)
+     ;;    (record-game c "mudflat")))
+
+     ;; (empty-image-button
+     ;;  "Mussel bed"
+     ;;  (+ default-button-x 400)
+     ;;  (+ default-button-y 150)
+     ;;  500 300
+     ;;  "none"
+     ;;  (lambda (c)
+     ;;    (bubbles-hit! 2 c)
+     ;;    (record-game c "musselbed")))
      ) c))))
 
 (define (prep-path p)
   (p.replace (js "new RegExp('/', 'g')") ":"))
 
 (define (record-click c success)
-  (let ((photoname (photo-filename (car (nightjar-images (game-data c)))))
-        (crabname (photo-filename (car (nightjar-crabs (game-data c))))))
-    (server-call
-     "click"
-     (list
-      (list "game_id" (nightjar-game-id (game-data c)))
-      (list "photo_name" (prep-path photoname))
-      (list "crab_name" (prep-path crabname))
-      (list "crab_x" (car (nightjar-crab-pos (game-data c))))
-      (list "crab_y" (cadr (nightjar-crab-pos (game-data c))))
-      (list "crab_rot" (nightjar-crab-rotation (game-data c)))
-      (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
-      (list "x_position" (game-mx c))
-      (list "y_position" (game-my c))
-      (list "success" success)))))
+  (let ((photo (car (nightjar-images (game-data c))))
+        (crab (car (nightjar-crabs (game-data c)))))
+    (let ((photo-habitat (photo-habitat photo))
+          (crab-habitat (photo-habitat crab))
+          (photoname (photo-filename photo))
+          (crabname (photo-filename crab)))
+
+      (msg crab-habitat)
+      (msg photo-habitat)
+
+      (server-call
+       "click"
+       (list
+        (list "game_id" (nightjar-game-id (game-data c)))
+        (list "photo_name" (prep-path photoname))
+        (list "crab_name" (prep-path crabname))
+        (list "photo_habitat" photo-habitat)
+        (list "crab_habitat" crab-habitat)
+        (list "crab_x" (car (nightjar-crab-pos (game-data c))))
+        (list "crab_y" (cadr (nightjar-crab-pos (game-data c))))
+        (list "crab_rot" (nightjar-crab-rotation (game-data c)))
+        (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
+        (list "x_position" (game-mx c))
+        (list "y_position" (game-my c))
+        (list "success" success))))))
 
 (define (record-crab-time c success_code)
   (let ((photoname (photo-filename (car (nightjar-images (game-data c)))))
@@ -1317,7 +1323,7 @@
        "cutoutweed6.png"
        "cutoutweed7.png"
        "cutoutweed8.png"
-       "goby.png"
+       "human.png"
        "pollock.png"
        "bubble-1.png"
        "bubble-2.png"

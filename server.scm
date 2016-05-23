@@ -70,15 +70,17 @@
         (pluto-response (scheme->json (list id))))))
 
    (register
-    (req 'game '(player_id species bg_location))
-    (lambda (player_id species bg_location)
-      (let* ((id (insert-game db player_id species bg_location)))
+    (req 'game '(player_id species))
+    (lambda (player_id species)
+      (let* ((id (insert-game db player_id species)))
         (pluto-response (scheme->json (list id))))))
 
    (register
     (req 'click '(game_id
                   photo_name
                   crab_name
+                  photo_habitat
+                  crab_habitat
                   crab_x
                   crab_y
                   crab_rot
@@ -89,6 +91,8 @@
     (lambda (game_id
              photo_name
              crab_name
+             photo_habitat
+             crab_habitat
              crab_x
              crab_y
              crab_rot
@@ -101,6 +105,8 @@
                   game_id
                   photo_name
                   crab_name
+                  photo_habitat
+                  crab_habitat
                   (number->string (inexact->exact (round (string->number crab_x))))
                   (number->string (inexact->exact (round (string->number crab_y))))
                   crab_rot
