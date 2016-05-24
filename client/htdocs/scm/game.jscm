@@ -544,7 +544,8 @@
           (lambda (c)
             (bubbles-hit! 0 c)
             (play-sound "button.wav")
-            (nightjar-about c)))
+            (nightjar-about c)
+            ))
 
          (empty-image-button
           "Play!"
@@ -1375,19 +1376,26 @@
      (append
       (index-map
        (lambda (i ch)
-         (let ((x (+ 100 (* (modulo i 10) 180)))
+         (let ((x (+ 100 (* (modulo i 10) 120)))
                (y (+ 400 (* (Math.floor (/ i 10)) 130))))
            (image-button ch x y #f (small-button-image)
-                         (lambda (c) (type-username ch c)))))
+                         (lambda (c)
+                           (play-sound "button.wav")
+                           (type-username ch c)))))
        (list "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
              "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"))
 
       (list
-       (image-button "Delete" 1250 700 #t (small-button-image)
-                     (lambda (c) (type-delete c)))
+       (empty-image-button "Delete" 1200 700 empty-button-width empty-button-height #t
+                           (lambda (c)
+                             (play-sound "button.wav")
+                             (bubbles-hit! 0 c)
+                             (type-delete c)))
 
-       (image-button "Done" 1500 700 "none" (small-button-image)
+       (empty-image-button "Done" 1450 700 empty-button-width empty-button-height "none"
                      (lambda (c)
+                       (bubbles-hit! 1 c)
+                       (play-sound "button.wav")
                        (server-call
                         "player-name"
                         (list
