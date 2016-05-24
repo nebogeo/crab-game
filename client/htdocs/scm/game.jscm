@@ -118,28 +118,41 @@
 (define photos
   (list
    (list
-    (map (lambda (f) (list (string-append "photos/rockpool/" f) (filename-to-type f) "rockpool")) rockpool-filenames)
-    (map (lambda (f) (list (string-append "photos/rockpool/di-" f) (filename-to-type f) "rockpool")) rockpool-filenames))
+    (map (lambda (f) (list (string-append "photos/rockpool/" f) (filename-to-type f) "rockpool"
+                           (string-append "photos/rockpool/map-" f)
+                           )) rockpool-filenames)
+    (map (lambda (f) (list (string-append "photos/rockpool/di-" f) (filename-to-type f) "rockpool"
+                           (string-append "photos/rockpool/map-" f)
+                           )) rockpool-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/mudflat/" f) (filename-to-type f) "mudflat")) mudflat-filenames)
-    (map (lambda (f) (list (string-append "photos/mudflat/di-" f) (filename-to-type f) "mudflat")) mudflat-filenames))
+    (map (lambda (f) (list (string-append "photos/mudflat/" f) (filename-to-type f) "mudflat"
+                           (string-append "photos/mudflat/map-" f)
+                           )) mudflat-filenames)
+    (map (lambda (f) (list (string-append "photos/mudflat/di-" f) (filename-to-type f) "mudflat"
+                           (string-append "photos/mudflat/map-" f)
+                           )) mudflat-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/musselbed/" f) (filename-to-type f) "musselbed")) musselbed-filenames)
-    (map (lambda (f) (list (string-append "photos/musselbed/di-" f) (filename-to-type f) "musselbed")) musselbed-filenames))
+    (map (lambda (f) (list (string-append "photos/musselbed/" f) (filename-to-type f) "musselbed"
+                           (string-append "photos/musselbed/map-" f)
+                           )) musselbed-filenames)
+    (map (lambda (f) (list (string-append "photos/musselbed/di-" f) (filename-to-type f) "musselbed"
+                           (string-append "photos/musselbed/map-" f)
+                           )) musselbed-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/rockpool/crabs/" f) (filename-to-type f) "rockpool")) rockpool-crab-filenames)
-    (map (lambda (f) (list (string-append "photos/rockpool/di-crabs/" f) (filename-to-type f) "rockpool")) rockpool-crab-filenames))
+    (map (lambda (f) (list (string-append "photos/rockpool/crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/rockpool/di-crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/mudflat/crabs/" f) (filename-to-type f) "mudflat")) mudflat-crab-filenames)
-    (map (lambda (f) (list (string-append "photos/mudflat/di-crabs/" f) (filename-to-type f) "mudflat")) mudflat-crab-filenames))
+    (map (lambda (f) (list (string-append "photos/mudflat/crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/mudflat/di-crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/musselbed/crabs/" f) (filename-to-type f) "musselbed")) musselbed-crab-filenames)
-    (map (lambda (f) (list (string-append "photos/musselbed/di-crabs/" f) (filename-to-type f) "musselbed")) musselbed-crab-filenames))
+    (map (lambda (f) (list (string-append "photos/musselbed/crabs/" f) (filename-to-type f) "musselbed" "no map for crab")) musselbed-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/musselbed/di-crabs/" f) (filename-to-type f) "musselbed" "no map for crab")) musselbed-crab-filenames))
    ))
 
 (define (photo-filename l) (list-ref l 0))
 (define (photo-desc l) (list-ref l 1))
 (define (photo-habitat l) (list-ref l 2))
+(define (photo-map l) (list-ref l 3))
 
 (define (rockpool-photos l) (list-ref l 0))
 (define (mudflat-photos l) (list-ref l 1))
@@ -170,11 +183,38 @@
 ;;   (list (- (* screen-width (+ safe-x (* (rndf) (- 1 (* safe-x 2))))) image-centre-x)
 ;;         (- (* screen-height (+ safe-y (* (rndf) (- 1 (* safe-y 2))))) image-centre-y)))
 
-(define (generate-crab-pos)
+(define (generate-screen-pos)
   (list (+ safe-x-px
            (* (rndf) (- image-width (* safe-x-px 2))))
         (+ safe-y-px
            (* (rndf) (- image-height (* safe-y-px 2))))))
+
+(define (pos-to-image-index pos img)
+  (let ((x (Math.floor (* (/ (vx pos) image-width) img.width)))
+        (y (Math.floor (* (/ (vy pos) image-height) img.height))))
+    (* (+ (* y img.width) x) 4))) ;; rbga
+
+(define (get-pixel-val pos imagedata img)
+  (let ((index (pos-to-image-index pos img)))
+    (list-ref imagedata.data index)))
+
+(define (generate-crab-pos c)
+  (let ((example (car (nightjar-images (game-data c))))
+        (pos (generate-screen-pos))
+        (canvas (document.createElement "canvas")))
+    (let ((context (canvas.getContext "2d"))
+          (ex-map (find-image (photo-map example))))
+      ;; maybe the map doesn't exist for all backgrounds...
+      (when ex-map
+            (context.drawImage ex-map 0 0)
+            (let ((imagedata (context.getImageData 0 0 ex-map.width ex-map.height))
+                  ;; use a safety counter in case of entirely black images!
+                  (safe 0))
+              (while (and (< safe 500)
+                          (< (get-pixel-val pos imagedata ex-map) 127))
+                     (set! safe (+ safe 1))
+                     (set! pos (generate-screen-pos))))))
+    pos))
 
 (define default-button-x (- (/ screen-width 2) 0))
 (define default-button-y (+ (/ screen-height 2) 120))
@@ -336,7 +376,7 @@
        (nightjar-modify-crab-rotation
         (* 2 (rndf) 3.141) ; good enuf
         (nightjar-modify-crab-pos
-         (generate-crab-pos)
+         (generate-crab-pos c)
          (nightjar-modify-sprite
           (sprite -999 -999 "right.png" 0)
           d)))))
@@ -363,6 +403,7 @@
    (list
     ;; load the *next* images
     (photo-filename (list-ref (nightjar-images (game-data c)) 1))
+    (photo-map (list-ref (nightjar-images (game-data c)) 1))
     (photo-filename (list-ref (nightjar-crabs (game-data c)) 1))))
   ;; set up loading screen before loading
   (game-modify-buttons
@@ -415,10 +456,12 @@
               (game-time c)
               (nightjar-modify-images
                (unzip image-pairs 0)
-               (nightjar-modify-crabs (unzip image-pairs 1) d))))
+               (nightjar-modify-crabs
+                (unzip image-pairs 1) d))))
            c)))
        (list
         (photo-filename (list-ref (car image-pairs) 0))
+        (photo-map (list-ref (car image-pairs) 0))
         (photo-filename (list-ref (car image-pairs) 1))))
       (game-modify-buttons
        ()
@@ -1165,8 +1208,6 @@
   (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
-     (define example (car (nightjar-images (game-data c))))
-
      (ctx.drawImage
       (find-image (photo-filename example) image-lib)
       0 0)

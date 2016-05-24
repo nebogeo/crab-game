@@ -253,6 +253,11 @@ ditto.comp_when = function(args) {
         "return ("+ditto.comp_lambda([[]].concat(ditto.cdr(args)))+")() }})()";
 };
 
+ditto.comp_while = function(args) {
+    return "(function () { \nwhile ("+ditto.comp(ditto.car(args))+") {\n"+
+        "("+ditto.comp_lambda([[]].concat(ditto.cdr(args)))+")() }})()";
+};
+
 ditto.foldl_single_helper = function(fn,val,src) {
     for (var i=0; i<src.length; i++) {
         val=fn(src[i],val);
@@ -300,6 +305,7 @@ ditto.core_forms = function(fn, args) {
     if (fn == "when") if (ditto.check(fn,args,2,-1)) return debug+ditto.comp_when(args);
     if (fn == "cond") if (ditto.check(fn,args,2,-1)) return debug+ditto.comp_cond(args);
     if (fn == "let") if (ditto.check(fn,args,2,-1)) return debug+ditto.comp_let(args);
+    if (fn == "while") if (ditto.check(fn,args,2,-1)) return debug+ditto.comp_while(args);
 
     if (fn == "define") {
         // adding semicolon here

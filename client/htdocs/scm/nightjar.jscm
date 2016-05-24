@@ -70,7 +70,15 @@
   (let ((image (js "new Image()")))
     (set! image.onerror
           (lambda ()
-            (msg (+ "error loading (images):" (car filenames)))))
+            ;; carry on in case of missing images... (for maps)
+            (msg (+ "error loading (images):" (car filenames)))
+            (if (> (length filenames) 1)
+                (begin
+                  (msg (+ "now loading " (length (cdr filenames))))
+                  (load-images-mutate fn (cdr filenames)))
+                (begin
+                  (msg "start mutate")
+                  (set! game (fn game))))))
     (set! image.onload
           (lambda ()
             (set! image-lib (cons (list (car filenames) image) image-lib))
