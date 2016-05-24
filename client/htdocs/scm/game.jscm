@@ -498,7 +498,7 @@
    (lambda (pos)
      (let ((img (find-image (list-ref pos 3))))
        (ctx.save)
-       (ctx.translate (car pos) screen-height)
+       (ctx.translate (car pos) (+ screen-height 100))
 ;;       (ctx.translate (/ img.width 2) img.height)
        (ctx.scale
         (+ (list-ref pos 2) 0.5)
