@@ -526,14 +526,17 @@
        (lambda (ctx)
          (draw-weed ctx c)
          (particle-system-render ctx (nightjar-bubbles (game-data c)))
+         (ctx.drawImage (find-image "crab1.png") -50 550)
+         (ctx.drawImage (find-image "crab2.png") 1200 550)
          (nightjar-heading ctx "Can you catch the camouflage crab?")
          (nightjar-text ctx "Hunt for crabs and help sensory research")
          (set! ctx.font "normal 30pt open-sans"))
 
        (game-modify-buttons
         (list
+
          (empty-image-button
-          "Start playing"
+          "About"
           (- default-button-x 300)
           default-button-y
           empty-button-width empty-button-height
@@ -541,10 +544,10 @@
           (lambda (c)
             (bubbles-hit! 0 c)
             (play-sound "button.wav")
-            (nightjar-experiment-screen c)))
+            (nightjar-about c)))
 
          (empty-image-button
-          "About"
+          "Play!"
           default-button-x
           default-button-y
           empty-button-width empty-button-height
@@ -552,7 +555,7 @@
           (lambda (c)
             (bubbles-hit! 1 c)
             (play-sound "button.wav")
-            (nightjar-about c)))
+            (nightjar-experiment-screen c)))
 
          (empty-image-button
           "High Scores"
@@ -1439,6 +1442,8 @@
        "bubble-4.png"
        "bubble-5.png"
        "bubble-6.png"
+       "crab1.png"
+       "crab2.png"
        )
  (lambda ()
    (set! bubbles (build-bubbles))
