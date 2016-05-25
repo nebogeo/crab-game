@@ -23,7 +23,7 @@
   (exec/ignore db "create table game ( id integer primary key autoincrement, player_id integer, species text, score integer)")
   (exec/ignore db "create table click ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, crab_habitat text, photo_habitat text, crab_x integer, crab_y integer, crab_rot real, time_stamp integer, x_position integer, y_position integer, success integer )")
   (exec/ignore db "create table player_name ( id integer primary key autoincrement, player_id integer, player_name text )")
-  (exec/ignore db "create table crab_time ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, time_stamp integer, success_code integer )")
+  (exec/ignore db "create table crab_time ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, crab_habitat text, photo_habitat text, time_stamp integer, success_code integer )")
   )
 
 (define (insert-player db played_before age_range)
@@ -55,13 +55,15 @@
    ))
 
 ;; redundant info for quick graphs
-(define (insert-crab-time db game_id photo_name crab_name time_stamp success_code)
+(define (insert-crab-time db game_id photo_name crab_name photo_habitat crab_habitat time_stamp success_code)
   (insert
    db
-   "INSERT INTO crab_time VALUES (NULL, ?, ?, ?, ?, ?)"
+   "INSERT INTO crab_time VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)"
    game_id
    photo_name
    crab_name
+   photo_habitat
+   crab_habitat
    time_stamp
    success_code
    ))
@@ -100,16 +102,46 @@
       (list (vector-ref i 0) (vector-ref i 1)))
     (hiscores-select db "pollock"))))
 
+;; best crab habitat for each background
+;; select avg(time_stamp) from crab_time where crab_habitat="rockpool";
+
+;; best habitat for hiding in
+;; select avg(time_stamp) from crab_time where photo_habitat="musselbed";
+
+;; best predator
+;; select avg(time_stamp) from crab_time join game as g on game_id=g.id where g.species="human";
+
+(define (get-crab-score db habitat)
+  (list habitat (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where crab_habitat=?;" habitat)) 0)))
+
+(define (get-habitat-score db habitat)
+  (list habitat (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=?;" habitat)) 0)))
+
+(define (get-species-score db species)
+  (list species (vector-ref (cadr (select db "select avg(time_stamp) from crab_time join game as g on game_id=g.id where g.species=?;" species)) 0)))
+
 (define (get-stats db)
   (list
-   (map
-    (lambda (i)
-      (list (vector-ref i 0) (vector-ref i 1)))
-    (cdr (select db "select n.player_name, p.easy_score from player as p join player_name as n on p.id=n.player_id order by p.easy_score limit 100;")))
-   (map
-    (lambda (i)
-      (list (vector-ref i 0) (vector-ref i 1)))
-    (cdr (select db "select n.player_name, p.hard_score from player as p join player_name as n on p.id=n.player_id order by p.hard_score limit 100;")))))
+   (sort
+    (list
+     (get-crab-score db "rockpool")
+     (get-crab-score db "musselbed")
+     (get-crab-score db "mudflat"))
+    (lambda (a b)
+      (> (cadr a) (cadr b))))
+   (sort
+    (list
+     (get-habitat-score db "rockpool")
+     (get-habitat-score db "musselbed")
+     (get-habitat-score db "mudflat"))
+    (lambda (a b)
+      (> (cadr a) (cadr b))))
+   (sort
+    (list
+     (get-species-score db "human")
+     (get-species-score db "pollock"))
+    (lambda (a b)
+      (> (cadr a) (cadr b))))))
 
 
 (define (get-game-average db game-id)

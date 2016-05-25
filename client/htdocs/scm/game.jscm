@@ -592,18 +592,22 @@
     (game-modify-buttons
      (list
       (empty-image-button
-       "Back"
-       1400
-       800
-       empty-button-width empty-button-height
-       "none"
+       "Back" 1400 800 empty-button-width empty-button-height "none"
+       (lambda (c)
+         (bubbles-hit! 0 c)
+         (nightjar-intro game))
+       c)
+
+      (empty-image-button
+       "Results" 400 800 empty-button-width empty-button-height "none"
        (lambda (c)
          (bubbles-hit! 0 c)
          (server-call-mutate
-          "hiscores" ()
+          "stats" ()
           (lambda (game data)
             (play-sound "button.wav")
-            (nightjar-intro game)))
+            (alert data)
+            (nightjar-results game (JSON.parse data))))
          c))
       )
      c))))
@@ -999,16 +1003,22 @@
         (list "success" success))))))
 
 (define (record-crab-time c success_code)
-  (let ((photoname (photo-filename (car (nightjar-images (game-data c)))))
-        (crabname (photo-filename (car (nightjar-crabs (game-data c))))))
-    (server-call
-     "crab-time"
-     (list
-      (list "game_id" (nightjar-game-id (game-data c)))
-      (list "photo_name" (prep-path photoname))
-      (list "crab_name" (prep-path crabname))
-      (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
-      (list "success_code" success_code)))))
+  (let ((photo (car (nightjar-images (game-data c))))
+        (crab (car (nightjar-crabs (game-data c)))))
+    (let ((photo-habitat (photo-habitat photo))
+          (crab-habitat (photo-habitat crab))
+          (photoname (photo-filename photo))
+          (crabname (photo-filename crab)))
+      (server-call
+       "crab-time"
+       (list
+        (list "game_id" (nightjar-game-id (game-data c)))
+        (list "photo_name" (prep-path photoname))
+        (list "crab_name" (prep-path crabname))
+        (list "photo_habitat" photo-habitat)
+        (list "crab_habitat" crab-habitat)
+        (list "time_stamp" (- (game-time c) (nightjar-photo-time (game-data c))))
+        (list "success_code" success_code))))))
 
 (define (draw-crab ctx crab-image crab-x crab-y crab-rot)
   (ctx.save)
@@ -1407,6 +1417,24 @@
 
 
 
+(define (nightjar-results c data)
+  (update-bubble-pos
+   (game-modify-render
+    (lambda (ctx)
+      (draw-weed ctx c)
+      (particle-system-render ctx (nightjar-bubbles (game-data c)))
+      (nightjar-heading ctx "Results")
+      (render-results data))
+
+    (game-modify-buttons
+     (list
+      (empty-image-button
+       "back" 400 800 empty-button-width empty-button-height "none"
+       (lambda (c)
+         (bubbles-hit! 0 c)
+         (nightjar-about c)))
+      )
+     c))))
 
 
 

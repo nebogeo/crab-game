@@ -120,11 +120,15 @@
     (req 'crab-time '(game_id
                       photo_name
                       crab_name
+                      photo_habitat
+                      crab_habitat
                       time_stamp
                       success_code))
     (lambda (game_id
              photo_name
              crab_name
+             photo_habitat
+             crab_habitat
              time_stamp
              success_code)
       (let* ((id (insert-crab-time
@@ -132,6 +136,8 @@
                   game_id
                   photo_name
                   crab_name
+                  photo_habitat
+                  crab_habitat
                   time_stamp
                   success_code
                   )))
@@ -158,7 +164,6 @@
     (lambda ()
       (pluto-response
        (scheme->json (get-stats db)))))
-
 
    (register
     (req 'player-name '(player_id player_name))
