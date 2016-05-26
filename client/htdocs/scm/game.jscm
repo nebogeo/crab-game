@@ -192,12 +192,18 @@
     (map (lambda (f) (list (string-append "photos/rockpool/crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames)
     (map (lambda (f) (list (string-append "photos/rockpool/di-crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/mudflat/crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames)
-    (map (lambda (f) (list (string-append "photos/mudflat/di-crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames))
+    (map (lambda (f) (list (string-append "photos/rockpool/crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/rockpool/di-crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/musselbed/crabs/" f) (filename-to-type f) "musselbed" "no map for crab")) musselbed-crab-filenames)
-    (map (lambda (f) (list (string-append "photos/musselbed/di-crabs/" f) (filename-to-type f) "musselbed" "no map for crab")) musselbed-crab-filenames))
+    (map (lambda (f) (list (string-append "photos/rockpool/crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/rockpool/di-crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames))
    ))
+
+;;(map (lambda (f) (list (string-append "photos/mudflat/crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames)
+;;(map (lambda (f) (list (string-append "photos/mudflat/di-crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames))
+
+;;(map (lambda (f) (list (string-append "photos/musselbed/crabs/" f) (filename-to-type f) "musselbed" "no map for crab")) musselbed-crab-filenames)
+;;(map (lambda (f) (list (string-append "photos/musselbed/di-crabs/" f) (filename-to-type f) "musselbed" "no map for crab")) musselbed-crab-filenames))
 
 (define (photo-filename l) (list-ref l 0))
 (define (photo-desc l) (list-ref l 1))
