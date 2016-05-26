@@ -177,6 +177,10 @@
   (let ((m (ctx.measureText txt)))
     (ctx.fillText txt (+ x (- (/ screen-width 2) (/ m.width 2))) y)))
 
+(define (centre-text2 ctx txt x y)
+  (let ((m (ctx.measureText txt)))
+    (ctx.fillText txt (- x (/ m.width 2)) y)))
+
 (define (shadow-text ctx text x y)
   (set! ctx.fillStyle "#fff")
   (ctx.fillText text (+ x 4) (+ y 4))
@@ -639,16 +643,11 @@
   (ctx.closePath))
 
 (define (nightjar-draw-clock ctx time max-time)
-  (set! ctx.lineWidth 4)
-  (set! ctx.strokeStyle "#fff")
-  (stroke-clock ctx 74 74 time max-time)
-  (ctx.stroke)
-
   (stroke-clock ctx 70 70 time max-time)
-  (set! ctx.fillStyle "rgba(1, 0, 0, 0.7)")
+  (set! ctx.fillStyle "rgba(153, 213, 205, 0.5)")
   (ctx.fill)
   (set! ctx.lineWidth 4)
-  (set! ctx.strokeStyle "#777")
+  (set! ctx.strokeStyle "#99d5cd")
   (ctx.stroke)
 
   (set! ctx.lineWidth 1)

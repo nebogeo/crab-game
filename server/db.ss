@@ -115,17 +115,17 @@
   (list
    (sort
     (list
-     (list "rockpool crab" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=?;" habitat "rockpool")) 0))
-     (list "mudflat crab" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=?;" habitat "mudflat")) 0))
-     (list "musselbed crab" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=?;" habitat "musselbed")) 0)))
+     (list "rockpool" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "rockpool")) 0))
+     (list "mudflat" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "mudflat")) 0))
+     (list "musselbed" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "musselbed")) 0)))
     (lambda (a b)
       (> (cadr a) (cadr b))))))
 
 (define (get-habitat-score db habitat)
-  (list habitat (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=?;" habitat)) 0)))
+  (list habitat (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and time_stamp<5000;" habitat)) 0)))
 
 (define (get-species-score db species)
-  (list species (vector-ref (cadr (select db "select avg(time_stamp) from crab_time join game as g on game_id=g.id where g.species=?;" species)) 0)))
+  (list species (vector-ref (cadr (select db "select avg(time_stamp) from crab_time join game as g on game_id=g.id where g.species=? and time_stamp<5000;" species)) 0)))
 
 (define (get-stats db)
   (list
