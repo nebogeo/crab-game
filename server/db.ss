@@ -112,7 +112,14 @@
 ;; select avg(time_stamp) from crab_time join game as g on game_id=g.id where g.species="human";
 
 (define (get-crab-score db habitat)
-  (list habitat (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where crab_habitat=?;" habitat)) 0)))
+  (list
+   (sort
+    (list
+     (list "rockpool crab" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=?;" habitat "rockpool")) 0))
+     (list "mudflat crab" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=?;" habitat "mudflat")) 0))
+     (list "musselbed crab" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=?;" habitat "musselbed")) 0)))
+    (lambda (a b)
+      (> (cadr a) (cadr b))))))
 
 (define (get-habitat-score db habitat)
   (list habitat (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=?;" habitat)) 0)))
@@ -122,13 +129,10 @@
 
 (define (get-stats db)
   (list
-   (sort
-    (list
-     (get-crab-score db "rockpool")
-     (get-crab-score db "musselbed")
-     (get-crab-score db "mudflat"))
-    (lambda (a b)
-      (> (cadr a) (cadr b))))
+   (list
+    (list "rockpool" (get-crab-score db "rockpool"))
+    (list "musselbed" (get-crab-score db "musselbed"))
+    (list "mudflat" (get-crab-score db "mudflat")))
    (sort
     (list
      (get-habitat-score db "rockpool")
@@ -141,7 +145,7 @@
      (get-species-score db "human")
      (get-species-score db "pollock"))
     (lambda (a b)
-      (> (cadr a) (cadr b))))))
+      (< (cadr a) (cadr b))))))
 
 
 (define (get-game-average db game-id)

@@ -93,9 +93,59 @@
 
 
 (define rockpool-crab-filenames
-  (build-list
-   28 (lambda (i)
-        (string-append "autocrab-" i ".png"))))
+(list
+  "283_A_Vis_Falmouth_2014.mspec_c1.png"
+"284_J_Vis_Falmouth_2014.mspec_c1.png"
+"287_A_Vis_Falmouth_2014.mspec_c1.png"
+"288_J_Vis_Falmouth_2014.mspec_c1.png"
+"289_J_Vis_Falmouth_2014.mspec_c1.png"
+"291_J_Vis_Falmouth_2014.mspec_c1.png"
+"292_A_Vis_Falmouth_2014.mspec_c1.png"
+"293_A_Vis_Falmouth_2014.mspec_c1.png"
+"295_J_Vis_Falmouth_2014.mspec_c1.png"
+"299_A_Vis_Falmouth_2014.mspec_c1.png"
+"301_J_Vis_Falmouth_2014.mspec_c1.png"
+"302_J_Vis_Falmouth_2014.mspec_c1.png"
+"303_J_Vis_Falmouth_2014.mspec_c1.png"
+"304_J_Vis_Falmouth_2014.mspec_c1.png"
+"506_A_Vis_Falmouth_2014.mspec_c1.png"
+"507_A_Vis_Falmouth_2014.mspec_c1.png"
+"508_J_Vis_Falmouth_2014.mspec_c1.png"
+"509_A_Vis_Falmouth_2014.mspec_c1.png"
+"510_J_Vis_Falmouth_2014.mspec_c1.png"
+"511_J_Vis_Falmouth_2014.mspec_c1.png"
+"512_J_Vis_Falmouth_2014.mspec_c1.png"
+"513_J_Vis_Falmouth_2014.mspec_c1.png"
+"514_J_Vis_Falmouth_2014.mspec_c1.png"
+"515_A_Vis_Falmouth_2014.mspec_c1.png"
+"516_J_Vis_Falmouth_2014.mspec_c1.png"
+"518_A_Vis_Falmouth_2014.mspec_c1.png"
+"520_A_Vis_Falmouth_2014.mspec_c1.png"
+"521_A_Vis_Falmouth_2014.mspec_c1.png"
+"522_A_Vis_Falmouth_2014.mspec_c1.png"
+"525_A_Vis_Falmouth_2014.mspec_c1.png"
+"526_J_Vis_Falmouth_2014.mspec_c1.png"
+"527_A_Vis_Falmouth_2014.mspec_c1.png"
+"530_J_Vis_Falmouth_2014.mspec_c1.png"
+"531_J_Vis_Falmouth_2014.mspec_c1.png"
+"532_J_Vis_Falmouth_2014.mspec_c1.png"
+"533_A_Vis_Falmouth_2014.mspec_c1.png"
+"534_J_Vis_Falmouth_2014.mspec_c1.png"
+"536_A_Vis_Falmouth_2014.mspec_c1.png"
+"538_J_Vis_Falmouth_2014.mspec_c1.png"
+"61_A_Vis_Falmouth_2014.mspec_c1.png"
+"62_A_Vis_Falmouth_2014.mspec_c1.png"
+"63_A_Vis_Falmouth_2014.mspec_c1.png"
+"64_A_Vis_Falmouth_2014.mspec_c1.png"
+"66_A_Vis_Falmouth_2014.mspec_c1.png"
+"68_J_Vis_Falmouth_2014.mspec_c1.png"
+"70_A_Vis_Falmouth_2014.mspec_c1.png"
+"71_J_Vis_Falmouth_2014.mspec_c1.png"
+"73_J_Vis_Falmouth_2014.mspec_c1.png"
+"77_A_Vis_Falmouth_2014.mspec_c1.png"
+"78_A_Vis_Falmouth_2014.mspec_c1.png"))
+
+
 
 (define mudflat-crab-filenames
   (build-list
@@ -606,7 +656,6 @@
           "stats" ()
           (lambda (game data)
             (play-sound "button.wav")
-            (alert data)
             (nightjar-results game (JSON.parse data))))
          c))
       )
@@ -1423,8 +1472,44 @@
     (lambda (ctx)
       (draw-weed ctx c)
       (particle-system-render ctx (nightjar-bubbles (game-data c)))
-      (nightjar-heading ctx "Results")
-      (render-results data))
+      (set! ctx.font "normal 50pt open-sans")
+      (wrap-text ctx (string-append "Results") 0 100 1000 70)
+      (set! ctx.font "normal 30pt open-sans")
+
+      (let ((xpos 100) (ypos 300))
+        (ctx.fillText "Best Camouflaged Crab" xpos ypos)
+        (set! ypos (+ ypos 100))
+        (index-for-each
+         (lambda (i ee)
+           (let ((e (car (car (cadr ee)))))
+             (let ((txt (string-append (car ee) " -> " (car e) " : " (time-to-seconds (cadr e)))))
+               (ctx.fillText txt xpos (+ ypos (* 40 i))))))
+         (list-ref data 0))
+
+        (set! xpos (+ xpos 600))
+        (set! ypos 300)
+
+        (ctx.fillText "Best Habitat For Hiding In" xpos ypos)
+        (set! ypos (+ ypos 100))
+        (index-for-each
+         (lambda (i e)
+           (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
+             (ctx.fillText txt xpos (+ ypos (* 40 i)))))
+         (list-ref data 1))
+
+        (set! xpos (+ xpos 600))
+        (set! ypos 300)
+
+        (ctx.fillText "Best Predator" xpos ypos)
+        (set! ypos (+ ypos 100))
+        (index-for-each
+         (lambda (i e)
+           (let ((txt (string-append (car e) " : " (time-to-seconds (cadr e)))))
+             (ctx.fillText txt xpos (+ ypos (* 40 i)))))
+         (list-ref data 2))
+
+        ))
+
 
     (game-modify-buttons
      (list
