@@ -615,8 +615,8 @@
     (set! xpos (+ xpos 550))
     (set! ypos yp)
 
-    (centre-text2 ctx "Best habitat For hiding" (+ xpos 150) ypos)
-    (set! ypos (+ ypos 50))
+    (centre-text2 ctx "Best habitat for hiding" (+ xpos 150) ypos)
+    (set! ypos (+ ypos 80))
     (set! ctx.font "normal 25pt open-sans")
     (index-for-each
      (lambda (i ee)
@@ -653,7 +653,7 @@
 
     (ctx.fillText "Best predator eyes" (- xpos 80) ypos)
     (set! ctx.font "normal 25pt open-sans")
-    (set! ypos (+ ypos 50))
+    (set! ypos (+ ypos 80))
     (index-for-each
      (lambda (i e)
        (let ((predator (car e))
