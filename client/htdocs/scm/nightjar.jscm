@@ -466,13 +466,14 @@
 (define (image-button-render! ctx t b)
   (ctx.save)
   (ctx.translate (button-x b) (button-y b))
+  (button-text-render! b t)
   (button-do-jittering b t)
   (when (button-drawable b)
         (ctx.drawImage
          (button-drawable b)
          0 0))
-  (button-text-render! b t)
-  (ctx.restore))
+  (ctx.restore)
+  )
 
 (define (animated-button-render! ctx t b)
   (ctx.save)
