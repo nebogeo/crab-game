@@ -111,21 +111,25 @@
 ;; best predator
 ;; select avg(time_stamp) from crab_time join game as g on game_id=g.id where g.species="human";
 
+(define (safe-sel res)
+  (if (or (null? res) (false? (vector-ref (cadr res) 0)))
+      0 (vector-ref (cadr res) 0)))
+
 (define (get-crab-score db habitat)
   (list
    (sort
     (list
-     (list "rockpool" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "rockpool")) 0))
-     (list "mudflat" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "mudflat")) 0))
-     (list "musselbed" (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "musselbed")) 0)))
+     (list "rockpool" (safe-sel (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "rockpool")))
+     (list "mudflat" (safe-sel (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "mudflat")))
+     (list "musselbed" (safe-sel (select db "select avg(time_stamp) from crab_time where photo_habitat=? and crab_habitat=? and time_stamp<5000;" habitat "musselbed"))))
     (lambda (a b)
       (> (cadr a) (cadr b))))))
 
 (define (get-habitat-score db habitat)
-  (list habitat (vector-ref (cadr (select db "select avg(time_stamp) from crab_time where photo_habitat=? and time_stamp<5000;" habitat)) 0)))
+  (list habitat (safe-sel (select db "select avg(time_stamp) from crab_time where photo_habitat=? and time_stamp<5000;" habitat))))
 
 (define (get-species-score db species)
-  (list species (vector-ref (cadr (select db "select avg(time_stamp) from crab_time join game as g on game_id=g.id where g.species=? and time_stamp<5000;" species)) 0)))
+  (list species (safe-sel (select db "select avg(time_stamp) from crab_time join game as g on game_id=g.id where g.species=? and time_stamp<5000;" species))))
 
 (define (get-stats db)
   (list
