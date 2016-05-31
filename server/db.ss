@@ -21,7 +21,7 @@
 (define (setup db)
   (exec/ignore db "create table player ( id integer primary key autoincrement, played_before integer, age_range integer)")
   (exec/ignore db "create table game ( id integer primary key autoincrement, player_id integer, species text, score integer)")
-  (exec/ignore db "create table click ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, crab_habitat text, photo_habitat text, crab_x integer, crab_y integer, crab_rot real, time_stamp integer, x_position integer, y_position integer, success integer )")
+  (exec/ignore db "create table click ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, photo_habitat text, crab_habitat text, crab_x integer, crab_y integer, crab_rot real, time_stamp integer, x_position integer, y_position integer, success integer )")
   (exec/ignore db "create table player_name ( id integer primary key autoincrement, player_id integer, player_name text )")
   (exec/ignore db "create table crab_time ( id integer primary key autoincrement, game_id integer, photo_name text, crab_name text, photo_habitat text, crab_habitat text, time_stamp integer, success_code integer )")
   )
