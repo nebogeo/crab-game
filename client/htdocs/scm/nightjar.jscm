@@ -237,11 +237,22 @@
 ;; button stuff
 
 (define (rect-button name x y w h jitter callback)
-      (list "rect-button" name x y w h
-            jitter callback #f (rndf) #f))
+  (list "rect-button" name x y w h
+        jitter callback #f (rndf) #f))
 
 (define (image-button name x y jitter drawable callback)
   (list "image-button"
+        name
+        (- x (/ drawable.width 2))
+        (- y (/ drawable.height 2))
+        drawable.width
+        drawable.height
+        jitter callback drawable
+        (rndf)
+        #f))
+
+(define (image-button-static-text name x y jitter drawable callback)
+  (list "image-button-static-text"
         name
         (- x (/ drawable.width 2))
         (- y (/ drawable.height 2))
@@ -442,11 +453,9 @@
             (list #t (fn c))
             (list #f c)))
       (cond
-       ((eq? (button-type b) "rect-button")
-        (rect-button-update! b mx my c))
-       ((eq? (button-type b) "image-button")
-        (rect-button-update! b mx my c))
-       ((eq? (button-type b) "animated-button")
+       ((or (eq? (button-type b) "rect-button")
+            (eq? (button-type b) "image-button")
+            (eq? (button-type b) "animated-button"))
         (rect-button-update! b mx my c))
        (else
         (circle-button-update! b mx my c)))))
