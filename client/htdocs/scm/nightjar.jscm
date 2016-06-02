@@ -923,6 +923,11 @@
   (wrap-text ctx txt 0 200 1000 75)
   (set! ctx.font "normal 30pt open-sans"))
 
+(define (nightjar-all-text-lower ctx txt)
+  (set! ctx.font "bold 50pt open-sans")
+  (wrap-text ctx txt 0 400 1000 75)
+  (set! ctx.font "normal 30pt open-sans"))
+
 
 ;; ----------------------------------------
 

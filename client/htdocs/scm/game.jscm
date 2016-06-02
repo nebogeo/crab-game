@@ -273,7 +273,7 @@
     pos))
 
 (define default-button-x (- (/ screen-width 2) 0))
-(define default-button-y (+ (/ screen-height 2) 120))
+(define default-button-y (+ (/ screen-height 2) 320))
 (define button-gap 250)
 
 (define (build-bubble id vel fuzz age)
@@ -687,8 +687,6 @@
     ))
 
 (define (nightjar-intro c)
-  (let ((icon-x 150)
-        (icon-y (+ default-button-y 100)))
     (game-modify-timeout
      (lambda ()
        (set! window.location "/"))
@@ -715,7 +713,7 @@
          (empty-image-button
           "Start"
           (- default-button-x 200)
-          (+ default-button-y 200)
+          default-button-y
           empty-button-width empty-button-height
           "none"
           (lambda (c)
@@ -726,7 +724,7 @@
          (empty-image-button
           "Results"
           (+ default-button-x 200)
-          (+ default-button-y 200)
+          default-button-y
           empty-button-width empty-button-height
           "none"
           (lambda (c)
@@ -741,7 +739,7 @@
             c))
 
          )
-        c)))))))
+        c))))))
 
 (define (nightjar-about c)
   (update-bubble-pos
@@ -757,7 +755,8 @@
     (game-modify-buttons
      (list
       (empty-image-button
-       "Back" 1400 800 empty-button-width empty-button-height "none"
+       "Back" 1400
+       default-button-y empty-button-width empty-button-height "none"
        (lambda (c)
          (bubbles-hit! 0 c)
          (nightjar-intro game))
@@ -766,7 +765,7 @@
       (empty-image-button
        "Play!"
        default-button-x
-       800
+       default-button-y
        empty-button-width empty-button-height
        "none"
        (lambda (c)
@@ -775,7 +774,8 @@
          (nightjar-experiment-screen c)))
 
       (empty-image-button
-       "Results" 180 800 empty-button-width empty-button-height "none"
+       "Results" 180 default-button-y
+       empty-button-width empty-button-height "none"
        (lambda (c)
          (bubbles-hit! 0 c)
          (server-call-mutate
@@ -847,9 +847,9 @@
      (draw-weed ctx c)
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (set! ctx.font "bold 50pt open-sans")
-     (wrap-text ctx "We would like to use results from your game for a scientific publication, is that ok?" 0 100 1000 75)
+     (wrap-text ctx "We would like to use results from your game for a scientific publication, is that ok?" 0 200 1000 75)
      (set! ctx.font "normal 30pt open-sans")
-     (wrap-text ctx "We are using age and timing information" 0 400 1000 75))
+     (wrap-text ctx "We are using age and timing information" 0 500 1000 75))
 
    (game-modify-buttons
     (list
@@ -883,7 +883,7 @@
    (lambda (ctx)
      (draw-weed ctx c)
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
-     (nightjar-all-text ctx "What is your age?")
+     (nightjar-all-text-lower ctx "What is your age?")
      (set! ctx.font "normal 30pt open-sans"))
    (game-modify-buttons
     (let ((age-but
@@ -934,9 +934,7 @@
    (lambda (ctx)
      (draw-weed ctx c)
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
-     (nightjar-all-text
-      ctx
-      (+ "Have you played this game before?"))
+     (nightjar-all-text-lower ctx "Have you played this game before?")
      (set! ctx.font "normal 30pt open-sans"))
    (game-modify-buttons
     (list
@@ -976,17 +974,17 @@
 
      (centre-text2 ctx "Human"
                    (- default-button-x button-gap 100)
-                   (+ default-button-y 240))
+                   (+ default-button-y 40))
      (centre-text2 ctx "Trichromatic vision"
                    (- default-button-x button-gap 100)
-                   (+ default-button-y 280))
+                   (+ default-button-y 80))
 
      (centre-text2 ctx "Pollock"
                    (+ default-button-x button-gap 100)
-                   (+ default-button-y 240))
+                   (+ default-button-y 40))
      (centre-text2 ctx "Dichromatic vision"
                    (+ default-button-x button-gap 100)
-                   (+ default-button-y 280))
+                   (+ default-button-y 80))
 
      )
 
@@ -996,7 +994,7 @@
      (image-button
       ""
       (- default-button-x button-gap 100)
-      (+ default-button-y 30)
+      (- default-button-y 170)
       "rotate"
       (find-image "human.png")
       (lambda (c)
@@ -1010,7 +1008,7 @@
      (rect-button
       ""
       (- default-button-x button-gap 330)
-      (+ default-button-y 140) 500 300
+      (- default-button-y 60) 500 300
       "none"
       (lambda (c)
         (play-sound "button.wav")
@@ -1024,7 +1022,7 @@
      (image-button
       ""
       (+ default-button-x button-gap 100)
-      (+ default-button-y 30)
+      (- default-button-y 170)
       "rotate"
       (find-image "pollock.png")
       (lambda (c)
@@ -1038,7 +1036,7 @@
      (rect-button
       ""
       (+ default-button-x 100)
-      (+ default-button-y 140) 500 300
+      (- default-button-y 60) 500 300
       "none"
       (lambda (c)
         (play-sound "button.wav")
@@ -1143,7 +1141,7 @@
      (empty-image-button
       "Play!"
       default-button-x
-      (+ default-button-y 150)
+      default-button-y
       empty-button-width empty-button-height
       "none"
       (lambda (c)
@@ -1389,7 +1387,7 @@
       (empty-image-button
        "Next"
        (+ default-button-x button-gap)
-       (+ default-button-y 50)
+       default-button-y
        empty-button-width empty-button-height
        "none"
        (lambda (c)
@@ -1403,7 +1401,7 @@
       (empty-image-button
        "Quit"
        (- default-button-x button-gap)
-       (+ default-button-y 50)
+       default-button-y
        empty-button-width empty-button-height
        "none"
        (lambda (c)
@@ -1458,7 +1456,7 @@
       (empty-image-button
        "Next crab"
        default-button-x
-       (+ default-button-y 50)
+       default-button-y
        empty-button-width empty-button-height
        "none"
        (lambda (c)
@@ -1523,7 +1521,7 @@
           (empty-image-button
            "Enter Your Name"
            default-button-x
-           (+ default-button-y 200)
+           default-button-y
            empty-button-width empty-button-height
            "none"
            (lambda (c)
@@ -1534,7 +1532,7 @@
           (empty-image-button
            "Continue"
            default-button-x
-           (+ default-button-y 200)
+           default-button-y
            empty-button-width empty-button-height
            "none"
            (lambda (c)
@@ -1653,7 +1651,7 @@
       (empty-image-button
        "Start"
        (- default-button-x 200)
-       800
+       default-button-y
        empty-button-width empty-button-height
        "none"
        (lambda (c)
@@ -1664,7 +1662,8 @@
       (empty-image-button
        "Back"
        (+ default-button-x 200)
-       800 empty-button-width empty-button-height "none"
+       default-button-y
+       empty-button-width empty-button-height "none"
        (lambda (c)
          (bubbles-hit! 0 c)
          (play-sound "button.wav")
