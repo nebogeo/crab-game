@@ -694,3 +694,10 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
   }
 
 }
+
+// rubbish rand, but seedable
+var randseed = 1;
+function seeded_random() {
+    var x = Math.sin(randseed++) * 10000;
+    return x - Math.floor(x);
+}

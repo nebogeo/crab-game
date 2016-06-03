@@ -528,24 +528,31 @@
           (nightjar-all-text ctx "Loading your first crab..."))
         c)))))
 
+(set! randseed (choose (list 7.21 1)))
+
+(define (seeded-choose l)
+  (list-ref l (Math.floor (* (seeded-random) (length l)))))
+
 (define (random-weed)
-  (choose (list
-           "cutoutweed.png"
-           "cutoutweed2.png"
-           "cutoutweed3.png"
-           "cutoutweed4.png"
-           "cutoutweed5.png"
-           "cutoutweed6.png"
-           "cutoutweed7.png"
-           "cutoutweed8.png"
-           )))
+  (seeded-choose
+   (list
+    "cutoutweed.png"
+    "cutoutweed2.png"
+    "cutoutweed3.png"
+    "cutoutweed4.png"
+    "cutoutweed5.png"
+    "cutoutweed6.png"
+    "cutoutweed7.png"
+    "cutoutweed8.png"
+    )))
+
 
 (define pos-list
   (build-list
    25 (lambda (i)
-        (list (* (rndf) screen-width)
+        (list (* (seeded-random) screen-width)
               (* (rndf) screen-height)
-              (rndf)
+              (seeded-random)
               (random-weed)))))
 
 
@@ -582,7 +589,7 @@
 
     (centre-text2 ctx "Best crabs per habitat" (+ xpos 260) (- ypos 20))
     (set! ctx.font "normal 20pt open-sans")
-    (centre-text2 ctx "Some extra explanation..." (+ xpos 270) (+ ypos 15))
+    (wrap-text ctx "There are crabs from rockpools, mudflats and musselbeds, which is hardest to spot in each habitat?" 0 (+ ypos 15) 750 25)
     (set! ypos (+ ypos 100))
     (set! ctx.font "normal 25pt open-sans")
 
@@ -605,7 +612,7 @@
                            (else "Mudflat crabs"))))
 
            (set! ctx.fillStyle "#039a8b")
-           (let ((height (* (/ time maxtime) 300)))
+           (let ((height (* (/ time maxtime) 280)))
              (roundRect ctx (+ xpos (* i 200)) (- bar-start height)
                         150 height 10 #t #f)
              (set! ctx.fillStyle "#fff")
@@ -650,9 +657,9 @@
   (let ((xpos 530) (ypos yp)
         (bar-start (+ yp 450))
         (maxtime (cadr (list-ref (list-ref data 1) 2))))
-    (centre-text2 ctx "Best habitat for hiding" (+ xpos 250) (- ypos 20))
+    (centre-text2 ctx "Best habitat for hiding in" (+ xpos 250) (- ypos 20))
     (set! ctx.font "normal 20pt open-sans")
-    (centre-text2 ctx "Some extra explanation..." (+ xpos 270) (+ ypos 15))
+    (centre-text2 ctx "Are crabs harder to find in certain habitats?" (+ xpos 270) (+ ypos 15))
     (set! ypos (+ ypos 100))
     (set! ctx.font "normal 25pt open-sans")
 
@@ -702,7 +709,7 @@
         (maxtime (cadr (list-ref (list-ref data 2) 1))))
     (centre-text2 ctx "Best predator vision" (+ xpos 270) (- ypos 20))
     (set! ctx.font "normal 20pt open-sans")
-    (centre-text2 ctx "Some extra explanation..." (+ xpos 270) (+ ypos 15))
+    (centre-text2 ctx "Which predator is fastest at finding crabs?" (+ xpos 270) (+ ypos 15))
     (set! ctx.font "normal 25pt open-sans")
     (set! ypos (+ ypos 100))
 
@@ -736,8 +743,8 @@
          (wrap-text
           ctx
           (cond
-           ((eq? predator "human") "Trichromat - seeing red, green and blue")
-           (else "Dichromat - seeing yellow and blue"))
+           ((eq? predator "human") "Trichromatic - seeing red, green and blue")
+           (else "Dichromatic - seeing yellow and blue"))
           (- (+ xpos (+ 125 (* i 300)))  (/ screen-width 2))
           (+ ypos 415)
           300 22)
@@ -785,7 +792,7 @@
           empty-button-width empty-button-height
           "none"
           (lambda (c)
-            (bubbles-hit! 1 c)
+            (bubbles-hit! 0 c)
             (play-sound "button.wav")
             (nightjar-experiment-screen c)))
 
@@ -796,7 +803,7 @@
           empty-button-width empty-button-height
           "none"
           (lambda (c)
-            (bubbles-hit! 2 c)
+            (bubbles-hit! 1 c)
             (play-sound "button.wav")
             (server-call-mutate
              "stats" ()
@@ -1031,6 +1038,7 @@
 
 
 (define (nightjar-species-screen c)
+  (update-bubble-pos
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
@@ -1077,11 +1085,12 @@
 
      (rect-button
       ""
-      (- default-button-x button-gap 330)
-      (+ default-button-y 60) 500 300
+      (- default-button-x button-gap 310)
+      (+ default-button-y 20) 500 300
       "none"
       (lambda (c)
         (play-sound "button.wav")
+        (bubbles-hit! 0 c)
         (nightjar-explain-screen
          (game-modify-data
           (lambda (d)
@@ -1105,10 +1114,11 @@
 
      (rect-button
       ""
-      (+ default-button-x 100)
-      (+ default-button-y 60) 500 300
+      (+ default-button-x 150)
+      (+ default-button-y 20) 500 300
       "none"
       (lambda (c)
+        (bubbles-hit! 1 c)
         (play-sound "button.wav")
         (nightjar-explain-screen
          (game-modify-data
@@ -1118,7 +1128,7 @@
 
 
 
-    ) c)))
+    ) c))))
 
 (define (nightjar-main-screen c data)
   (update-bubble-pos
@@ -1179,7 +1189,7 @@
       "Play again" (- screen-width 200)
       820 empty-button-width empty-button-height "none"
       (lambda (c)
-        (bubbles-hit! 1 c)
+        (bubbles-hit! 0 c)
         (play-sound "button.wav")
         (nightjar-species-screen c)))
 
@@ -1188,7 +1198,7 @@
       "Exit game" 200
       820 empty-button-width empty-button-height "none"
       (lambda (c)
-        (bubbles-hit! 0 c)
+        (bubbles-hit! 1 c)
         (play-sound "button.wav")
         (nightjar-intro c)))
 
@@ -1632,7 +1642,7 @@
            empty-button-width empty-button-height
            "none"
            (lambda (c)
-             (bubbles-hit! 1 c)
+             (bubbles-hit! 0 c)
              (play-sound "button.wav")
              (server-call-mutate
               "stats" ()
@@ -1789,7 +1799,7 @@
        (+ default-button-y 150)
        empty-button-width empty-button-height "none"
        (lambda (c)
-         (bubbles-hit! 3 c)
+         (bubbles-hit! 0 c)
          (play-sound "button.wav")
          (nightjar-intro c)))
       )
