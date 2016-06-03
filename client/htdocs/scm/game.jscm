@@ -589,7 +589,7 @@
 
     (centre-text2 ctx "Best crabs per habitat" (+ xpos 260) (- ypos 20))
     (set! ctx.font "normal 20pt open-sans")
-    (wrap-text ctx "There are crabs from rockpools, mudflats and musselbeds, which is hardest to spot in each habitat?" 0 (+ ypos 15) 750 25)
+    (wrap-text ctx "There are crabs from rockpools, mudflats and musselbeds, which is hardest to spot in each habitat?" 0 (+ ypos 15) 750 30)
     (set! ypos (+ ypos 100))
     (set! ctx.font "normal 25pt open-sans")
 
@@ -1139,7 +1139,7 @@
       (set! ctx.font "normal 50pt open-sans")
       (wrap-text ctx "Live Experiment Results" 0 80 1000 70)
       (set! ctx.font "normal 20pt open-sans")
-      (wrap-text ctx "Scientists will use these results to support their theories on the effectiveness of crab camouflage in different natural habitats" 0 130 1000 35)
+      (wrap-text ctx "Researchers will use these results to support their theories on the effectiveness of crab camouflage in different natural habitats" 0 130 1000 35)
       (set! ctx.font "normal 30pt open-sans")
 
       (set! ctx.globalAlpha 0.2)
@@ -1748,7 +1748,7 @@
       (set! ctx.font "normal 50pt open-sans")
       (wrap-text ctx "Live Experiment Results" 0 80 1000 70)
       (set! ctx.font "normal 20pt open-sans")
-      (wrap-text ctx "Scientists will use these results to support their theories on the effectiveness of crab camouflage in different natural habitats" 0 130 1000 35)
+      (wrap-text ctx "Researchers will use these results to support their theories on the effectiveness of crab camouflage in different natural habitats" 0 130 1000 35)
       (set! ctx.font "normal 30pt open-sans")
 
       (set! ctx.globalAlpha 0.2)
