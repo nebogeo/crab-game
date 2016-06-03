@@ -641,7 +641,8 @@
 
              ))))
      (list-ref data 0)))
-    )
+  (set! ctx.font "normal 30pt open-sans")
+  )
 
 (define (render-results-2 ctx data yp)
   (let ((xpos 530) (ypos yp)
@@ -687,6 +688,7 @@
          (set! ctx.font "normal 25pt open-sans")
          )))
      (list-ref data 1))
+    (set! ctx.font "normal 30pt open-sans")
     ))
 
 (define (render-results-3 ctx data yp)
@@ -741,6 +743,7 @@
                        (- (+ bar-start 20) (/ height 2)))
          )))
      (list-ref data 2))
+    (set! ctx.font "normal 30pt open-sans")
     ))
 
 (define (nightjar-intro c)
