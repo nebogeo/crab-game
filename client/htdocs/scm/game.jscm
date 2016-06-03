@@ -778,7 +778,7 @@
          (nightjar-heading ctx "Citizen Science Experiment")
          (set! ctx.font "normal 25pt open-sans")
          (wrap-text ctx "Can you spot the shore crabs in their different habitats?" 0 400 1000 50)
-         (wrap-text ctx "Play this game to help scientists research the success of shore crab camouflage" 0 480 1000 50)
+         (wrap-text ctx "Play this game to help scientists research the success of shore crab camouflage" 0 480 800 40)
          (set! ctx.font "normal 30pt open-sans")
          (set! ctx.font "normal 30pt open-sans"))
 
