@@ -383,7 +383,7 @@
 
 (define (empty-nightjar-data)
   (list 0 0 0 "" #f 0 () () 0 (sprite 0 0 "wrong.png" 0) 0 "???" () 0 0
-        bubbles))
+        bubbles 0))
 
 (define (nightjar-start-time g) (list-ref g 0))
 (define (nightjar-modify-start-time v g) (list-replace g 0 v))
@@ -416,6 +416,8 @@
 (define (nightjar-game-id g) (list-ref g 14))
 (define (nightjar-modify-game-id v g) (list-replace g 14 v))
 (define (nightjar-bubbles g) (list-ref g 15))
+(define (nightjar-results-num g) (list-ref g 16))
+(define (nightjar-modify-results-num v g) (list-replace g 16 v))
 
 (define (time-left c)
   (* (- (game-time c)
@@ -568,123 +570,209 @@
    pos-list)
   (ctx.restore))
 
-(define (render-results ctx data yp)
-  (let ((xpos 130) (ypos yp))
-    (centre-text2 ctx "Best camouflaged crabs" (+ xpos 150) ypos)
-    (centre-text2 ctx "for each habitat" (+ xpos 150) (+ ypos 50))
-    (set! ypos (+ ypos 130))
-    (set! ctx.font "normal 25pt open-sans")
-    (index-for-each
-     (lambda (i ee)
-       (let ((e (car (car (cadr ee)))))
-         (let ((habitat (car ee))
-               (crab-type (car e))
-               (time (cadr e)))
+;;(list-ref (cadr e) 0)
 
-           (let ((crab-name (cond
-                             ((eq? crab-type "rockpool") "Rockpool crabs")
-                             ((eq? crab-type "musselbed") "Musselbed crabs")
-                             (else "Mudflat crabs"))))
-             (centre-text2 ctx
-                           (cond
-                            ((eq? habitat "rockpool") "Rockpool")
-                            ((eq? habitat "musselbed") "Musselbed")
-                            (else "Mudflat")) (+ xpos 40) (+ ypos (* 130 i)))
-             (centre-text2 ctx "habitat" (+ xpos 40) (+ ypos (* 130 i) 35))
-             (ctx.drawImage (find-image (+ crab-type "-crab.png"))
-                            (+ 140 xpos) (- (+ ypos (* 130 i)) 60))
-             (set! ctx.font "normal 20pt open-sans")
-             (set! ctx.fillStyle "#000")
-             (set! ctx.font "bold 20pt open-sans")
-             (centre-text2 ctx crab-name (+ 252 xpos) (+ ypos (* 132 i) 8))
-             (centre-text2 ctx (+ (time-to-seconds time) " secs") (+ 242 xpos) (+ ypos (* 132 i) 35))
-             (set! ctx.fillStyle "#fff")
-             (set! ctx.font "normal 20pt open-sans")
-             (centre-text2 ctx crab-name (+ 250 xpos) (+ ypos (* 130 i) 8))
-             (centre-text2 ctx (+ (time-to-seconds time) " secs") (+ 240 xpos) (+ ypos (* 130 i) 35))
-             (set! ctx.font "normal 25pt open-sans")
-             ))))
-     (list-ref data 0))
+(define (render-results-1 ctx data yp)
+  (let ((xpos 530) (ypos yp)
+        (bar-start 620)
+        (maxtime (Math.max
+                  (cadr (cadr (list-ref (car data) 0)))
+                  (cadr (cadr (list-ref (car data) 1)))
+                  (cadr (cadr (list-ref (car data) 2))))))
 
-    (set! ctx.font "normal 20pt open-sans")
-    (set! ctx.fillStyle "#99d5cd")
-    (wrap-text ctx "Would you expect crabs to be harder to hunt in their own habitats?" -500 (+ ypos 360) 500 35)
-    (set! ctx.fillStyle "#fff")
-    (set! ctx.font "normal 30pt open-sans")
-
-    (set! xpos (+ xpos 550))
-    (set! ypos yp)
-
-    (centre-text2 ctx "Best habitat for hiding" (+ xpos 150) ypos)
+    (centre-text2 ctx "Best crabs per habitat" (+ xpos 260) ypos)
     (set! ypos (+ ypos 80))
     (set! ctx.font "normal 25pt open-sans")
+
+    (ctx.save)
+    (ctx.translate 495 420)
+    (ctx.rotate (/ -3.141 2))
+    (centre-text2 ctx "Average time to find crab" 0 0)
+    (ctx.restore)
+
+    (index-for-each
+     (lambda (i e)
+
+       (let ((habitat (car e))
+             (crab-type (list-ref (list "rockpool" "musselbed" "mudflat") i))
+             (time (list-ref (cadr e) 1)))
+
+         (let ((crab-name (cond
+                           ((eq? crab-type "rockpool") "Rockpool crabs")
+                           ((eq? crab-type "musselbed") "Musselbed crabs")
+                           (else "Mudflat crabs"))))
+
+           (set! ctx.fillStyle "#039a8b")
+           (let ((height (* (/ time maxtime) 250)))
+             (roundRect ctx (+ xpos (* i 200)) (- bar-start height)
+                        150 height 10 #t #f)
+             (set! ctx.fillStyle "#fff")
+
+             (centre-text2
+              ctx
+              (cond
+               ((eq? habitat "rockpool") "Rockpool")
+               ((eq? habitat "musselbed") "Musselbed")
+               (else "Mudflat"))
+              (+ xpos (+ 75 (* i 200)))
+              (+ ypos 390))
+
+             (centre-text2
+              ctx "habitat"
+              (+ xpos (+ 75 (* i 200)))
+              (+ ypos 425))
+
+             (set! ctx.font "normal 20pt open-sans")
+             (centre-text2 ctx (time-to-seconds time)
+                           (+ xpos (+ 75 (* i 200)))
+                           (- bar-start 20 (/ height 2)))
+             (centre-text2 ctx "Seconds"
+                           (+ xpos (+ 75 (* i 200)))
+                           (- (+ bar-start 20) (/ height 2)))
+
+             (ctx.drawImage (find-image (+ crab-type "-crab.png"))
+                            (+ 10 xpos (* i 200))
+                            (- bar-start height 130))
+             (set! ctx.font "normal 16pt open-sans")
+             (centre-text2 ctx crab-name
+                           (+ xpos (+ 75 (* i 200)))
+                           (- bar-start height 10))
+             (set! ctx.font "normal 25pt open-sans")
+
+             ))))
+     (list-ref data 0)))
+    )
+
+(define (render-results-2 ctx data yp)
+  (let ((xpos 530) (ypos yp)
+        (bar-start 620)
+        (maxtime (cadr (list-ref (list-ref data 1) 2))))
+    (centre-text2 ctx "Best habitat for hiding" (+ xpos 250) ypos)
+    (set! ypos (+ ypos 80))
+    (set! ctx.font "normal 25pt open-sans")
+
+    (ctx.save)
+    (ctx.translate 495 420)
+    (ctx.rotate (/ -3.141 2))
+    (centre-text2 ctx "Average time to find crab" 0 0)
+    (ctx.restore)
+
     (index-for-each
      (lambda (i ee)
        (let ((habitat (car ee))
              (time (cadr ee)))
 
-         (ctx.drawImage (find-image "starfish.png") (- xpos 100) (+ ypos (* i 110) -40))
-         (set! ctx.fillStyle "#000")
-         (set! ctx.font "bold 25pt open-sans")
-         (centre-text2 ctx (+ "" (+ i 1)) (- xpos 48) (+ ypos (* 110 i) 22))
+         (set! ctx.fillStyle "#039a8b")
+         (let ((height (* (/ time maxtime) 400)))
+           (roundRect ctx (+ xpos (* i 200)) (- bar-start height)
+                      150 height 10 #t #f)
          (set! ctx.fillStyle "#fff")
+
+         (centre-text2
+          ctx
+          (cond
+           ((eq? habitat "rockpool") "Rockpool")
+           ((eq? habitat "musselbed") "Musselbed")
+           (else "Mudflat"))
+          (+ xpos (+ 75 (* i 200)))
+          (+ ypos 390))
+
+         (set! ctx.font "normal 20pt open-sans")
+         (centre-text2 ctx (time-to-seconds time)
+                       (+ xpos (+ 75 (* i 200)))
+                       (- bar-start 20 (/ height 2)))
+         (centre-text2 ctx "Seconds"
+                       (+ xpos (+ 75 (* i 200)))
+                       (- (+ bar-start 20) (/ height 2)))
          (set! ctx.font "normal 25pt open-sans")
-         (centre-text2 ctx (+ "" (+ i 1)) (- xpos 50) (+ ypos (* 110 i) 20))
-
-         (centre-text2 ctx
-                       (cond
-                        ((eq? habitat "rockpool") "Rockpool")
-                        ((eq? habitat "musselbed") "Musselbed")
-                        (else "Mudflat")) (+ xpos 100) (+ ypos (* 110 i)))
-
-         (centre-text2 ctx "habitat" (+ xpos 100) (+ ypos (* 110 i) 35))
-         (centre-text2 ctx (+ (time-to-seconds time) " secs") (+ 300 xpos) (+ ypos (* 110 i) 20))
-         ))
+         )))
      (list-ref data 1))
+    ))
 
-    (set! ctx.font "normal 20pt open-sans")
-    (set! ctx.fillStyle "#99d5cd")
-    (wrap-text ctx "Are compex habitats (like rockpools) harder for hunting crabs in?" 30 (+ ypos 320) 500 35)
-    (set! ctx.fillStyle "#fff")
-    (set! ctx.font "normal 30pt open-sans")
-
-    (set! xpos (+ xpos 550))
-    (set! ypos yp)
-
-    (ctx.fillText "Best predator eyes" (- xpos 80) ypos)
-    (set! ctx.font "normal 25pt open-sans")
+(define (render-results-3 ctx data yp)
+  (let ((xpos 530) (ypos yp)
+        (bar-start 620)
+        (maxtime (cadr (list-ref (list-ref data 2) 1))))
+    (centre-text2 ctx "Best predator vision" (+ xpos 270) ypos)
     (set! ypos (+ ypos 80))
+    (set! ctx.font "normal 25pt open-sans")
+
+    (ctx.save)
+    (ctx.translate 495 420)
+    (ctx.rotate (/ -3.141 2))
+    (centre-text2 ctx "Average time to find crab" 0 0)
+    (ctx.restore)
+
     (index-for-each
-     (lambda (i e)
-       (let ((predator (car e))
-             (time (cadr e)))
+     (lambda (i ee)
+       (let ((predator (car ee))
+             (time (cadr ee)))
 
-         (ctx.drawImage (find-image "starfish.png") (- xpos 100) (+ ypos (* i 110) -30))
-         (set! ctx.fillStyle "#000")
-         (set! ctx.font "bold 25pt open-sans")
-         (centre-text2 ctx (+ "" (+ i 1)) (- xpos 48) (+ ypos (* 110 i) 32))
+         (set! ctx.fillStyle "#039a8b")
+         (let ((height (* (/ time maxtime) 400)))
+           (roundRect ctx (+ xpos (* i 300)) (- bar-start height)
+                      250 height 10 #t #f)
          (set! ctx.fillStyle "#fff")
-         (set! ctx.font "normal 25pt open-sans")
-         (centre-text2 ctx (+ "" (+ i 1)) (- xpos 50) (+ ypos (* 110 i) 30))
 
-         (centre-text2 ctx
-                       (cond
-                        ((eq? predator "human") "Human")
-                        ((eq? predator "pollock") "Pollock")
-                        (else "Mudflat")) (+ xpos 80) (+ ypos (* 110 i)))
+         (centre-text2
+          ctx
+          (cond
+           ((eq? predator "human") "Human")
+           (else "Pollock"))
+          (+ xpos (+ 125 (* i 300)))
+          (+ ypos 390))
 
-         (centre-text2 ctx "vision" (+ xpos 80) (+ ypos (* 110 i) 35))
-         (centre-text2 ctx (+ (time-to-seconds time) " secs") (+ 260 xpos) (+ ypos (* 110 i) 20))
-         ))
+         (set! ctx.font "normal 16pt open-sans")
+         (wrap-text
+          ctx
+          (cond
+           ((eq? predator "human") "Trichromat - can see red, green and blue")
+           (else "Dichromat - can see yellow and blue"))
+          (- (+ xpos (+ 125 (* i 300)))  (/ screen-width 2))
+          (+ ypos 415)
+          300 22)
+         (set! ctx.font "normal 30pt open-sans")
+
+         (centre-text2 ctx (time-to-seconds time)
+                       (+ xpos (+ 125 (* i 300)))
+                       (- bar-start 20 (/ height 2)))
+         (centre-text2 ctx "Seconds"
+                       (+ xpos (+ 125 (* i 300)))
+                       (- (+ bar-start 20) (/ height 2)))
+         )))
      (list-ref data 2))
 
-    (set! ctx.font "normal 20pt open-sans")
-    (set! ctx.fillStyle "#99d5cd")
-    (wrap-text ctx "Who's eyes do you think crabs have evolved to escape?" 550 (+ ypos 220) 400 35)
-    (set! ctx.fillStyle "#fff")
-    (set! ctx.font "normal 30pt open-sans")
+
 
     ))
+
+  ;; (let ((xpos 630) (ypos yp))
+  ;;   (ctx.fillText "Best predator eyes" (- xpos 80) ypos)
+  ;;   (set! ctx.font "normal 25pt open-sans")
+  ;;   (set! ypos (+ ypos 80))
+  ;;   (index-for-each
+  ;;    (lambda (i e)
+  ;;      (let ((predator (car e))
+  ;;            (time (cadr e)))
+
+  ;;        (ctx.drawImage (find-image "starfish.png") (- xpos 100) (+ ypos (* i 110) -30))
+  ;;        (set! ctx.fillStyle "#000")
+  ;;        (set! ctx.font "bold 25pt open-sans")
+  ;;        (centre-text2 ctx (+ "" (+ i 1)) (- xpos 48) (+ ypos (* 110 i) 32))
+  ;;        (set! ctx.fillStyle "#fff")
+  ;;        (set! ctx.font "normal 25pt open-sans")
+  ;;        (centre-text2 ctx (+ "" (+ i 1)) (- xpos 50) (+ ypos (* 110 i) 30))
+
+  ;;        (centre-text2 ctx
+  ;;                      (cond
+  ;;                       ((eq? predator "human") "Human")
+  ;;                       ((eq? predator "pollock") "Pollock")
+  ;;                       (else "Mudflat")) (+ xpos 80) (+ ypos (* 110 i)))
+
+  ;;        (centre-text2 ctx "vision" (+ xpos 80) (+ ypos (* 110 i) 35))
+  ;;        (centre-text2 ctx (+ (time-to-seconds time) " secs") (+ 260 xpos) (+ ypos (* 110 i) 20))
+  ;;        ))
+  ;;    (list-ref data 2))
 
 (define (nightjar-intro c)
     (game-modify-timeout
@@ -702,8 +790,8 @@
          (ctx.drawImage (find-image "crab2.png") 1200 550)
          (nightjar-heading ctx "Citizen Science Experiment")
          (set! ctx.font "normal 25pt open-sans")
-         (wrap-text ctx "Are shore crabs more visible to humans or their natural predators? TO BE REPLACED WITH GENERIC SENTENCE" 0 400 1000 50)
-         (wrap-text ctx "Play this game to help scientists research the success of shore crab camouflage" 0 550 1000 50)
+         (wrap-text ctx "Can you spot the shore crabs in their different habitats?" 0 400 1000 50)
+         (wrap-text ctx "Play this game to help scientists research the success of shore crab camouflage" 0 500 1000 50)
          (set! ctx.font "normal 30pt open-sans")
          (set! ctx.font "normal 30pt open-sans"))
 
@@ -975,14 +1063,17 @@
      (centre-text2 ctx "Human"
                    (- default-button-x button-gap 100)
                    (+ default-button-y 40))
-     (centre-text2 ctx "Trichromatic vision"
+     (set! ctx.font "normal 20pt open-sans")
+     (centre-text2 ctx "Trichromatic - seeing red, green and blue."
                    (- default-button-x button-gap 100)
                    (+ default-button-y 80))
 
+     (set! ctx.font "normal 30pt open-sans")
      (centre-text2 ctx "Pollock"
                    (+ default-button-x button-gap 100)
                    (+ default-button-y 40))
-     (centre-text2 ctx "Dichromatic vision"
+     (set! ctx.font "normal 20pt open-sans")
+     (centre-text2 ctx "Dichromatic - seeing yellow and blue."
                    (+ default-button-x button-gap 100)
                    (+ default-button-y 80))
 
@@ -1061,26 +1152,13 @@
      (wrap-text ctx (string-append "Live Results") 0 80 1000 70)
      (set! ctx.font "normal 30pt open-sans")
      (centre-text2 ctx "The latest results after your game, times are averages." 800 130)
-     (render-results ctx data 195))
+     (render-results-1 ctx data 195))
 
    (game-modify-buttons
     (list
 
      (empty-image-button
-      "High Scores" (- default-button-x 300)
-      820 empty-button-width empty-button-height "none"
-      (lambda (c)
-        (bubbles-hit! 1 c)
-        (play-sound "button.wav")
-        (server-call-mutate
-         "hiscores" ()
-         (lambda (game data)
-           (let ((hiscores (JSON.parse data)))
-             (nightjar-hiscores hiscores #f game))))
-        c))
-
-     (empty-image-button
-      "Play again" default-button-x
+      "Play again" (- default-button-x 200)
       820 empty-button-width empty-button-height "none"
       (lambda (c)
         (bubbles-hit! 0 c)
@@ -1089,10 +1167,10 @@
 
 
      (empty-image-button
-      "Exit game" (+ default-button-x 300)
+      "Exit game" (+ default-button-x 200)
       820 empty-button-width empty-button-height "none"
       (lambda (c)
-        (bubbles-hit! 0 c)
+        (bubbles-hit! 1 c)
         (play-sound "button.wav")
         (nightjar-intro c)))
 
@@ -1640,32 +1718,74 @@
       (draw-weed ctx c)
       (particle-system-render ctx (nightjar-bubbles (game-data c)))
       (set! ctx.font "normal 50pt open-sans")
-      (wrap-text ctx (string-append "Live Results") 0 80 1000 70)
+      (wrap-text ctx (string-append "Live Experiment Results") 0 80 1000 70)
       (set! ctx.font "normal 30pt open-sans")
-      (centre-text2 ctx "The latest results for all players, times are averages." 800 130)
-      (render-results ctx data 210))
+
+      (set! ctx.globalAlpha 0.2)
+      (set! ctx.fillStyle "#99d5cd")
+      (roundRect ctx 400 120 800 600 20 #t #f)
+      (set! ctx.fillStyle "#fff")
+      (set! ctx.globalAlpha 1)
+
+      (cond
+       ((eq? (nightjar-results-num (game-data c)) 0)
+        (render-results-3 ctx data 190))
+       ((eq? (nightjar-results-num (game-data c)) 1)
+        (render-results-2 ctx data 190))
+       (else
+        (render-results-1 ctx data 190))))
 
 
     (game-modify-buttons
      (list
       (empty-image-button
-       "Start"
-       (- default-button-x 200)
-       default-button-y
+       "<<"
+       450
+       700
+       empty-button-width empty-button-height
+       "none"
+       (lambda (c)
+         (bubbles-hit! 0 c)
+         (play-sound "button.wav")
+         (game-modify-data
+          (lambda (d)
+            (nightjar-modify-results-num
+             (modulo (- (nightjar-results-num d) 1) 3) d))
+          c)))
+
+      (empty-image-button
+       ">>"
+       (- screen-width 450)
+       700
        empty-button-width empty-button-height
        "none"
        (lambda (c)
          (bubbles-hit! 1 c)
+         (play-sound "button.wav")
+         (game-modify-data
+          (lambda (d)
+            (nightjar-modify-results-num
+             (modulo (+ (nightjar-results-num d) 1) 3) d))
+          c)))
+
+      (empty-image-button
+       "Start"
+       (- default-button-x 200)
+       (+ default-button-y 50)
+       empty-button-width empty-button-height
+       "none"
+       (lambda (c)
+         (bubbles-hit! 2 c)
          (play-sound "button.wav")
          (nightjar-experiment-screen c)))
 
       (empty-image-button
        "Back"
        (+ default-button-x 200)
-       default-button-y
+       (+ default-button-y 50)
        empty-button-width empty-button-height "none"
        (lambda (c)
-         (bubbles-hit! 0 c)
+         (bubbles-hit! 3 c)
          (play-sound "button.wav")
          (nightjar-intro c)))
       )
