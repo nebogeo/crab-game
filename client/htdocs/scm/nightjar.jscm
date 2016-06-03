@@ -663,7 +663,7 @@
   (set! ctx.lineWidth 1)
   (set! ctx.fillStyle "#fff")
   (set! ctx.font "normal 30pt open-sans")
-  (ctx.fillText (Math.floor (- max-time time)) 54 110))
+  (ctx.fillText (Math.max 0 (Math.floor (- max-time time))) 54 110))
 
 ;; ----------------------------------------
 ;; main game structure
