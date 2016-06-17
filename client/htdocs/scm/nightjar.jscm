@@ -917,7 +917,7 @@
 (define (nightjar-heading ctx txt)
   (set! ctx.font "normal 75pt open-sans")
   (set! ctx.fillStyle "#fff")
-  (wrap-text ctx txt 0 200 1000 100)
+  (wrap-text ctx txt 0 200 1300 100)
   (set! ctx.font "normal 30pt open-sans"))
 
 (define (nightjar-text ctx txt)

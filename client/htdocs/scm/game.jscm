@@ -849,10 +849,10 @@
          (particle-system-render ctx (nightjar-bubbles (game-data c)))
          (ctx.drawImage (find-image "crab1.png") 0 555)
          (ctx.drawImage (find-image "crab2.png") 1240 550)
-         (nightjar-heading ctx "Citizen Science Experiment")
+         (nightjar-heading ctx "Hunt for shore crabs and help science!")
          (set! ctx.font "normal 25pt open-sans")
-         (wrap-text ctx "Can you spot the shore crabs in their different habitats?" 0 400 1000 50)
-         (wrap-text ctx "Play this game to help scientists research the success of shore crab camouflage" 0 480 800 40)
+         (wrap-text ctx "How camouflaged are crabs to the eyes of predators and in different habitats?" 0 400 800 40)
+         (wrap-text ctx "Play this Citizen Science game to help us find out." 0 500 1000 40)
          (set! ctx.font "normal 30pt open-sans")
          (set! ctx.font "normal 30pt open-sans"))
 
