@@ -1301,7 +1301,7 @@
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (ctx.drawImage (find-image "example-crab.jpg") 450 230)
      (set! ctx.font "normal 30pt open-sans")
-     (wrap-text ctx "There is one crab hidden in every photo, touch it as soon as you see it" 0 100 800 45))
+     (wrap-text ctx "There is one crab hidden in every photo, tap it as soon as you see it" 0 100 800 45))
    (game-modify-buttons
     (list
 
