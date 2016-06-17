@@ -686,7 +686,7 @@
                            (else "Mudflat crabs"))))
 
            (set! ctx.fillStyle "#039a8b")
-           (let ((height (* (/ time maxtime) 280)))
+           (let ((height (* (/ time maxtime) 250)))
              (roundRect ctx (+ xpos (* i 200)) (- bar-start height)
                         150 height 10 #t #f)
              (set! ctx.fillStyle "#fff")
@@ -715,7 +715,7 @@
 
              (ctx.drawImage (find-image (+ crab-type "-crab.png"))
                             (+ 10 xpos (* i 200))
-                            (- bar-start height 130))
+                            (- bar-start height 140))
              (set! ctx.font "normal 16pt open-sans")
              (centre-text2 ctx crab-name
                            (+ xpos (+ 75 (* i 200)))
