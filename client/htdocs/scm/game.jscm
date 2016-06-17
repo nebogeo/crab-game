@@ -662,8 +662,8 @@
                   (cadr (cadr (list-ref (car data) 2))))))
 
     (centre-text2 ctx "Best crabs per habitat" (+ xpos 260) (- ypos 20))
-    (set! ctx.font "normal 20pt open-sans")
-    (wrap-text ctx "There are crabs from rockpools, mudflats and musselbeds, which is hardest to spot in each habitat?" 0 (+ ypos 15) 750 30)
+    (set! ctx.font "normal 17pt open-sans")
+    (wrap-text ctx "There are crabs from rockpools, mudflats and musselbeds in the game, which crabs are hardest to spot in each habitat?" 0 (+ ypos 15) 750 30)
     (set! ypos (+ ypos 100))
     (set! ctx.font "normal 25pt open-sans")
 
