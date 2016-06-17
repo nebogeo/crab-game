@@ -1104,15 +1104,24 @@
    (lambda (ctx)
      (draw-weed ctx c)
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
-     (nightjar-all-text ctx "Will you hunt as a predatory pollock or a hungry human?")
+     (set! ctx.font "normal 50pt open-sans")
+     (wrap-text ctx "Will you hunt as a predatory pollock or a hungry human?" 0 150 1000 75)
+
      (set! ctx.font "normal 30pt open-sans")
-     (wrap-text ctx "They see the world differently..." 0 380 1000 75)
+     (wrap-text ctx "They see the world differently..." 0 310 1000 75)
+
+     (centre-text2 ctx "Trichromatic vision"
+                   (- default-button-x button-gap 100)
+                   (- default-button-y 250))
+     (centre-text2 ctx "Dichromatic vision"
+                   (+ default-button-x button-gap 100)
+                   (- default-button-y 250))
 
      (centre-text2 ctx "Human"
                    (- default-button-x button-gap 100)
                    (+ default-button-y 160))
      (set! ctx.font "normal 20pt open-sans")
-     (centre-text2 ctx "Trichromatic - seeing red, green and blue"
+     (centre-text2 ctx "Seeing red, green and blue"
                    (- default-button-x button-gap 100)
                    (+ default-button-y 200))
 
@@ -1121,7 +1130,7 @@
                    (+ default-button-x button-gap 100)
                    (+ default-button-y 160))
      (set! ctx.font "normal 20pt open-sans")
-     (centre-text2 ctx "Dichromatic - seeing yellow and blue"
+     (centre-text2 ctx "Seeing yellow and blue"
                    (+ default-button-x button-gap 100)
                    (+ default-button-y 200))
 
