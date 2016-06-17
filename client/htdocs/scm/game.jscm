@@ -871,7 +871,7 @@
             (nightjar-experiment-screen c)))
 
          (empty-image-button
-          "Results"
+          "About"
           (+ default-button-x 200)
           default-button-y
           empty-button-width empty-button-height
@@ -879,14 +879,7 @@
           (lambda (c)
             (bubbles-hit! 1 c)
             (button-sound)
-            (server-call-mutate
-             "stats" ()
-             (lambda (game data)
-               (button-sound)
-               (nightjar-results game (JSON.parse data))
-               ))
-            c))
-
+            (nightjar-about c)))
          )
         c))))))
 
@@ -896,44 +889,38 @@
     (lambda (ctx)
       (draw-weed ctx c)
       (particle-system-render ctx (nightjar-bubbles (game-data c)))
-      (nightjar-heading ctx "About")
+      ;;(ctx.drawImage (find-image "button-1.png") 0 555)
+      ;;(ctx.drawImage (find-image "button-2.png") 1240 550)
+
+      (nightjar-heading ctx "About the project")
       (set! ctx.font "normal 25pt open-sans")
-      (wrap-text ctx "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages." 0 300 1000 50)
+      (wrap-text ctx "Scientists at the University of Exeter’s Sensory Ecology and Evolution Lab study animal colouration and vision. One main area of their research explores how animals use camouflage to avoid predation. This includes how visible shore crabs are to different predators and in different habitats." 0 300 1300 50)
+      (wrap-text ctx "This computer experiment will aid our understanding of the success of the crabs’ camouflage by testing how quickly crabs are caught by predators with different visual systems, and how animals adapt to different environments." 0 550 1300 50)
       (set! ctx.font "normal 30pt open-sans"))
 
     (game-modify-buttons
      (list
       (empty-image-button
-       "Back" 1400
-       default-button-y empty-button-width empty-button-height "none"
+       "Back"
+       default-button-x
+       (+ default-button-y 150)
+       empty-button-width empty-button-height "none"
        (lambda (c)
          (bubbles-hit! 0 c)
          (nightjar-intro game))
        c)
 
-      (empty-image-button
-       "Play!"
-       default-button-x
-       default-button-y
-       empty-button-width empty-button-height
-       "none"
-       (lambda (c)
-         (bubbles-hit! 1 c)
-         (button-sound)
-         (nightjar-experiment-screen c)))
+      ;; (empty-image-button
+      ;;  "Play!"
+      ;;  default-button-x
+      ;;  default-button-y
+      ;;  empty-button-width empty-button-height
+      ;;  "none"
+      ;;  (lambda (c)
+      ;;    (bubbles-hit! 1 c)
+      ;;    (button-sound)
+      ;;    (nightjar-experiment-screen c)))
 
-      (empty-image-button
-       "Results" 180 default-button-y
-       empty-button-width empty-button-height "none"
-       (lambda (c)
-         (bubbles-hit! 0 c)
-         (server-call-mutate
-          "stats" ()
-          (lambda (game data)
-            (button-sound)
-            (nightjar-results game (JSON.parse data))
-            ))
-         c))
       )
      c))))
 
