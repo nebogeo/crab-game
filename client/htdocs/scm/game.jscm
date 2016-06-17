@@ -1854,7 +1854,7 @@
      (list
       (image-button
        "" 300 480
-       "rotate"
+       "rotate-fast"
        (find-image "left-arrow.png")
        (lambda (c)
          (button-sound)
@@ -1866,7 +1866,7 @@
 
       (image-button
        "" (- screen-width 300) 480
-       "rotate"
+       "rotate-fast"
        (find-image "right-arrow.png")
        (lambda (c)
          (button-sound)
