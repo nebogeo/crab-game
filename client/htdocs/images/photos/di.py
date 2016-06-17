@@ -58,14 +58,14 @@ def check_crab_sizes(name):
                     im = Image.open(name+"/"+location+"/"+filename)
                     if im.size[0]>500:
                         num_big+=1
-    print((num_big/float(num_crabs))*100)
-    print(num_big)
-    print(num_crabs)
-    print(num_crabs-num_big)
+    print("num too big: "+str(num_big))
+    print("total: "+str(num_crabs))
+    print("("+str((num_big/float(num_crabs))*100)+"% are too big)")
+    print("in game: "+str(num_crabs-num_big))
 
-gen_crab_lists("mudflat")
-gen_crab_lists("musselbed")
-gen_crab_lists("rockpool")
+#gen_crab_lists("mudflat")
+#gen_crab_lists("musselbed")
+#gen_crab_lists("rockpool")
 
 #gen_lists("mudflat")
 #gen_lists("musselbed")
@@ -73,6 +73,6 @@ gen_crab_lists("rockpool")
 
 
 
-#check_crab_sizes("mudflat")
-#check_crab_sizes("musselbed")
-#check_crab_sizes("rockpool")
+check_crab_sizes("mudflat")
+check_crab_sizes("musselbed")
+check_crab_sizes("rockpool")
