@@ -20,7 +20,7 @@
 (load "scm/nightjar.jscm")
 
 (define game-time-allowed 10)
-(define num-bgs-per-habitat 6)
+(define num-bgs-per-habitat 1)
 (define num-examples (* num-bgs-per-habitat 3))
 (define num-crabs-per-habitat (/ num-bgs-per-habitat 3))
 
@@ -783,7 +783,7 @@
         (maxtime (cadr (list-ref (list-ref data 2) 1))))
     (centre-text2 ctx "Best predator vision" (+ xpos 270) (- ypos 20))
     (set! ctx.font "normal 20pt open-sans")
-    (centre-text2 ctx "Which predator is fastest at finding crabs?" (+ xpos 270) (+ ypos 15))
+    (centre-text2 ctx "Which predators have the crabs evolved to hide from?" (+ xpos 270) (+ ypos 15))
     (set! ctx.font "normal 25pt open-sans")
     (set! ypos (+ ypos 100))
 
@@ -852,7 +852,7 @@
          (nightjar-heading ctx "Hunt for shore crabs and help science!")
          (set! ctx.font "normal 25pt open-sans")
          (wrap-text ctx "How camouflaged are crabs to the eyes of predators and in different habitats?" 0 400 800 40)
-         (wrap-text ctx "Play this Citizen Science game to help us find out." 0 500 1000 40)
+         (wrap-text ctx "Play this Citizen Science game to help us find out" 0 500 1000 40)
          (set! ctx.font "normal 30pt open-sans")
          (set! ctx.font "normal 30pt open-sans"))
 
