@@ -906,8 +906,8 @@
          (wrap-text
           ctx
           (cond
-           ((eq? predator "human") "Trichromatic - seeing red, green and blue")
-           (else "Dichromatic - seeing yellow and blue"))
+           ((eq? predator "human") "Trichromatic - sees red, green and blue")
+           (else "Dichromatic - sees yellow and blue"))
           (- (+ xpos (+ 125 (* i 300)))  (/ screen-width 2))
           (+ ypos 415)
           300 22)
@@ -938,10 +938,10 @@
          (particle-system-render ctx (nightjar-bubbles (game-data c)))
          (ctx.drawImage (find-image "crab1.png") 0 555)
          (ctx.drawImage (find-image "crab2.png") 1240 550)
-         (nightjar-heading ctx "Hunt for shore crabs and help science!")
+         (nightjar-heading ctx "Hunt for shore crabs and help science")
          (set! ctx.font "normal 25pt open-sans")
          (wrap-text ctx "How camouflaged are crabs to the eyes of predators and in different habitats?" 0 400 800 40)
-         (wrap-text ctx "Play this Citizen Science game to help us find out" 0 500 1000 40)
+         (wrap-text ctx "Play this citizen science game to help us find out." 0 500 1000 40)
          (set! ctx.font "normal 30pt open-sans")
          (set! ctx.font "normal 30pt open-sans"))
 
@@ -960,7 +960,7 @@
             (nightjar-experiment-screen c)))
 
          (empty-image-button
-          "The Science"
+          "The science"
           (+ default-button-x 200)
           default-button-y
           empty-button-width empty-button-height
@@ -1091,7 +1091,7 @@
         (nightjar-age-screen c)))
 
      (empty-image-button
-      "Back"
+      "No, go back"
       (- default-button-x button-gap)
       default-button-y
       empty-button-width empty-button-height
@@ -1210,7 +1210,7 @@
                    (- default-button-x button-gap 100)
                    (+ default-button-y 160))
      (set! ctx.font "normal 20pt open-sans")
-     (centre-text2 ctx "Seeing red, green and blue"
+     (centre-text2 ctx "Sees red, green and blue"
                    (- default-button-x button-gap 100)
                    (+ default-button-y 200))
 
@@ -1219,7 +1219,7 @@
                    (+ default-button-x button-gap 100)
                    (+ default-button-y 160))
      (set! ctx.font "normal 20pt open-sans")
-     (centre-text2 ctx "Seeing yellow and blue"
+     (centre-text2 ctx "Sees yellow and blue"
                    (+ default-button-x button-gap 100)
                    (+ default-button-y 200))
 
@@ -1296,7 +1296,7 @@
       (draw-weed ctx c)
       (particle-system-render ctx (nightjar-bubbles (game-data c)))
       (set! ctx.font "normal 50pt open-sans")
-      (wrap-text ctx "Live Experiment Results" 0 80 1000 70)
+      (wrap-text ctx "Live experiment results" 0 80 1000 70)
       (set! ctx.font "normal 20pt open-sans")
       (wrap-text ctx "Researchers will use these results to support their theories on the effectiveness of crab camouflage in different natural habitats" 0 130 1000 35)
       (set! ctx.font "normal 30pt open-sans")
@@ -1636,14 +1636,18 @@
       (game-time c)
       (nightjar-sprite (game-data c)))
 
-     (let ((done (+ (- 20 (length (nightjar-images (game-data c)))) 1)))
+     (let ((left (- 20 (+ (- 20 (length (nightjar-images (game-data c)))) 1))))
        (set! ctx.font "normal 50pt open-sans")
        (wrap-text ctx (string-append
                        "Ran out of time finding this crab - you'll go hungry tonight!") 0 200 1300 75)
        (set! ctx.font "normal 40pt open-sans")
        (wrap-text ctx (string-append "Crab from: " (photo-desc crab)) 0 400 1000 75)
        (wrap-text ctx (string-append "Background: " (photo-desc example)) 0 500 1000 75)
-       (wrap-text ctx (string-append  (- 20 done) " crabs left to go!") 0 600 1000 75))
+       (wrap-text ctx (string-append
+                       (if (eq? left 1)
+                           (string-append left " crab")
+                           (string-append left " crabs"))
+                       " left to go!") 0 600 1000 75))
 
      (set! ctx.font "normal 30pt open-sans"))
 
@@ -1710,7 +1714,7 @@
       (game-time c)
       (nightjar-sprite (game-data c)))
 
-     (let ((done (+ (- 20 (length (nightjar-images (game-data c)))) 1)))
+     (let ((left (- 20 (+ (- 20 (length (nightjar-images (game-data c)))) 1))))
        (set! ctx.font "normal 50pt open-sans")
        (wrap-text ctx (string-append
                        "You caught this crab in " (/ (nightjar-score (game-data c)) 1000)
@@ -1718,7 +1722,11 @@
        (set! ctx.font "normal 40pt open-sans")
        (wrap-text ctx (string-append "Crab from: " (photo-desc crab)) 0 400 1000 75)
        (wrap-text ctx (string-append "Background: " (photo-desc example)) 0 500 1000 75)
-       (wrap-text ctx (string-append  (- 20 done) " crabs left to go!") 0 600 1000 75))
+       (wrap-text ctx (string-append
+                       (if (eq? left 1)
+                           (string-append left " crab")
+                           (string-append left " crabs"))
+                       " left to go!") 0 600 1000 75))
 
      (set! ctx.font "normal 30pt open-sans"))
 
@@ -1779,7 +1787,7 @@
      (draw-weed ctx c)
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
      (nightjar-all-text
-      ctx (+ reason " Your average crab spotting time is " (trunc (/ av 1000)) " seconds"))
+      ctx (+ reason " Your average crab spotting time is " (trunc (/ av 1000)) " seconds."))
 
      (wrap-text ctx (get-score-text score count) 0 430 800 55)
      )
@@ -1914,7 +1922,7 @@
       (draw-weed ctx c)
       (particle-system-render ctx (nightjar-bubbles (game-data c)))
       (set! ctx.font "normal 50pt open-sans")
-      (wrap-text ctx "Live Experiment Results" 0 80 1000 70)
+      (wrap-text ctx "Live experiment results" 0 80 1000 70)
       (set! ctx.font "normal 20pt open-sans")
       (wrap-text ctx "Researchers will use these results to support their theories on the effectiveness of crab camouflage in different natural habitats" 0 130 1000 35)
       (set! ctx.font "normal 30pt open-sans")
