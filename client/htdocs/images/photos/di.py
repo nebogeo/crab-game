@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import os
+import time
+from PIL import Image
 
 # does crabs too...
 def convert_bg(name):
@@ -12,9 +14,9 @@ def convert_bg(name):
                     print(cmd)
                     os.system(cmd)
 
-convert_bg("mudflat")
-convert_bg("rockpool")
-convert_bg("musselbed")
+#convert_bg("mudflat")
+#convert_bg("rockpool")
+#convert_bg("musselbed")
 
 def gen_lists(name):
     print(name)
@@ -34,14 +36,43 @@ def gen_crab_lists(name):
                 ext = os.path.splitext(filename)[1]
                 if filename[0:3]!="di-" and (ext==".jpg" or ext==".png"):
                     cmd="\""+filename+"\""
-                    print(cmd)
+                    im = Image.open(name+"/"+location+"/"+filename)
+                    if im.size[0]<500:
+                        print(cmd)
 
+num_crabs = 0
+num_big = 0
 
+def check_crab_sizes(name):
+    global num_crabs
+    global num_big
+    num_crabs = 0
+    num_big = 0
+    for location in os.listdir(name):
+        if location=="crabs":
+            print(name)
+            for filename in os.listdir(name+"/"+location):
+                ext = os.path.splitext(filename)[1]
+                if ext==".png":
+                    num_crabs+=1
+                    im = Image.open(name+"/"+location+"/"+filename)
+                    if im.size[0]>500:
+                        num_big+=1
+    print((num_big/float(num_crabs))*100)
+    print(num_big)
+    print(num_crabs)
+    print(num_crabs-num_big)
 
-#gen_crab_lists("mudflat")
-#gen_crab_lists("musselbed")
-#gen_crab_lists("rockpool")
+gen_crab_lists("mudflat")
+gen_crab_lists("musselbed")
+gen_crab_lists("rockpool")
 
 #gen_lists("mudflat")
 #gen_lists("musselbed")
 #gen_lists("rockpool")
+
+
+
+#check_crab_sizes("mudflat")
+#check_crab_sizes("musselbed")
+#check_crab_sizes("rockpool")
