@@ -227,35 +227,35 @@
 (define photos
   (list
    (list
-    (map (lambda (f) (list (string-append "photos/rockpool/" f) (filename-to-type f) "rockpool"
+    (map (lambda (f) (list (string-append "photos/rockpool/" f) "Rockpool" "rockpool"
                            (string-append "photos/rockpool/map-" f)
                            )) rockpool-filenames)
-    (map (lambda (f) (list (string-append "photos/rockpool/di-" f) (filename-to-type f) "rockpool"
+    (map (lambda (f) (list (string-append "photos/rockpool/di-" f) "Rockpool" "rockpool"
                            (string-append "photos/rockpool/map-" f)
                            )) rockpool-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/mudflat/" f) (filename-to-type f) "mudflat"
+    (map (lambda (f) (list (string-append "photos/mudflat/" f) "Mudflat" "mudflat"
                            (string-append "photos/mudflat/map-" f)
                            )) mudflat-filenames)
-    (map (lambda (f) (list (string-append "photos/mudflat/di-" f) (filename-to-type f) "mudflat"
+    (map (lambda (f) (list (string-append "photos/mudflat/di-" f) "Mudflat" "mudflat"
                            (string-append "photos/mudflat/map-" f)
                            )) mudflat-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/musselbed/" f) (filename-to-type f) "musselbed"
+    (map (lambda (f) (list (string-append "photos/musselbed/" f) "Musselbed" "musselbed"
                            (string-append "photos/musselbed/map-" f)
                            )) musselbed-filenames)
-    (map (lambda (f) (list (string-append "photos/musselbed/di-" f) (filename-to-type f) "musselbed"
+    (map (lambda (f) (list (string-append "photos/musselbed/di-" f) "Musselbed" "musselbed"
                            (string-append "photos/musselbed/map-" f)
                            )) musselbed-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/rockpool/crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames)
-    (map (lambda (f) (list (string-append "photos/rockpool/di-crabs/" f) (filename-to-type f) "rockpool" "no map for crab")) rockpool-crab-filenames))
+    (map (lambda (f) (list (string-append "photos/rockpool/crabs/" f) "Rockpool" "rockpool" "no map for crab")) rockpool-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/rockpool/di-crabs/" f) "Rockpool" "rockpool" "no map for crab")) rockpool-crab-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/mudflat/crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames)
-    (map (lambda (f) (list (string-append "photos/mudflat/di-crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames))
+    (map (lambda (f) (list (string-append "photos/mudflat/crabs/" f) "Mudflat" "mudflat" "no map for crab")) mudflat-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/mudflat/di-crabs/" f) "Mudflat" "mudflat" "no map for crab")) mudflat-crab-filenames))
    (list
-    (map (lambda (f) (list (string-append "photos/musselbed/crabs/" f) (filename-to-type f) "musselbed" "no map for crab")) musselbed-crab-filenames)
-    (map (lambda (f) (list (string-append "photos/musselbed/di-crabs/" f) (filename-to-type f) "musselbed" "no map for crab")) musselbed-crab-filenames))
+    (map (lambda (f) (list (string-append "photos/musselbed/crabs/" f) "Musselbed" "musselbed" "no map for crab")) musselbed-crab-filenames)
+    (map (lambda (f) (list (string-append "photos/musselbed/di-crabs/" f) "Musselbed" "musselbed" "no map for crab")) musselbed-crab-filenames))
    ))
 
 ;;(map (lambda (f) (list (string-append "photos/mudflat/crabs/" f) (filename-to-type f) "mudflat" "no map for crab")) mudflat-crab-filenames)
@@ -1453,10 +1453,7 @@
             (record-crab-time c 1)
             (nightjar-fail
              (photo-desc example)
-             (string-append
-              "Ran out of time finding this crab on "
-              (photo-desc example)
-              " - you'll go hungry tonight!") c))
+             "" c))
           c))
 
     (game-modify-buttons
@@ -1554,8 +1551,15 @@
       (game-time c)
       (nightjar-sprite (game-data c)))
 
-     (set! ctx.font "normal 30pt open-sans")
-     (nightjar-all-text ctx reason)
+     (let ((done (+ (- 20 (length (nightjar-images (game-data c)))) 1)))
+       (set! ctx.font "normal 50pt open-sans")
+       (wrap-text ctx (string-append
+                       "Ran out of time finding this crab - you'll go hungry tonight!") 0 200 1300 75)
+       (set! ctx.font "normal 40pt open-sans")
+       (wrap-text ctx (string-append "Crab from: " (photo-desc crab)) 0 400 1000 75)
+       (wrap-text ctx (string-append "Background: " (photo-desc example)) 0 500 1000 75)
+       (wrap-text ctx (string-append  (- 20 done) " crabs left to go!") 0 600 1000 75))
+
      (set! ctx.font "normal 30pt open-sans"))
 
    (game-modify-update
@@ -1567,7 +1571,7 @@
       (empty-image-button
        "Next crab"
        default-button-x
-       default-button-y
+       (+ default-button-y 100)
        empty-button-width empty-button-height
        "none"
        (lambda (c)
@@ -1622,10 +1626,15 @@
       (nightjar-sprite (game-data c)))
 
      (let ((done (+ (- 20 (length (nightjar-images (game-data c)))) 1)))
-       (nightjar-all-text
-        ctx (+ "You caught this crab on " desc " in "
-               (/ (nightjar-score (game-data c)) 1000)
-               " seconds. " (- 20 done) " crabs left to go!")))
+       (set! ctx.font "normal 50pt open-sans")
+       (wrap-text ctx (string-append
+                       "You caught this crab in " (/ (nightjar-score (game-data c)) 1000)
+                       " seconds. ") 0 200 1000 75)
+       (set! ctx.font "normal 40pt open-sans")
+       (wrap-text ctx (string-append "Crab from: " (photo-desc crab)) 0 400 1000 75)
+       (wrap-text ctx (string-append "Background: " (photo-desc example)) 0 500 1000 75)
+       (wrap-text ctx (string-append  (- 20 done) " crabs left to go!") 0 600 1000 75))
+
      (set! ctx.font "normal 30pt open-sans"))
 
    (game-modify-update
@@ -1636,7 +1645,7 @@
       (empty-image-button
        "Next crab"
        default-button-x
-       default-button-y
+       (+ default-button-y 100)
        empty-button-width empty-button-height
        "none"
        (lambda (c)
