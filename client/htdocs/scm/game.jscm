@@ -20,7 +20,7 @@
 (load "scm/nightjar.jscm")
 
 (define game-time-allowed 10)
-(define num-bgs-per-habitat 1)
+(define num-bgs-per-habitat 6)
 (define num-examples (* num-bgs-per-habitat 3))
 (define num-crabs-per-habitat (/ num-bgs-per-habitat 3))
 
