@@ -871,7 +871,7 @@
             (nightjar-experiment-screen c)))
 
          (empty-image-button
-          "About"
+          "The Science"
           (+ default-button-x 200)
           default-button-y
           empty-button-width empty-button-height
