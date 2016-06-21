@@ -75,7 +75,7 @@
 ;; get scores from games from the same type as this game id
 (define (get-game-averages db game_id)
   (let* ((bg_location (vector-ref (cadr (select db "select species from game where id=?" game_id)) 0))
-         (s (select db "select score from game where species=? order by score desc"
+         (s (select db "select score from game where species=? order by score"
                     bg_location)))
     (if (null? s)
         '()
