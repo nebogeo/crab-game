@@ -1398,8 +1398,8 @@
   (game-modify-render
    (lambda (ctx)
      (draw-weed ctx c)
+     (ctx.drawImage (find-image "example-crab.jpg") 330 210)
      (particle-system-render ctx (nightjar-bubbles (game-data c)))
-     (ctx.drawImage (find-image "example-crab.jpg") 450 230)
      (set! ctx.font "normal 30pt open-sans")
      (wrap-text ctx "There is one crab hidden in every photo, tap it as soon as you see it" 0 100 800 45))
    (game-modify-buttons
@@ -1408,7 +1408,7 @@
      (empty-image-button
       "Play!"
       default-button-x
-      default-button-y
+      (+ default-button-y 130)
       empty-button-width empty-button-height
       "none"
       (lambda (c)
