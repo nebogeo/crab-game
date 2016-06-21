@@ -379,10 +379,7 @@
      "bubble-1.wav"
      "bubble-2.wav"
      "bubble-3.wav"
-     "bubble-4.wav"
-     "bubble-5.wav"
      "bubble-7.wav"
-     "bubble-13.wav"
      ))))
 
 
@@ -536,6 +533,9 @@
           (find-image "bubble-4.png")
           (find-image "bubble-5.png")
           (find-image "bubble-6.png")
+          (find-image "bubble-7.png")
+          (find-image "bubble-8.png")
+          (find-image "bubble-9.png")
           )))))
 
 (define bubbles ())
@@ -893,6 +893,7 @@
            (roundRect ctx (+ xpos (* i 300)) (- bar-start height)
                       250 height 10 #t #f)
          (set! ctx.fillStyle "#fff")
+         (set! ctx.font "normal 30pt open-sans")
 
          (centre-text2
           ctx
@@ -996,6 +997,7 @@
        empty-button-width empty-button-height "none"
        (lambda (c)
          (bubbles-hit! 0 c)
+         (button-sound)
          (nightjar-intro game))
        c)
 
@@ -1995,10 +1997,7 @@
   "bubble-1.wav"
   "bubble-2.wav"
   "bubble-3.wav"
-  "bubble-4.wav"
-  "bubble-5.wav"
   "bubble-7.wav"
-  "bubble-13.wav"
   ))
 
 
@@ -2029,6 +2028,9 @@
        "bubble-4.png"
        "bubble-5.png"
        "bubble-6.png"
+       "bubble-7.png"
+       "bubble-8.png"
+       "bubble-9.png"
        "crab1.png"
        "crab2.png"
        "rockpool-crab.png"
