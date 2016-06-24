@@ -29,6 +29,7 @@ def gen_lists(name):
                     print(cmd)
 
 def gen_crab_lists(name):
+    lst = []
     for location in os.listdir(name):
         if location=="crabs":
             print(name)
@@ -38,7 +39,10 @@ def gen_crab_lists(name):
                     cmd="\""+filename+"\""
                     im = Image.open(name+"/"+location+"/"+filename)
                     if im.size[0]<500:
-                        print(cmd)
+                        lst.append(cmd)
+    lst.sort()
+    for f in lst:
+        print(f)
 
 num_crabs = 0
 num_big = 0
@@ -63,8 +67,8 @@ def check_crab_sizes(name):
     print("("+str((num_big/float(num_crabs))*100)+"% are too big)")
     print("in game: "+str(num_crabs-num_big))
 
-#gen_crab_lists("mudflat")
-#gen_crab_lists("musselbed")
+gen_crab_lists("mudflat")
+gen_crab_lists("musselbed")
 gen_crab_lists("rockpool")
 
 #gen_lists("mudflat")
