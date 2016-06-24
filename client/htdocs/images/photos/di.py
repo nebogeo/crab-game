@@ -6,7 +6,8 @@ from PIL import Image
 # does crabs too...
 def convert_bg(name):
     for location in os.listdir(name):
-        if location[0:3]!="di-":
+        #if location[0:3]!="di-":
+	if location=="crabs":
             for filename in os.listdir(name+"/"+location):
                 ext = os.path.splitext(filename)[1]
                 if filename[0:3]!="di-" and (ext==".jpg" or ext==".png"):
@@ -14,9 +15,9 @@ def convert_bg(name):
                     print(cmd)
                     os.system(cmd)
 
-#convert_bg("mudflat")
-#convert_bg("rockpool")
-#convert_bg("musselbed")
+convert_bg("mudflat")
+convert_bg("rockpool")
+convert_bg("musselbed")
 
 def gen_lists(name):
     print(name)
@@ -71,9 +72,9 @@ def check_crab_sizes(name):
 #gen_crab_lists("musselbed")
 #gen_crab_lists("rockpool")
 
-gen_lists("mudflat")
-gen_lists("musselbed")
-gen_lists("rockpool")
+#gen_lists("mudflat")
+#gen_lists("musselbed")
+#gen_lists("rockpool")
 
 
 
