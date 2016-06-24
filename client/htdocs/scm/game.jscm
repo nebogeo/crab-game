@@ -177,7 +177,6 @@
 "hayle/13_Vis_Hayle.mspec_b1.jpg"
 "hayle/44_Vis_Hayle.mspec_b1.jpg"))
 
-
 (define musselbed-filenames
   (list
 "mawgan-porth/42_Vis_MawganPorth.mspec_b1.jpg"
@@ -287,23 +286,17 @@
 "godrevy/127_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/144_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/107_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/149_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/110_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/139_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/142_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/146_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/140_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/128_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/119_Vis_Godrevey.mspec_v1.jpg"
 "godrevy/136_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/113_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/133_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/114_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/103_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/130_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/141_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/129_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/143_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/125_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/112_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/121_Vis_Godrevey.mspec_b1.jpg"
@@ -317,14 +310,13 @@
 "godrevy/123_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/132_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/118_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/126_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/108_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/131_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/105_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/134_Vis_Godrevey.mspec_b1.jpg"
 "godrevy/104_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/124_Vis_Godrevey.mspec_b1.jpg"
-"godrevy/120_Vis_Godrevey.mspec_b1.jpg"))
+"godrevy/124_Vis_Godrevey.mspec_b1.jpg"))
+
 
 (define rockpool-filenames
   (list
@@ -377,10 +369,8 @@
 "gylly/3771_vis_gylly.mspec_b1.jpg"
 "flushing/109_Vis_Flushing.mspec_b1.jpg"
 "flushing/117_Vis_Flushing.mspec_b1.jpg"
-"flushing/132_Vis_Flushing.mspec_b1.jpg"
 "flushing/133_Vis_Flushing.mspec_b1.jpg"
 "flushing/127_Vis_Flushing.mspec_b1.jpg"
-"flushing/134_Vis_Flushing.mspec_b1.jpg"
 "flushing/144_Vis_Flushing.mspec_b1.jpg"
 "flushing/146_Vis_Flushing.mspec_b1.jpg"
 "flushing/138_Vis_Flushing.mspec_b1.jpg"
@@ -391,7 +381,6 @@
 "flushing/126_Vis_Flushing.mspec_b1.jpg"
 "flushing/114_Vis_Flushing.mspec_b1.jpg"
 "flushing/118_Vis_Flushing.mspec_b1.jpg"
-"flushing/128_Vis_Flushing.mspec_b1.jpg"
 "flushing/102_Vis_Flushing.mspec_b1.jpg"
 "flushing/129_Vis_Flushing.mspec_b1.jpg"
 "flushing/124_Vis_Flushing.mspec_b1.jpg"
@@ -405,7 +394,6 @@
 "flushing/104_Vis_Flushing.mspec_b1.jpg"
 "flushing/125_Vis_Flushing.mspec_b1.jpg"
 "flushing/106_Vis_Flushing.mspec_b1.jpg"
-"flushing/121_Vis_Flushing.mspec_b1.jpg"
 "flushing/120_Vis_Flushing.mspec_b1.jpg"
 "flushing/103_Vis_Flushing.mspec_b1.jpg"
 "flushing/145_Vis_Flushing.mspec_b1.jpg"
@@ -419,7 +407,6 @@
 "flushing/140_Vis_Flushing.mspec_b1.jpg"
 "flushing/101_Vis_Flushing.mspec_b1.jpg"
 "flushing/115_Vis_Flushing.mspec_b1.jpg"
-"flushing/110_Vis_Flushing.mspec_b1.jpg"
 "flushing/130_Vis_Flushing.mspec_b1.jpg"
 "st-mawes/48_Vis_St_Mawes.mspec_b1.jpg"
 "st-mawes/28_Vis_St_Mawes.mspec_b1.jpg"
@@ -468,9 +455,8 @@
 "st-mawes/40_Vis_St_Mawes.mspec_b1.jpg"
 "st-mawes/22_Vis_St_Mawes.mspec_b1.jpg"
 "st-mawes/43_Vis_St_Mawes.mspec_b1.jpg"
-"st-mawes/19_Vis_St_Mawes.mspec_b1.jpg"))
-
-
+"st-mawes/19_Vis_St_Mawes.mspec_b1.jpg"
+"map-gylly/SAM_5124.jpg"))
 
 
 (define rockpool-crab-filenames

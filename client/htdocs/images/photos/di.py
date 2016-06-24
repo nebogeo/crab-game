@@ -84,9 +84,9 @@ def check_crab_sizes(name):
 #gen_crab_lists("musselbed")
 #gen_crab_lists("rockpool")
 
-gen_rmlists("mudflat")
-gen_rmlists("musselbed")
-gen_rmlists("rockpool")
+gen_lists("mudflat")
+gen_lists("musselbed")
+gen_lists("rockpool")
 
 
 
