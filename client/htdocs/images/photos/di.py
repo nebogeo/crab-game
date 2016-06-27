@@ -15,10 +15,6 @@ def convert_bg(name):
                     print(cmd)
                     os.system(cmd)
 
-#convert_bg("mudflat")
-#convert_bg("rockpool")
-#convert_bg("musselbed")
-
 def gen_lists(name):
     print(name)
     for location in os.listdir(name):
@@ -53,9 +49,10 @@ def gen_crab_lists(name):
                     im = Image.open(name+"/"+location+"/"+filename)
                     if im.size[0]<500:
                         lst.append(cmd)
-    lst.sort()
-    for f in lst:
-        print(f)
+                        print(cmd)
+    ##lst.sort()
+    #for f in lst:
+    #    print(f)
 
 num_crabs = 0
 num_big = 0
@@ -75,20 +72,24 @@ def check_crab_sizes(name):
                     im = Image.open(name+"/"+location+"/"+filename)
                     if im.size[0]>500:
                         num_big+=1
+
     print("num too big: "+str(num_big))
     print("total: "+str(num_crabs))
     print("("+str((num_big/float(num_crabs))*100)+"% are too big)")
     print("in game: "+str(num_crabs-num_big))
 
+
+convert_bg("mudflat")
+convert_bg("rockpool")
+convert_bg("musselbed")
+
 #gen_crab_lists("mudflat")
 #gen_crab_lists("musselbed")
 #gen_crab_lists("rockpool")
 
-gen_lists("mudflat")
-gen_lists("musselbed")
-gen_lists("rockpool")
-
-
+#gen_lists("mudflat")
+#gen_lists("musselbed")
+#gen_lists("rockpool")
 
 #check_crab_sizes("mudflat")
 #check_crab_sizes("musselbed")
