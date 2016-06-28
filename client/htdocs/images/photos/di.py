@@ -79,18 +79,18 @@ def check_crab_sizes(name):
     print("in game: "+str(num_crabs-num_big))
 
 
-#convert_bg("mudflat")
-#convert_bg("rockpool")
-#convert_bg("musselbed")
+convert_bg("mudflat")
+convert_bg("rockpool")
+convert_bg("musselbed")
 
-gen_crab_lists("mudflat")
-gen_crab_lists("musselbed")
-gen_crab_lists("rockpool")
+#gen_crab_lists("mudflat")
+#gen_crab_lists("musselbed")
+#gen_crab_lists("rockpool")
 
 #gen_lists("mudflat")
 #gen_lists("musselbed")
 #gen_lists("rockpool")
 
-check_crab_sizes("mudflat")
-check_crab_sizes("musselbed")
-check_crab_sizes("rockpool")
+#check_crab_sizes("mudflat")
+#check_crab_sizes("musselbed")
+#check_crab_sizes("rockpool")

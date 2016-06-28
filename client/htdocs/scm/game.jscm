@@ -774,6 +774,30 @@
    ))
 
 
+(define (loadtest)
+  (for-each
+   (lambda (fn)
+     (let ((image (js "new Image()")))
+       (set! image.onerror
+             (lambda ()
+               (console.log (+ "IMAGE CHECK ERROR" fn))))
+       (set! image.src (+ "images/" fn ))))
+   (append
+    (map (lambda (f) (+ "photos/rockpool/crabs/" f)) rockpool-crab-filenames)
+    (map (lambda (f) (+ "photos/mudflat/crabs/" f)) mudflat-crab-filenames)
+    (map (lambda (f) (+ "photos/musselbed/crabs/" f)) musselbed-crab-filenames)
+    (map (lambda (f) (+ "photos/rockpool/di-crabs/" f)) rockpool-crab-filenames)
+    (map (lambda (f) (+ "photos/mudflat/di-crabs/" f)) mudflat-crab-filenames)
+    (map (lambda (f) (+ "photos/musselbed/di-crabs/" f)) musselbed-crab-filenames)
+    (map (lambda (f) (+ "photos/rockpool/" f)) rockpool-filenames)
+    (map (lambda (f) (+ "photos/mudflat/" f)) mudflat-filenames)
+    (map (lambda (f) (+ "photos/musselbed/" f)) musselbed-filenames)
+    (map (lambda (f) (+ "photos/rockpool/di-" f)) rockpool-filenames)
+    (map (lambda (f) (+ "photos/mudflat/di-" f)) mudflat-filenames)
+    (map (lambda (f) (+ "photos/musselbed/di-" f)) musselbed-filenames))))
+
+;(loadtest)
+
 (define (filename-to-type fn)
   (let ((a (fn.substring 0 2)))
     (cond
