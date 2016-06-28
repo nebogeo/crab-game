@@ -14,7 +14,7 @@ html, body {
 }
 
 #canvas {
-    width: 100%;
+    width: 99.5%; /* 100% causes slider sometimes */
     min-width: 800px;
     /*background: url(../images/bg.png);*/
 }
