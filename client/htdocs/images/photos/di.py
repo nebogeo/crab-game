@@ -49,10 +49,10 @@ def gen_crab_lists(name):
                     im = Image.open(name+"/"+location+"/"+filename)
                     if im.size[0]<500:
                         lst.append(cmd)
-                        print(cmd)
-    ##lst.sort()
-    #for f in lst:
-    #    print(f)
+    			#print(cmd)
+#    lst.sort()
+    for f in lst:
+        print(f)
 
 num_crabs = 0
 num_big = 0
@@ -83,14 +83,14 @@ def check_crab_sizes(name):
 #convert_bg("rockpool")
 #convert_bg("musselbed")
 
-#gen_crab_lists("mudflat")
+gen_crab_lists("mudflat")
 gen_crab_lists("musselbed")
-#gen_crab_lists("rockpool")
+gen_crab_lists("rockpool")
 
 #gen_lists("mudflat")
 #gen_lists("musselbed")
 #gen_lists("rockpool")
 
-#check_crab_sizes("mudflat")
-#check_crab_sizes("musselbed")
-#check_crab_sizes("rockpool")
+check_crab_sizes("mudflat")
+check_crab_sizes("musselbed")
+check_crab_sizes("rockpool")
