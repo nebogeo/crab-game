@@ -4,6 +4,7 @@
 }
 
 html, body {
+    overflow: hidden;
     margin: 0;
     font-family: 'open-sans';
     color: #fff;
@@ -14,7 +15,7 @@ html, body {
 }
 
 #canvas {
-    width: 99.5%; /* 100% causes slider sometimes */
+    width: 100%; /* 100% causes slider sometimes */
     min-width: 800px;
     /*background: url(../images/bg.png);*/
 }
