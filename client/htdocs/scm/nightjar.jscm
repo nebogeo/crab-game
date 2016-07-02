@@ -214,6 +214,25 @@
                   (cdr words) test-line y))))))))
   (wrap-text-inner (text.split " ") "" y))
 
+(define (wrap-text-left ctx text x y max-width line-height)
+  (define (wrap-text-left-inner words line y)
+    (cond
+     ((null? words)
+      (ctx.fillText line x y))
+     (else
+      (let ((test-line (+ line (car words) " ")))
+        (let ((metrics (ctx.measureText test-line)))
+          (cond ((> metrics.width max-width)
+                 (ctx.fillText line x y)
+                 (wrap-text-left-inner (cdr words)
+                                  (+ (car words) " ")
+                                  (+ y line-height)))
+                (else
+                 (wrap-text-left-inner
+                  (cdr words) test-line y))))))))
+  (wrap-text-left-inner (text.split " ") "" y))
+
+
 (define (sprite x y image timer)
   (list x y image timer))
 

@@ -1472,13 +1472,14 @@
     (lambda (ctx)
       (draw-weed ctx c)
       (particle-system-render ctx (nightjar-bubbles (game-data c)))
-      ;;(ctx.drawImage (find-image "button-1.png") 0 555)
-      ;;(ctx.drawImage (find-image "button-2.png") 1240 550)
+      (ctx.drawImage (find-image "crab1.png") 0 555)
+      (ctx.drawImage (find-image "crab2.png") 1240 550)
 
-      (nightjar-heading ctx "About the project")
+      (set! ctx.font "normal 75pt open-sans")
+      (wrap-text ctx "About the project" 0 150 1300 100)
       (set! ctx.font "normal 25pt open-sans")
-      (wrap-text ctx "Scientists at the University of Exeter’s Sensory Ecology and Evolution Lab study animal colouration and vision. One main area of their research explores how animals use camouflage to avoid predation. This includes how visible shore crabs are to different predators and in different habitats." 0 300 1300 50)
-      (wrap-text ctx "This computer experiment will aid our understanding of the success of the crabs’ camouflage by testing how quickly crabs are caught by predators with different visual systems, and how animals adapt to different environments." 0 550 1450 50)
+      (wrap-text-left ctx "Scientists at the University of Exeter’s Sensory Ecology and Evolution Lab study animal colouration and vision. One main area of their research explores how animals use camouflage to avoid predation. This includes how visible shore crabs are to different predators and in different habitats." 230 220 1200 50)
+      (wrap-text-left ctx "This computer experiment will aid our understanding of the success of the crabs’ camouflage by testing how quickly crabs are caught by predators with different visual systems, and how animals adapt to different environments." 230 470 1200 50)
       (set! ctx.font "normal 30pt open-sans"))
 
     (game-modify-buttons
