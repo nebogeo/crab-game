@@ -78,10 +78,21 @@ def check_crab_sizes(name):
     print("("+str((num_big/float(num_crabs))*100)+"% are too big)")
     print("in game: "+str(num_crabs-num_big))
 
+def print_sizes(name,f):
+    for location in os.listdir(name):
+        if location=="crabs":
+            print(name)
+            for filename in os.listdir(name+"/"+location):
+                ext = os.path.splitext(filename)[1]
+                if ext==".png":
+                    im = Image.open(name+"/"+location+"/"+filename)
+                    s = "\""+filename+"\", "+str(im.size[0])+", "+str(im.size[1])
+                    print(s)
+                    f.write(s+"\n")
 
-convert_bg("mudflat")
-convert_bg("rockpool")
-convert_bg("musselbed")
+#convert_bg("mudflat")
+#convert_bg("rockpool")
+#convert_bg("musselbed")
 
 #gen_crab_lists("mudflat")
 #gen_crab_lists("musselbed")
@@ -94,3 +105,9 @@ convert_bg("musselbed")
 #check_crab_sizes("mudflat")
 #check_crab_sizes("musselbed")
 #check_crab_sizes("rockpool")
+
+f = open("sizes.csv","w")
+print_sizes("mudflat",f)
+print_sizes("rockpool",f)
+print_sizes("musselbed",f)
+f.close()

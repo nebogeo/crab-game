@@ -20,7 +20,7 @@
 (load "scm/nightjar.jscm")
 
 (define game-time-allowed 10)
-(define num-bgs-per-habitat 6)
+(define num-bgs-per-habitat 6) ;; 2 for demo
 (define num-examples (* num-bgs-per-habitat 3))
 (define num-crabs-per-habitat (/ num-bgs-per-habitat 3))
 
@@ -1432,6 +1432,8 @@
          (particle-system-render ctx (nightjar-bubbles (game-data c)))
          (ctx.drawImage (find-image "crab1.png") 0 555)
          (ctx.drawImage (find-image "crab2.png") 1240 550)
+         (ctx.drawImage (find-image "nhm-logo.png") 10 0)
+         (ctx.drawImage (find-image "foam-logo.png") 1380 0)
          (nightjar-heading ctx "Hunt for shore crabs and help science")
          (set! ctx.font "normal 25pt open-sans")
          (wrap-text ctx "How camouflaged are crabs to the eyes of predators and in different habitats?" 0 400 800 40)
@@ -2527,6 +2529,8 @@
        "bubble-9.png"
        "crab1.png"
        "crab2.png"
+       "nhm-logo.png"
+       "foam-logo.png"
        "rockpool-crab.png"
        "mudflat-crab.png"
        "musselbed-crab.png"
