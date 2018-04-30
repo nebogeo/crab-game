@@ -1444,7 +1444,6 @@
 
          (set! ctx.font "normal 25pt open-sans")
          (wrap-text ctx "How camouflaged are crabs to the eyes of predators and in different habitats?" 0 (+ title-offset 300) 800 40)
-         (wrap-text ctx "Play this game to help us find out." 0 (+ title-offset 420) 1000 40)
          (set! ctx.font "normal 30pt open-sans")
          (set! ctx.font "normal 30pt open-sans"))
 
